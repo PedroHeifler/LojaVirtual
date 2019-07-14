@@ -1,24 +1,265 @@
-﻿body {
+﻿
+/*----------------------TELA HOME----------------------*/
+
+@media only screen and (min-width: 990px) {
+    #button-bar {
+        display: none;
+    }
+
+    #navbar-2 .cart-btn {
+        display: inline !important;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .nuvem-1 {
+        display: none;
+    }
+
+    .nuvem-2 {
+        display: none;
+    }
+
+    .nuvem-3 {
+        display: none;
+    }
+
+    .nuvem-4 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .navbar-pricipal button {
+        margin-left: 20%;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue !important;
+}
+
+.no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.object {
+    object-fit: cover;
+    object-position: top;
+}
+
+#navbar-2 .form-control {
+    width: auto;
+    margin: 10px 0;
+}
+
+#navbar-1 nav {
+    height: 40px;
+    font-weight: 700;
+}
+
+/*---NAV BAR---*/
+#navbar-2 .container {
+    border-bottom: 1px solid #fff;
+}
+
+#navbar-2 img {
+    position: relative;
+    width: 100% !important;
+    z-index: -1;
+    max-height: 650px;
+    min-height: 350px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+#navbar-2 nav {
+    border-bottom: 1px solid #fff;
+    padding: inherit;
+}
+
+#navbar-2 ul a, h2 {
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 5px #000;
+    font-size: 17px;
+    letter-spacing: 2px;
+    padding: 10px;
+    transition: 500ms;
+}
+
+    #navbar-2 ul a:hover {
+        transform: scale(1.1);
+        color: #0666ca;
+    }
+
+#navbar-2 ul i {
+    font-size: 20px;
+}
+
+#navbar-2 .cart-btn {
+    background-color: #0666ca !important;
+    border-radius: 50% !important;
+    width: 50px;
+    height: 50px;
+    line-height: 35px !important;
+    outline: none !important;
+}
+
+#navbar-2 .cart-box {
+    background-color: #0666ca;
+    border-radius: 50px;
+    padding-left: 10px;
+    max-width: 130px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 10px #00000080;
+    margin: 0;
+    transition: 300ms;
+}
+
+    #navbar-2 .cart-box:hover {
+        transform: translateY(-1px);
+        box-shadow: 3px 3px 10px #00000080
+    }
+
+#navbar-2 form {
+    margin-right: 40px;
+}
+
+/*---MAIN---*/
+
+main .img-destaque img {
+    height: 300px;
+    object-fit: cover;
+    margin: 20px 0;
+}
+
+/*---MAIN TITULO---*/
+
+main .titulo {
+    border: 1px solid #0666ca;
+    border-radius: 50px;
+    font-size: 160%;
+    padding: 0 3%;
+    background-color: aliceblue;
+    color: #0666ca;
+    z-index: 2;
+}
+
+    main .titulo:after {
+        content: "";
+        height: 1px;
+        background: #0666ca;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: -1;
+    }
+
+main .titulo-box {
+    position: relative;
+}
+
+/*---MAIN ICONE-FAV---*/
+
+main .icone-fav {
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: 10px;
+    padding: 2px;
+    border-radius: 50%;
+    visibility: hidden;
+    color: transparent;
+    transition: 400ms;
+}
+
+main .card .card-img-top {
+    transition: 400ms;
+}
+
+main .card:hover > .icone-fav {
+    background-color: white;
+    color: red;
+    visibility: visible;
+    opacity: 1 !important;
+}
+
+main .card:hover > .card-img-top {
+    opacity: 0.7;
+}
+
+/*---FOOTER---*/
+
+footer {
+    background-color: #0666ca;
+    min-height: 400px;
     padding-top: 50px;
-    padding-bottom: 20px;
+    color: white;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+    footer .redes-sociais li {
+        padding: 5px 11px;
+        font-size: 25px;
+        background-color: #3d3d3d;
+        color: white;
+        border-radius: 25px;
+        margin-top: 10px
+    }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
+    footer .redes-sociais .facebook:hover {
+        background-color: #324d8f;
+    }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    footer .redes-sociais .instagram:hover {
+        background-color: #ec3e59;
+    }
+
+    footer .redes-sociais .twitter:hover {
+        background-color: #0295f3;
+    }
+
+    footer .redes-sociais .youtube:hover {
+        background-color: #c7191d;
+    }
+
+    /*---NUVENS---*/
+
+    footer .nuvem-1 {
+        width: 150px;
+        bottom: 0;
+        left: 7%;
+        bottom: 50%
+    }
+
+    footer .nuvem-2 {
+        width: 100px;
+        left: 90%;
+        bottom: 70%;
+    }
+
+    footer .nuvem-3 {
+        object-fit: cover;
+        height: 200px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+    }
+
+    footer .nuvem-4 {
+        width: 170px;
+        left: 65%;
+        bottom: 100px;
+    }
+
+
+/*----------------------TELA CADASTRO----------------------*/
+
+#formulario-cadastro {
+    border: 1px solid #dee2e6;
 }

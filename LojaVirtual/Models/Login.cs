@@ -6,10 +6,13 @@ namespace LojaVirtual.Models
 {
     public class Login
     {
-        [Key, Column(Order = 1)]
+        [Key]
         public int IdLogin { get; set; }
+        [Required]
         public String Email { get; set; }
+        [Required]
         public String Senha { get; set; }
         public String TpUsuario { get; set; }
+
     }
 }

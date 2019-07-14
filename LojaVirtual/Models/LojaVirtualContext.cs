@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace LojaVirtual.Models
 {
@@ -15,10 +11,13 @@ namespace LojaVirtual.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public LojaVirtualContext() : base("name=LojaVirtualContext")
-        {
-        }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Login> Logins { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
 
-        public System.Data.Entity.DbSet<LojaVirtual.Models.CadastroUsuario> CadastroUsuarios { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=LojaVirtualContext;Trusted_Connection=true;");
+        }
     }
 }
