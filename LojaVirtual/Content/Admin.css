@@ -1,0 +1,44 @@
+﻿.menu-admin {
+    width: 20%;
+    min-width: 250px;
+    height: -webkit-fill-available;
+    position: fixed;
+    box-shadow: 10px 0px 15px #606c77;
+}
+
+.menu-item {
+    display: block !important;
+}
+
+    .menu-item li:hover {
+        background-color: #606c77 !important;
+        transition: 200ms;
+    }
+
+.usuarios-admin {
+    position: relative;
+    left: 20%;
+    width: calc(100% - 20%);
+    overflow: auto;
+}
+
+    .usuarios-admin h1 {
+        margin-left: 25px;
+    }
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.marg-usuario {
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+}

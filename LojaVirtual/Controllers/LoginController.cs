@@ -19,7 +19,7 @@ namespace LojaVirtual.Controllers
             if (login != null)
             {
                 Session["usuarioLogado"] = login;
-                return RedirectToAction("Index", "Cadastro");
+                return RedirectToAction("Index", "Home");
                 
             }
             else
