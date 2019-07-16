@@ -42,3 +42,7 @@
     margin-right: 5% !important;
     margin-left: 5% !important;
 }
+
+.invisivel {
+    display: none !important;
+}
