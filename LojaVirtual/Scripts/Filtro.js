@@ -9,7 +9,7 @@
             var expressao = new RegExp(this.value, "i");
             console.log(nome)
 
-            if (expressao.test(nome)) {
+            if (!expressao.test(nome)) {
                 usuario.classList.add("invisivel");
             } else {
                 usuario.classList.remove("invisivel");
