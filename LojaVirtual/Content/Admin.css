@@ -5,8 +5,8 @@
     position: fixed;
     box-shadow: 10px 0px 15px #606c77;
     transition: 500ms;
-    transform: translateX(0);
-    z-index: 2
+    z-index: 2;
+    display: inline
 }
 
 .menu-item {
@@ -14,7 +14,7 @@
     font-size: 18px;
 }
 
-.menu-item li:hover {
+    .menu-item li:hover {
         background-color: #606c77 !important;
         transition: 200ms;
     }
@@ -25,13 +25,13 @@
 
 .usuarios-admin {
     position: relative;
-    left: 15%;
-    width: calc(100% - 15%);
+    left: 17%;
+    width: calc(100% - 17%);
     overflow: auto;
     transition: 500ms;
 }
 
-.usuarios-admin h1 {
+    .usuarios-admin h1 {
         margin-left: 25px;
     }
 
@@ -56,54 +56,47 @@
     display: none !important;
 }
 
-/*---Tablet---*/
-@media screen and (max-width: 1500px) {
-    .menu-admin {
+.btn-remover-border:focus {
+    outline: none
+}
+/*---Desktop---*/
+@media screen and (min-width: 751px) {
+    .animacao {
         width: 80px;
         min-width: 80px
     }
-    
-    .menu-admin h2 span {
-        display: none
-    }
 
-    .menu-item li span {
-        display: none
-    }
+        .animacao h2 {
+            display: none
+        }
 
-    .menu-admin h2 i {
-        display: inline
-    }
+        .animacao li span {
+            display: none
+        }
 
     .usuarios-admin {
-        left: 10%;
-        width: 90%
+        left: 5%;
+        width: calc(100% - 5%);
     }
 }
 
 /*---Mobile---*/
-@media screen and (max-width: 770px) {
-    .menu-admin {
-        transform: translateX(-100%);
+@media screen and (max-width: 750px) {
+    .animacao {
+        transition: 300ms;
+        transform: translateX(-100%)
     }
 
-    .menu-admin h2 span {
-        display: none
-    }
+        .animacao h2 span {
+            display: none
+        }
 
-    .menu-item li span {
-        display: none
-    }
+        .animacao li span {
+            display: none
+        }
 
     .usuarios-admin {
         left: 0;
         width: 100%
     }
-
 }
-
-
-
-
-
-
