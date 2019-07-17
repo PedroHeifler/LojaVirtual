@@ -37,7 +37,7 @@
 
         <!----Segunda Barra---->
         <div id="navbar-2">
-            <nav class="navbar navbar-expand-lg d-flex bd-highlight align-items-stretch">
+            <nav class="navbar navbar-expand-xl align-items-stretch">
 
                 <!----Carousel---->
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
@@ -67,31 +67,39 @@
                     </a>
                 </div>
 
-                <div class="navbar-pricipal container position-absolute col-lg-12 col-12 col-md-12">
-                    <button class="btn btn-dark" id="button-bar" data-toggle="collapse"
-                            data-target="#navbarSupportedContent">
-                        <i class="fas fa-bars"></i>
+                <nav class="navbar navbar-expand-xl navbar-dark d-flex bd-highlight position-absolute text-center">
+                    <h1><a class="navbar-brand flex-grow-1 bd-highlight ml-5" href="/Home">Loja Virtual</a></h1>
+                    <button class="navbar-toggler mr-5" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Alterna navegação">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <h2 class="p-2 flex-grow-1 bd-highlight"><a href="/Home">Loja</a></h2>
-                    <div class="collapse navbar-collapse position-relative" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li><a href="#" class="nav-link"><i class="fas fa-male"></i>MASCULINO</a></li>
-                            <li><a href="#" class="nav-link"><i class="fas fa-female"></i>FEMININO</a></li>
-                            <li><a href="#" class="nav-link"><i class="fas fa-child"></i>INFANTIL</a></li>
-                            <li><a href="#" class="nav-link"><i class="fas fa-baby"></i>BABY</a></li>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 flex-fill bd-highlight">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">MASCULINO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">FEMININO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">INFANTIL</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">BABY</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">OUTLET</a>
+                            </li>
                         </ul>
-                        <form class="form-inline">
-                            <input class="form-control" type="search" placeholder="Pesquise Aqui!" aria-label="Search">
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
+                        <form class="form-inline my-2 my-lg-0 bd-highlight">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Pesquisar</button>
                         </form>
-                        <div class="cart-box">
+                        <div class="cart-box ml-3">
                             <label class="cart-txt">Carrinho</label>
-                            <a href="#" class="btn cart-btn bg-primary"><i class="fas fa-shopping-cart text-white"></i></a>
+                            <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
                         </div>
                     </div>
-                </div>
+                </nav>
             </nav>
         </div>
     </header>
