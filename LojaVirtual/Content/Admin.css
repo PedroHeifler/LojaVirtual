@@ -1,29 +1,4 @@
-﻿.menu-admin {
-    width: 15%;
-    min-width: 250px;
-    height: -webkit-fill-available;
-    position: fixed;
-    box-shadow: 10px 0px 15px #606c77;
-    transition: 500ms;
-    z-index: 2;
-    display: inline
-}
-
-.menu-item {
-    display: block !important;
-    font-size: 18px;
-}
-
-    .menu-item li:hover {
-        background-color: #606c77 !important;
-        transition: 200ms;
-    }
-
-.active {
-    border-left: 5px solid;
-}
-
-.usuarios-admin {
+﻿.usuarios-admin {
     position: relative;
     left: 17%;
     width: calc(100% - 17%);
@@ -61,23 +36,51 @@
 }
 /*---Desktop---*/
 @media screen and (min-width: 751px) {
-    .animacao {
+    .menu-admin {
         width: 80px;
-        min-width: 80px
+        min-width: 80px;
+        height: -webkit-fill-available;
+        position: fixed;
+        box-shadow: 10px 0px 15px #606c77;
+        transition: 500ms;
+        z-index: 2;
+    }
+
+    .menu-admin h2, li span {
+        display: none;
+    }
+
+    .menu-item {
+        display: block !important;
+        font-size: 18px;
+    }
+
+        .menu-item li:hover {
+            background-color: #606c77 !important;
+            transition: 200ms;
+        }
+
+    .active {
+        border-left: 5px solid;
+    }
+
+    .animacao {
+        width: 15%;
+        min-width: 250px;
     }
 
         .animacao h2 {
-            display: none
+            display: inline
         }
-
         .animacao li span {
-            display: none
+            display: inline
         }
 
-    .usuarios-admin {
-        left: 5%;
-        width: calc(100% - 5%);
-    }
+
+        .usuarios-admin {
+            left: 5%;
+            width: calc(100% - 5%);
+        }
 }
 
 /*---Mobile---*/

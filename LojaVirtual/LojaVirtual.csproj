@@ -200,12 +200,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminProdutoController.cs" />
     <Compile Include="Controllers\AdminUsuarioController.cs" />
     <Compile Include="Controllers\CadastroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -226,7 +228,12 @@
     <Compile Include="Migrations\20190713005215_Rua.designer.cs">
       <DependentUpon>20190713005215_Rua.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190718001443_Produto.cs" />
+    <Compile Include="Migrations\20190718001443_Produto.designer.cs">
+      <DependentUpon>20190718001443_Produto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaVirtualContextModelSnapshot.cs" />
+    <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Login.cs" />
@@ -290,6 +297,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cadastro\Index.cshtml" />
     <Content Include="Views\AdminUsuario\Index.cshtml" />
+    <Content Include="Views\AdminProduto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
