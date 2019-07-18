@@ -31,7 +31,7 @@ namespace LojaVirtual.Controllers
         public ActionResult Excluir(int id)
         {
             UsuarioDAO dao = new UsuarioDAO();
-            
+            dao.Excluir(id);
             return RedirectToAction("Index");
         }
     }

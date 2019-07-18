@@ -46,9 +46,9 @@
         z-index: 2;
     }
 
-    .menu-admin h2, li span {
-        display: none;
-    }
+        .menu-admin h2, li span {
+            display: none;
+        }
 
     .menu-item {
         display: block !important;
@@ -60,9 +60,9 @@
             transition: 200ms;
         }
 
-    .active {
-        border-left: 5px solid;
-    }
+        .menu-item li:active {
+            border-left: 5px solid;
+        }
 
     .animacao {
         width: 15%;
@@ -72,15 +72,16 @@
         .animacao h2 {
             display: inline
         }
+
         .animacao li span {
             display: inline
         }
 
 
-        .usuarios-admin {
-            left: 5%;
-            width: calc(100% - 5%);
-        }
+    .usuarios-admin {
+        left: 5%;
+        width: calc(100% - 5%);
+    }
 }
 
 /*---Mobile---*/

@@ -48,5 +48,15 @@ namespace LojaVirtual.DAO
                 return contexto.Usuarios.FirstOrDefault(u => u.IdUsuario == idUsuario);
             }
         }
+
+        public void Excluir(int id)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                var usuario = contexto.Usuarios.FirstOrDefault(u => u.IdUsuario == id);
+                contexto.Remove(usuario);
+                contexto.SaveChanges();
+            }
+        }
     }
 }

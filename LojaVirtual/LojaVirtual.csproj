@@ -298,10 +298,10 @@
     <Content Include="Views\Cadastro\Index.cshtml" />
     <Content Include="Views\AdminUsuario\Index.cshtml" />
     <Content Include="Views\AdminProduto\Index.cshtml" />
+    <Content Include="Views\Shared\LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
