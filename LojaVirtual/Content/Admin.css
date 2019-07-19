@@ -4,27 +4,42 @@
     width: calc(100% - 17%);
     overflow: auto;
     transition: 500ms;
+    margin-right: 6% !important;
+    margin-left: 6% !important;
+}
+.menu-admin {
+    position: fixed;
+    height: -webkit-fill-available;
+    z-index: 2;
 }
 
-    .usuarios-admin h1 {
-        margin-left: 25px;
+.menu-admin a:hover {
+    text-decoration: none
+}
+
+.menu-item {
+    display: block !important;
+    font-size: 18px;
+    text-decoration: none
+}
+
+    .menu-item li:hover {
+        background-color: #606c77 !important;
+        transition: 200ms;
+    }
+
+    .menu-item li:active {
+        border-left: 5px solid;
     }
 
 .my-custom-scrollbar {
     position: relative;
     height: 300px;
     overflow: auto;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 .table-wrapper-scroll-y {
     display: block;
-}
-
-.marg-usuario {
-    margin-right: 5% !important;
-    margin-left: 5% !important;
 }
 
 .invisivel {
@@ -34,35 +49,27 @@
 .btn-remover-border:focus {
     outline: none
 }
+
+.msg-erro {
+    display: none;
+}
+
+.msg-done {
+    display: none;
+}
 /*---Desktop---*/
 @media screen and (min-width: 751px) {
     .menu-admin {
         width: 80px;
         min-width: 80px;
-        height: -webkit-fill-available;
-        position: fixed;
-        box-shadow: 10px 0px 15px #606c77;
-        transition: 500ms;
-        z-index: 2;
+        
     }
 
         .menu-admin h2, li span {
             display: none;
         }
 
-    .menu-item {
-        display: block !important;
-        font-size: 18px;
-    }
-
-        .menu-item li:hover {
-            background-color: #606c77 !important;
-            transition: 200ms;
-        }
-
-        .menu-item li:active {
-            border-left: 5px solid;
-        }
+    
 
     .animacao {
         width: 15%;
@@ -79,8 +86,10 @@
 
 
     .usuarios-admin {
-        left: 5%;
-        width: calc(100% - 5%);
+        left: 0;
+        width: calc(100% - 10%);
+        padding-right: 5% !important;
+        padding-left: 5% !important;
     }
 }
 
@@ -101,6 +110,6 @@
 
     .usuarios-admin {
         left: 0;
-        width: 100%
+        width: calc(100% - 12%);
     }
 }

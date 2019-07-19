@@ -67,14 +67,40 @@
         });
 
         /*---Click da tabela---*/
-        $(".usuario").click(function IdUsuario() {
-            var item = $(this).children("th").text();
-            return $.post("http://localhost:61651/AdminUsuario/Excluir?Id=" + item)
+        $(".usuario button").click(function IdUsuario() {
+            var item = $(this).parent().parent().children("th").text()
+            console.log(item)
+            $.post("http://localhost:61651/AdminUsuario/Excluir?Id=" + item)
+                .fail(function () {
+                    $(".msg-erro").toggle();
+                    setTimeout(function () {
+                        $(".msg-erro").toggle();
+                    }, 2000);
+                })
+                .done(function () {
+                    $(".msg-done").toggle();
+                    setTimeout(function () {
+                        $(".msg-done").toggle();
+                    }, 2000);
+                });
+
         });
 
-        $(".produto").click(function IdProduto() {
-            var item = $(this).children("th").text();
-            return $.post("http://localhost:61651/AdminProduto/Excluir?Id=" + item)
+        $(".produto button").click(function IdProduto() {
+            var item = $(this).parent().parent().children("th").text()
+            $.post("http://localhost:61651/AdminProduto/Excluir?Id=" + item)
+                .fail(function () {
+                    $(".msg-erro").toggle();
+                    setTimeout(function () {
+                        $(".msg-erro").toggle();
+                    }, 2000);
+                })
+                .done(function () {
+                    $(".msg-done").toggle();
+                    setTimeout(function () {
+                        $(".msg-done").toggle();
+                    }, 2000);
+                });
         });
     </script>
 </body>

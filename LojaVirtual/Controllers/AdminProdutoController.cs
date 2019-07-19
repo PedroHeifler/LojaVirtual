@@ -27,9 +27,11 @@ namespace LojaVirtual.Controllers
             return RedirectToAction("Index");
         }
 
+        
         public ActionResult Excluir(int id)
         {
             ProdutoDAO dao = new ProdutoDAO();
+            Produto produto = new Produto();
             dao.Excluir(id);
             return View();
         }
