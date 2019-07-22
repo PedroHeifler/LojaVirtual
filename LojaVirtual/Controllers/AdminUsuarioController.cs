@@ -32,9 +32,9 @@ namespace LojaVirtual.Controllers
         public ActionResult Excluir(int id)
         {
             UsuarioDAO dao = new UsuarioDAO();
-            Usuario usuario = new Usuario();
-            dao.Excluir(id);
-            return RedirectToAction("Index");
+            Usuario usuario = dao.BuscaPorId(id);
+            dao.Excluir(usuario);
+            return Json(usuario);
         }
     }
 }

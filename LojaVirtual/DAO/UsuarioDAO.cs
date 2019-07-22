@@ -49,11 +49,10 @@ namespace LojaVirtual.DAO
             }
         }
 
-        public void Excluir(int id)
+        public void Excluir(Usuario usuario)
         {
             using (var contexto = new LojaVirtualContext())
             {
-                var usuario = contexto.Usuarios.FirstOrDefault(u => u.IdUsuario == id);
                 contexto.Remove(usuario);
                 contexto.SaveChanges();
             }

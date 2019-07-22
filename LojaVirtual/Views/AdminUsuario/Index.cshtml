@@ -11,6 +11,8 @@
             <input type="search" id="filtro-tabela" class="form-control marg-usuario" placeholder="Pesquise pelo nome">
         </div>
 
+        <img class="spinner m-3" src="~/img/Spinner.gif" />
+
         <!-----Tabela de Usuarios----->
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
             <table class="table table-bordered table-striped table-dark">
@@ -27,13 +29,13 @@
                 <tbody>
                     @foreach (var usuario in ViewBag.Usuarios)
                     {
-                        <tr class="usuario">
+                        <tr id="usuario@(usuario.IdUsuario)">
                             <th scope="row">@usuario.IdUsuario</th>
                             <td class="info-nome">@usuario.NomeCompleto</td>
                             <td>@usuario.CPF</td>
                             <td>@usuario.DataNascimento</td>
                             <td>@usuario.Telefone</td>
-                            <td class="d-flex justify-content-center"><button class="btn btn-danger">X</button></td>
+                            <td class="d-flex justify-content-center"><button onclick="Excluir(@usuario.IdUsuario);" class="btn btn-danger">X</button></td>
                         </tr>
                     }
                 </tbody>
@@ -74,5 +76,30 @@
         </form>
     </div>
 </main>
+
+<script>
+    function Excluir(id) {
+        $(".spinner").toggle();
+
+        var url = "@Url.Action("Excluir", "AdminUsuario")";
+        $.post(url, { id: id }, atualiza)
+            .fail(function () {
+                $(".msg-erro").toggle();
+                setTimeout(function () {
+                    $(".msg-erro").toggle();
+                }, 2000);
+            })
+
+            .always(function () {
+                $(".spinner").toggle();
+            });
+    }
+
+    function atualiza(resposta) {
+        console.log(resposta)
+        var tr = $("#usuario" + resposta.IdUsuario)
+        tr.fadeOut(400, function () { tr.remove(); });
+    }
+</script>
 
 
