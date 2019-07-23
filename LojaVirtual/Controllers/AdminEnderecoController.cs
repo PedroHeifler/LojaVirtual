@@ -24,12 +24,5 @@ namespace LojaVirtual.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Excluir(int id)
-        {
-            EnderecoDAO dao = new EnderecoDAO();
-            Endereco endereco = dao.BuscaPorId(id);
-            dao.Excluir(endereco);
-            return Json(endereco);
-        }
     }
 }

@@ -1,11 +1,12 @@
 ﻿
 @{
+    ViewBag.Title = "Enderecos";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
 
 
 <main>
-    <div class="usuarios-admin">
+    <div class="tela-admin">
         <h1 class="mt-4">Gerenciamento de Endereços</h1>
         <div class="input-group col-md-5 mb-3 mt-5 p-0">
             <input type="search" oninput="Filtrar('.enderecoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
@@ -31,7 +32,7 @@
                 <tbody>
                     @foreach (var endereco in ViewBag.Enderecos)
                     {
-                        <tr id="endereco@(endereco.IdEndereco)" class="enderecoTr">
+                        <tr class="enderecoTr">
                             <th scope="row">@endereco.IdEndereco</th>
                             <td class="info-nome">@endereco.CEP</td>
                             <td>@endereco.Estado</td>
@@ -40,7 +41,6 @@
                             <td>@endereco.Rua</td>
                             <td>@endereco.Numero</td>
                             <td>@endereco.Complemento</td>
-                            <td class="d-flex justify-content-center"><button onclick="ExcluirE(@endereco.IdEndereco);" class="btn btn-danger d-flex justify-content-center">X</button></td>
                         </tr>
                     }
                 </tbody>
@@ -48,12 +48,10 @@
         </div>
         <hr>
 
-        <p class="msg-erro text-danger">Não foi possivel excluir, tente novamente!</p>
-
         <!-----Form Usuario----->
         <form method="post">
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group pl-5 pr-5 col-md-6">
                     <label for="CEP">CEP</label>
                     <input name="CEP" type="text" class="form-control"
                            placeholder="Exemplo: XXXX-XXXX" required>
@@ -84,7 +82,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                     <label for="Complemento">Complemento</label>
                     <textarea name="Complemento" type="text" class="form-control"></textarea>
                 </div>
@@ -98,13 +96,10 @@
 </main>
 
 <!--Script-->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
-<script src="~/Scripts/ExcluirEndereco.js"></script>
 
 
 

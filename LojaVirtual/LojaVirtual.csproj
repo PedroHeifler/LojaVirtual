@@ -200,6 +200,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminContaController.cs" />
     <Compile Include="Controllers\AdminEnderecoController.cs" />
     <Compile Include="Controllers\AdminProdutoController.cs" />
     <Compile Include="Controllers\AdminUsuarioController.cs" />
@@ -275,9 +276,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\ExcluirEndereco.js" />
     <Content Include="Scripts\ExcluirProduto.js" />
-    <Content Include="Scripts\ExcluirUsuario.js" />
     <Content Include="Scripts\Filtro.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -305,6 +304,7 @@
     <Content Include="Views\AdminProduto\Index.cshtml" />
     <Content Include="Views\Shared\LayoutAdmin.cshtml" />
     <Content Include="Views\AdminEndereco\Index.cshtml" />
+    <Content Include="Views\AdminConta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

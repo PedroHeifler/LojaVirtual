@@ -67,37 +67,39 @@
                     </a>
                 </div>
 
-                <nav class="navbar navbar-expand-xl navbar-dark d-flex bd-highlight position-absolute text-center">
+                <nav class="navbar navbar-expand-xl navbar-dark d-flex flex-row bd-highlight position-absolute">
+
                     <h1><a class="navbar-brand flex-grow-1 bd-highlight ml-5" href="/Home">Loja Virtual</a></h1>
-                    <button class="navbar-toggler mr-5" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Alterna navegação">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 flex-fill bd-highlight">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">MASCULINO</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">FEMININO</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">INFANTIL</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">BABY</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">OUTLET</a>
-                            </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0 bd-highlight">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Pesquisar</button>
-                        </form>
-                        <div class="cart-box ml-3">
-                            <label class="cart-txt">Carrinho</label>
-                            <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
+                    <div class="btn-group mr-3" id="button-bar">
+                        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <ul class="navbar-nav bg-dark m-auto">
+                                <li><a href="#" class="nav-link"><i class="fas fa-male"></i>MASCULINO</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-female"></i>FEMININO</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-child"></i>INFANTIL</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-baby"></i>BABY</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-baby"></i>OUTLET</a></li>
+                            </ul>
                         </div>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <ul class="navbar-nav m-auto">
+                            <li><a href="#" class="nav-link"><i class="fas fa-male"></i>MASCULINO</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-female"></i>FEMININO</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-child"></i>INFANTIL</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-baby"></i>BABY</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-baby"></i>OUTLET</a></li>
+                        </ul>
+                    </div>
+                    <form class="form-inline my-2 my-lg-0 bd-highlight">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form>
+                    <div class="cart-box bd-highlight ml-3 mr-3">
+                        <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
                     </div>
                 </nav>
             </nav>

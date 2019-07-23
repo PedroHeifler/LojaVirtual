@@ -1,9 +1,8 @@
-﻿.usuarios-admin {
+﻿.tela-admin {
     position: relative;
-    left: 17%;
-    width: calc(100% - 17%);
-    overflow: auto;
     transition: 500ms;
+    left: 10%;
+    width: calc(100% - 17%);
     margin-right: 6% !important;
     margin-left: 6% !important;
 }
@@ -65,37 +64,33 @@
 /*---Desktop---*/
 @media screen and (min-width: 751px) {
     .menu-admin {
-        width: 80px;
-        min-width: 80px;
+        width: 10%;
+        min-width: 250px;
         
     }
-
         .menu-admin h2, li span {
-            display: none;
+            display: inline;
         }
 
-    
-
     .animacao {
-        width: 15%;
-        min-width: 250px;
+        width: 5%;
+        min-width: 0;
+        text-align: center;
     }
 
         .animacao h2 {
-            display: inline
+            display: none !important
         }
 
         .animacao li span {
-            display: inline
+            display: none !important
         }
 
-
-    .usuarios-admin {
-        left: 0;
-        width: calc(100% - 10%);
-        padding-right: 5% !important;
-        padding-left: 5% !important;
+    .animacao-tela {
+        left: 5%;
+        width: calc(100% - 15%);
     }
+
 }
 
 /*---Mobile---*/
@@ -113,7 +108,7 @@
             display: none
         }
 
-    .usuarios-admin {
+    .tela-admin {
         left: 0;
         width: calc(100% - 12%);
     }

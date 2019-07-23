@@ -50,14 +50,5 @@ namespace LojaVirtual.DAO
                 return contexto.Enderecos.FirstOrDefault(u => u.IdEndereco == idEndereco);
             }
         }
-
-        public void Excluir(Endereco endereco)
-        {
-            using (var contexto = new LojaVirtualContext())
-            {
-                contexto.Remove(endereco);
-                contexto.SaveChanges();
-            }
-        }
     }
 }
