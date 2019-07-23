@@ -28,13 +28,15 @@
                 <tbody>
                     @foreach (var produto in ViewBag.Produtos)
                     {
-                        <tr id="produto@(produto.IdProduto)">
-                            <th scope="row">@produto.IdProduto</th>
-                            <td>@produto.SKU</td>
-                            <td class="info-nome">@produto.Nome</td>
-                            <td>@produto.Imagem</td>
-                            <td class="d-flex justify-content-center"><button onclick="Excluir(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
-                        </tr>
+                        <div class="produto">
+                            <tr id="produto@(produto.IdProduto)">
+                                <th scope="row">@produto.IdProduto</th>
+                                <td>@produto.SKU</td>
+                                <td class="info-nome">@produto.Nome</td>
+                                <td>@produto.Imagem</td>
+                                <td class="d-flex justify-content-center"><button onclick="Excluir(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
+                            </tr>
+                        </div>
                     }
                 </tbody>
             </table>
@@ -71,9 +73,9 @@
 </main>
 
 <script>
-    function Excluir(id) {
-        $(".spinner").toggle();
 
+    function Excluir(id) {
+        
         var url = "@Url.Action("Excluir", "AdminProduto")";
         $.post(url, { id: id }, atualiza)
             .fail(function () {
@@ -82,10 +84,7 @@
                     $(".msg-erro").toggle();
                 }, 2000);
             })
-
-            .always(function () {
-                $(".spinner").toggle();
-            });
+            
     }
 
     function atualiza(resposta) {

@@ -29,14 +29,16 @@
                 <tbody>
                     @foreach (var usuario in ViewBag.Usuarios)
                     {
-                        <tr id="usuario@(usuario.IdUsuario)">
-                            <th scope="row">@usuario.IdUsuario</th>
-                            <td class="info-nome">@usuario.NomeCompleto</td>
-                            <td>@usuario.CPF</td>
-                            <td>@usuario.DataNascimento</td>
-                            <td>@usuario.Telefone</td>
-                            <td class="d-flex justify-content-center"><button onclick="Excluir(@usuario.IdUsuario);" class="btn btn-danger">X</button></td>
-                        </tr>
+                        <div class="usuario">
+                            <tr id="usuario@(usuario.IdUsuario)">
+                                <th scope="row">@usuario.IdUsuario</th>
+                                <td class="info-nome">@usuario.NomeCompleto</td>
+                                <td>@usuario.CPF</td>
+                                <td>@usuario.DataNascimento</td>
+                                <td>@usuario.Telefone</td>
+                                <td class="d-flex justify-content-center"><button onclick="Excluir(@usuario.IdUsuario);" class="btn btn-danger">X</button></td>
+                            </tr>
+                        </div>
                     }
                 </tbody>
             </table>
@@ -79,7 +81,6 @@
 
 <script>
     function Excluir(id) {
-        $(".spinner").toggle();
 
         var url = "@Url.Action("Excluir", "AdminUsuario")";
         $.post(url, { id: id }, atualiza)
@@ -90,9 +91,6 @@
                 }, 2000);
             })
 
-            .always(function () {
-                $(".spinner").toggle();
-            });
     }
 
     function atualiza(resposta) {
