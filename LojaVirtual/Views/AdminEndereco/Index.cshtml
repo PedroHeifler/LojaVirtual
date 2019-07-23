@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+<main>
+    <div class="usuarios-admin">
+        <h1 class="mt-4">Gerenciamento de Endereços</h1>
+        <div class="input-group col-md-5 mb-3 mt-5 p-0">
+            <input type="search" oninput="Filtrar('.enderecoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
+        </div>
+
+        <img class="spinner m-3" src="~/img/Spinner.gif" />
+
+        <!-----Tabela de Produtos----->
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped table-dark">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">CEP</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Bairro</th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Rua</th>
+                        <th scope="col">Complemento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var endereco in ViewBag.Enderecos)
+                    {
+                        <tr id="endereco@(endereco.IdEndereco)" class="enderecoTr">
+                            <th scope="row">@endereco.IdEndereco</th>
+                            <td class="info-nome">@endereco.CEP</td>
+                            <td>@endereco.Estado</td>
+                            <td>@endereco.Cidade</td>
+                            <td>@endereco.Bairro</td>
+                            <td>@endereco.Rua</td>
+                            <td>@endereco.Numero</td>
+                            <td>@endereco.Complemento</td>
+                            <td class="d-flex justify-content-center"><button onclick="ExcluirE(@endereco.IdEndereco);" class="btn btn-danger d-flex justify-content-center">X</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <hr>
+
+        <p class="msg-erro text-danger">Não foi possivel excluir, tente novamente!</p>
+
+        <!-----Form Usuario----->
+        <form method="post">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="CEP">CEP</label>
+                    <input name="CEP" type="text" class="form-control"
+                           placeholder="Exemplo: XXXX-XXXX" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Estado">Estado</label>
+                    <input name="Estado" type="text" class="form-control" placeholder="Exemplo: SC" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Cidade">Cidade</label>
+                    <input name="Cidade" type="text" class="form-control" placeholder="Exemplo: Blumenau">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Bairro">Bairro</label>
+                    <input name="Bairro" type="text" class="form-control" placeholder="Exemplo: Garcia">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Rua">Rua</label>
+                    <input name="Rua" type="text" class="form-control" placeholder="Exemplo: Machado">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Numero">Numero</label>
+                    <input name="Numero" type="text" class="form-control" placeholder="Exemplo: 100">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Complemento">Complemento</label>
+                    <textarea name="Complemento" type="text" class="form-control"></textarea>
+                </div>
+            </div>
+                <div class="mt-2">
+                    <button formaction="/AdminEndereco/Adicionar" type="submit" class="btn btn-success">Cadastrar</button>
+                    <button type="submit" class="btn btn-warning">Editar</button>
+                </div>
+        </form>
+    </div>
+</main>
+
+<!--Script-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Filtro.js"></script>
+<script src="~/Scripts/ExcluirEndereco.js"></script>
+
+
+
+

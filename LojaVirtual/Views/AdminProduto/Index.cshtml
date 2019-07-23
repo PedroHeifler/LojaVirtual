@@ -8,7 +8,7 @@
     <div class="usuarios-admin">
         <h1 class="mt-4">Gerenciamento de Produtos</h1>
         <div class="input-group col-md-5 mb-3 mt-5 p-0">
-            <input type="search" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
+            <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
         </div>
 
         <img class="spinner m-3" src="~/img/Spinner.gif" />
@@ -28,15 +28,13 @@
                 <tbody>
                     @foreach (var produto in ViewBag.Produtos)
                     {
-                        <div class="produto">
-                            <tr id="produto@(produto.IdProduto)">
-                                <th scope="row">@produto.IdProduto</th>
-                                <td>@produto.SKU</td>
-                                <td class="info-nome">@produto.Nome</td>
-                                <td>@produto.Imagem</td>
-                                <td class="d-flex justify-content-center"><button onclick="Excluir(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
-                            </tr>
-                        </div>
+                        <tr id="produto@(produto.IdProduto)" class="produtoTr">
+                            <th scope="row">@produto.IdProduto</th>
+                            <td>@produto.SKU</td>
+                            <td class="info-nome">@produto.Nome</td>
+                            <td>@produto.Imagem</td>
+                            <td class="d-flex justify-content-center"><button onclick="ExcluirP(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -72,27 +70,14 @@
     </div>
 </main>
 
-<script>
-
-    function Excluir(id) {
-        
-        var url = "@Url.Action("Excluir", "AdminProduto")";
-        $.post(url, { id: id }, atualiza)
-            .fail(function () {
-                $(".msg-erro").toggle();
-                setTimeout(function () {
-                    $(".msg-erro").toggle();
-                }, 2000);
-            })
-            
-    }
-
-    function atualiza(resposta) {
-        console.log(resposta)
-        var tr = $("#produto" + resposta.IdProduto)
-        tr.fadeOut(400, function () { tr.remove(); });
-    }
-</script>
+<!--Script-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Filtro.js"></script>
+<script src="~/Scripts/ExcluirProduto.js"></script>
 
 
 

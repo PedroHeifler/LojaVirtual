@@ -8,7 +8,7 @@
     <div class="usuarios-admin">
         <h1 class="mt-4">Gerenciamento de Usuarios</h1>
         <div class="input-group col-md-5 mb-3 mt-5 p-0">
-            <input type="search" id="filtro-tabela" class="form-control marg-usuario" placeholder="Pesquise pelo nome">
+            <input type="search" id="filtro-tabela" oninput="Filtrar('.usuarioTr')" class="form-control marg-usuario" placeholder="Pesquise pelo nome">
         </div>
 
         <img class="spinner m-3" src="~/img/Spinner.gif" />
@@ -29,16 +29,14 @@
                 <tbody>
                     @foreach (var usuario in ViewBag.Usuarios)
                     {
-                        <div class="usuario">
-                            <tr id="usuario@(usuario.IdUsuario)">
-                                <th scope="row">@usuario.IdUsuario</th>
-                                <td class="info-nome">@usuario.NomeCompleto</td>
-                                <td>@usuario.CPF</td>
-                                <td>@usuario.DataNascimento</td>
-                                <td>@usuario.Telefone</td>
-                                <td class="d-flex justify-content-center"><button onclick="Excluir(@usuario.IdUsuario);" class="btn btn-danger">X</button></td>
-                            </tr>
-                        </div>
+                        <tr id="usuario@(usuario.IdUsuario)" class="usuarioTr">
+                            <th scope="row">@usuario.IdUsuario</th>
+                            <td class="info-nome">@usuario.NomeCompleto</td>
+                            <td>@usuario.CPF</td>
+                            <td>@usuario.DataNascimento</td>
+                            <td>@usuario.Telefone</td>
+                            <td class="d-flex justify-content-center"><button onclick="ExcluirU(@usuario.IdUsuario)" class="btn btn-danger">X</button></td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -79,25 +77,13 @@
     </div>
 </main>
 
-<script>
-    function Excluir(id) {
-
-        var url = "@Url.Action("Excluir", "AdminUsuario")";
-        $.post(url, { id: id }, atualiza)
-            .fail(function () {
-                $(".msg-erro").toggle();
-                setTimeout(function () {
-                    $(".msg-erro").toggle();
-                }, 2000);
-            })
-
-    }
-
-    function atualiza(resposta) {
-        console.log(resposta)
-        var tr = $("#usuario" + resposta.IdUsuario)
-        tr.fadeOut(400, function () { tr.remove(); });
-    }
-</script>
+<!--Script-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Filtro.js"></script>
+<script src="~/Scripts/ExcluirUsuario.js"></script>
 
 

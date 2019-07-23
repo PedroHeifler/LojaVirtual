@@ -7,7 +7,7 @@ namespace LojaVirtual.Models
         [Key]
         public int IdEndereco { get; set; }
         [Required]
-        public string CEP { get; set; }
+        public string CEP { get; set; } 
         [Required]
         public string Estado { get; set; }
         [Required]
