@@ -71,9 +71,25 @@
         top: 17px;
     }
 
-    #navbar-2 form {
+    #navbar-2 .form-control {
+        border-bottom: 2px solid #fff !important;
+        border: none;
+        border-radius: unset;
+        background: transparent;
+        color: white;
         position: absolute;
-        right: 150px;
+        top: 15px;
+        right: 125px;
+    }
+
+    #navbar-2 form button {
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid;
+        border-radius: initial;
+        position: absolute;
+        top: 15px;
+        right: 95px;
         margin: 0 !important;
     }
 }
