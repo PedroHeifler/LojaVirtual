@@ -24,7 +24,7 @@ namespace LojaVirtual.Controllers
         {
             ProdutoDAO dao = new ProdutoDAO();
             dao.Adiciona(produto);
-            return View();
+            return RedirectToAction("Index");
         }
 
         

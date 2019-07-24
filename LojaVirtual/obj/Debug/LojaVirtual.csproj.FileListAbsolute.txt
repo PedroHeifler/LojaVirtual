@@ -441,3 +441,4 @@ C:\benner\LojaVirtual\LojaVirtual\bin\roslyn\vbc.rsp
 C:\benner\LojaVirtual\LojaVirtual\bin\roslyn\VBCSCompiler.exe
 C:\benner\LojaVirtual\LojaVirtual\bin\roslyn\VBCSCompiler.exe.config
 C:\benner\LojaVirtual\LojaVirtual\obj\Debug\LojaVirtual.csprojAssemblyReference.cache
+C:\Users\Pedro Henrique\Desktop\Benner\LojaVirtual\LojaVirtual\obj\Debug\LojaVirtual.csprojAssemblyReference.cache

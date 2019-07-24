@@ -1,10 +1,8 @@
 ﻿.tela-admin {
     position: relative;
     transition: 500ms;
-    left: 10%;
-    width: calc(100% - 17%);
-    margin-right: 6% !important;
-    margin-left: 6% !important;
+    left: 300px;
+    width: calc(100% - 330px);
 }
 .menu-admin {
     position: fixed;
@@ -64,9 +62,8 @@
 /*---Desktop---*/
 @media screen and (min-width: 751px) {
     .menu-admin {
-        width: 10%;
-        min-width: 250px;
-        
+        min-width: 275px;
+        max-width: 275px;
     }
         .menu-admin h2, li span {
             display: inline;
@@ -74,7 +71,7 @@
 
     .animacao {
         width: 5%;
-        min-width: 0;
+        min-width: 80px;
         text-align: center;
     }
 
@@ -87,8 +84,8 @@
         }
 
     .animacao-tela {
-        left: 5%;
-        width: calc(100% - 15%);
+        left: 120px;
+        width: calc(100% - 140px);
     }
 
 }
@@ -109,7 +106,7 @@
         }
 
     .tela-admin {
-        left: 0;
-        width: calc(100% - 12%);
+        left: 5%;
+        width: calc(100% - 10%);
     }
 }

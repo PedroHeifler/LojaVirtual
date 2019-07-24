@@ -33,7 +33,7 @@
                             <td class="info-sku">@produto.SKU</td>
                             <td class="info-nome">@produto.Nome</td>
                             <td class="info-imagem">@produto.Imagem</td>
-                            <td class="d-flex justify-content-center"><button onclick="ExcluirP(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
+                            <td class="d-flex justify-content-center" id="botao-excluir"><button onclick="ExcluirP(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
                         </tr>
                     }
                 </tbody>
@@ -45,7 +45,7 @@
         <p class="msg-done text-success">Salvo com sucesso!</p>
         <!-----Form Usuario----->
         <form method="post">
-            <input name="IdProduto" class="disabled"/>
+            <input name="IdProduto" style="display: none"/>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="Nome">Nome do Produto</label>

@@ -2,12 +2,9 @@
 /*----------------------TELA HOME----------------------*/
 
 @media only screen and (min-width: 1200px) {
-    #button-bar {
-        display: none;
+    .botao-bar {
+        display: none !important;
     }
-
-    
-
     #navbar-2 .cart-btn {
         display: inline !important;
     }
@@ -31,9 +28,53 @@
     }
 }
 
-@media only screen and (max-width: 1200px) {
-    .navbar-pricipal > button {
-        margin-left: 20%;
+
+/*---MOBILE---*/
+@media only screen and (max-width: 550px) {
+    .navbar-dark .navbar-brand {
+        margin: 0 !important;
+        position: absolute;
+        left: 65px;
+        top: 17px;
+    }
+
+    #navbar-2 .form-control {
+        width: 40% !important;
+        border-bottom: 2px solid #fff !important;
+        border: none;
+        border-radius: unset;
+        background: transparent;
+        color: white;
+        position: absolute;
+        top: 15px;
+        left: 205px;
+    }
+
+    #navbar-2 form button {
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid;
+        border-radius: initial;
+        position: absolute;
+        top: 15px;
+        right: 95px;
+        margin: 0 !important;
+    }
+}
+
+/*---TABLE---*/
+@media only screen and (min-width: 550px) and (max-width: 1200px) {
+    .navbar-dark .navbar-brand {
+        margin: 0 !important;
+        position: absolute;
+        left: 65px;
+        top: 17px;
+    }
+
+    #navbar-2 form {
+        position: absolute;
+        right: 150px;
+        margin: 0 !important;
     }
 }
 
@@ -42,6 +83,8 @@ body {
     padding: 0;
     background-color: aliceblue !important;
 }
+
+
 
 .no-padding {
     padding-left: 0;
@@ -57,13 +100,8 @@ body {
     display: none !important
 }
 
-.dropdown-menu {
-    left: -150% !important 
-}
-
 #navbar-2 .form-control {
     width: auto;
-    margin: 10px 0;
 }
 
 #navbar-1 nav {
