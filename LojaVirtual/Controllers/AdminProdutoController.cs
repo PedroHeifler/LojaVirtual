@@ -24,7 +24,7 @@ namespace LojaVirtual.Controllers
         {
             ProdutoDAO dao = new ProdutoDAO();
             dao.Adiciona(produto);
-            return RedirectToAction("Index");
+            return View();
         }
 
         
@@ -34,6 +34,14 @@ namespace LojaVirtual.Controllers
             Produto produto = dao.BuscaPorId(id);
             dao.Excluir(produto);
             return Json(produto);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(Produto produto)
+        {
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.Atualiza(produto);
+            return RedirectToAction("Index");
         }
     }
 }

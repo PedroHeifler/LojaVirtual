@@ -38,7 +38,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                contexto.Entry(produto).State = EntityState.Modified;
+                contexto.Update(produto);
                 contexto.SaveChanges();
             }
         }

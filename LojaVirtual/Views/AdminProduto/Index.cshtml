@@ -28,11 +28,11 @@
                 <tbody>
                     @foreach (var produto in ViewBag.Produtos)
                     {
-                        <tr id="produto@(produto.IdProduto)" class="produtoTr">
+                        <tr id="produto@(produto.IdProduto)" class="produtoTr" onclick="Editar(this)">
                             <th scope="row">@produto.IdProduto</th>
-                            <td>@produto.SKU</td>
+                            <td class="info-sku">@produto.SKU</td>
                             <td class="info-nome">@produto.Nome</td>
-                            <td>@produto.Imagem</td>
+                            <td class="info-imagem">@produto.Imagem</td>
                             <td class="d-flex justify-content-center"><button onclick="ExcluirP(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
                         </tr>
                     }
@@ -45,6 +45,7 @@
         <p class="msg-done text-success">Salvo com sucesso!</p>
         <!-----Form Usuario----->
         <form method="post">
+            <input name="IdProduto" class="disabled"/>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="Nome">Nome do Produto</label>
@@ -64,7 +65,7 @@
             </div>
             <div class="mt-2">
                 <button formaction="/AdminProduto/Adicionar" type="submit" class="btn btn-success">Cadastrar</button>
-                <button type="submit" class="btn btn-warning">Editar</button>
+                <button formaction="/AdminProduto/Editar" type="submit" class="btn btn-warning">Editar</button>
             </div>
         </form>
     </div>
@@ -76,6 +77,7 @@
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
 <script src="~/Scripts/ExcluirProduto.js"></script>
+<script src="~/Scripts/Editar.js"></script>
 
 
 
