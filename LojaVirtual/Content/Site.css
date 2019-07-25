@@ -157,18 +157,18 @@ body {
 }
 
 #navbar-2 ul a {
-    position: relative
+    position: relative;
 }
 
-#navbar-2 ul a::after {
-    content: ' ';
-    position: absolute;
-    width: 100%;
-    height: 5px;
-    top: 53px;
-    left: 0;
-    background-color: blue;
-}
+    #navbar-2 ul a:hover::after {
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        top: 53px;
+        left: 0;
+        background-color: #0666ca;
+    }
 
 #navbar-2 ul i {
     font-size: 20px;
@@ -186,11 +186,13 @@ body {
     width: 50px;
     height: 50px;
     position: relative;
+    transform: translateY(-1px);
+    box-shadow: 3px 3px 10px #00000080
 }
 
     #navbar-2 .cart-box:hover {
-        transform: translateY(-1px);
-        box-shadow: 3px 3px 10px #00000080
+        transform: translateY(0);
+        box-shadow: none
     }
 
 #navbar-2 .bar-mobile {
@@ -269,7 +271,7 @@ main .card:hover > .card-img-top {
 /*---FOOTER---*/
 
 footer {
-    background-color: #0666ca;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
     min-height: 400px;
     padding-top: 50px;
     color: white;
@@ -329,9 +331,12 @@ footer {
         bottom: 100px;
     }
 
+/*-------------TELA DE CADASTRO-------------*/
 
-/*----------------------TELA CADASTRO----------------------*/
+.navbar-cadastro li:hover > a{
+    color: #33aeff !important
+}
 
-#formulario-cadastro {
-    border: 1px solid #dee2e6;
+.navbar-cadastro li a:after {
+    content: none !important;
 }

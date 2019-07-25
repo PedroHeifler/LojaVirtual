@@ -36,41 +36,54 @@
             </nav>
         </div>
 
+        
         <!----Segunda Barra---->
         <div id="navbar-2">
-            <nav class="navbar navbar-expand-xl bg-dark d-flex bd-highlight align-items-stretch">
+            <nav class="navbar navbar-expand-xl align-items-stretch">
 
-                <div class="navbar-pricipal container-fluid col-lg-12 col-12 col-md-12">
-                    <button class="btn btn-dark" id="button-bar" data-toggle="collapse"
-                            data-target="#navbarSupportedContent">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <h2 class="p-2 flex-grow-1 bd-highlight"><a href="/Home">Loja</a></h2>
-                    <div class="collapse navbar-collapse position-relative" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li><a href="#" class="nav-link"><i class="fas fa-male"></i>MASCULINO</a></li>
-                            <li><a href="#" class="nav-link"><i class="fas fa-female"></i>FEMININO</a></li>
-                            <li><a href="#" class="nav-link"><i class="fas fa-child"></i>INFANTIL</a></li>
-                            <li><a href="#" class="nav-link"><i class="fas fa-baby"></i>BABY</a></li>
-                        </ul>
-                        <form class="form-inline mr-3">
-                            <input class="form-control" type="search" placeholder="Pesquise Aqui!" aria-label="Search">
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                        <div class="cart-box">
-                            <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
+                <nav class="navbar navbar-expand-xl navbar-dark d-flex flex-row bd-highlight bg-dark ">
+
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle ml-3 botao-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="dropdown-menu ml-3 esconde-dropdown" aria-labelledby="dropdownMenuButton">
+                            <a href="#" class="nav-link border-bottom border-top"><i class="fas fa-male"></i> MASCULINO</a>
+                            <a href="#" class="nav-link border-bottom"><i class="fas fa-female"></i> FEMININO</a>
+                            <a href="#" class="nav-link border-bottom"><i class="fas fa-child"></i> INFANTIL</a>
+                            <a href="#" class="nav-link border-bottom"><i class="fas fa-baby"></i> BABY</a>
+                            <a href="#" class="nav-link border-bottom"><i class="fas fa-baby"></i> OUTLET</a>
                         </div>
                     </div>
-                </div>
+                    <h1><a class="navbar-brand flex-grow-1 bd-highlight ml-4" href="/Home">Loja Virtual</a></h1>
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-5 navbar-cadastro">
+                            <li><a href="#" class="nav-link"><i class="fas fa-male"></i> MASCULINO</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-female"></i> FEMININO</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-child"></i> INFANTIL</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-baby"></i> BABY</a></li>
+                            <li><a href="#" class="nav-link"><i class="fas fa-baby"></i> OUTLET</a></li>
+                        </ul>
+                    </div>
+                    <form class="form-inline my-2 my-lg-0 bd-highlight">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <div class="cart-box bd-highlight m-2 mr-4">
+                        <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
+                    </div>
+                </nav>
             </nav>
         </div>
     </header>
 
     <main class="container">
         <h1 class="tituloCadastro mt-5">Cadastrar-se</h1>
-        <form action="/Cadastro/Adicionar" id="formulario-cadastro" class="mb-5">
+        <form action="/Cadastro/Adicionar" id="formulario-cadastro" class="mb-5 border">
             <!--NAV-->
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
