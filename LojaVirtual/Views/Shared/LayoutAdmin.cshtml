@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="~/Content/Admin.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/3933811a4c.js"></script>
     <title>Admin</title>
 </head>
 <body>
@@ -20,7 +19,7 @@
         <!-----Menu do admin----->
         <div class="menu-admin bg-dark" id="slide-collapse">
             <div class="d-flex justify-content-around">
-                <h2 class="m-4 text-white"><i class="fas fa-tachometer-alt"></i> <span> Loja Virtual</span></h2>
+                <h2 class="m-4 text-white"><a href="/Home" class="text-white"><i class="fas fa-tachometer-alt"></i> <span> Loja Virtual</span></a></h2>
                 <button class="animacao-collapse navbar-toggler btn-collapse btn-remover-border mr-2 mt-3" type="button" data-toggle="collapse">
                     <span><i class="fas fa-bars text-white"></i></span>
                 </button>
@@ -58,5 +57,7 @@
         });
 
     </script>
+    <script src="https://kit.fontawesome.com/3933811a4c.js"></script>
+    <script src="~/Scripts/Limpar.js"></script>
 </body>
 </html>

@@ -12,7 +12,6 @@
 }
 
 function atualiza(resposta) {
-    console.log(resposta)
     var tr = $("#produto" + resposta.IdProduto)
     tr.fadeOut(400, function () { tr.remove(); });
 }

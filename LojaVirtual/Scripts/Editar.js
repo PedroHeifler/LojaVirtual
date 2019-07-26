@@ -13,7 +13,3 @@
     $("form input[name=Imagem]").val(imagem)
 
 }
-
-function Limpar() {
-
-}

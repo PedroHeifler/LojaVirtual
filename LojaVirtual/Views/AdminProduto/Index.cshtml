@@ -45,7 +45,7 @@
         <p class="msg-done text-success">Salvo com sucesso!</p>
         <!-----Form Usuario----->
         <form method="post">
-            <input name="IdProduto" style="visibility: hidden"/>
+            <input name="IdProduto" style="visibility: hidden" />
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="Nome">Nome do Produto</label>
@@ -66,6 +66,7 @@
             <div class="mt-2">
                 <button formaction="/AdminProduto/Adicionar" type="submit" class="btn btn-success">Cadastrar</button>
                 <button formaction="/AdminProduto/Editar" type="submit" class="btn btn-warning">Editar</button>
+                <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
             </div>
         </form>
     </div>
@@ -78,6 +79,6 @@
 <script src="~/Scripts/Filtro.js"></script>
 <script src="~/Scripts/ExcluirProduto.js"></script>
 <script src="~/Scripts/Editar.js"></script>
-
+<script src="~/Scripts/Limpar.js"></script>
 
 
