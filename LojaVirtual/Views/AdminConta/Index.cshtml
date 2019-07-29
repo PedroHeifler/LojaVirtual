@@ -6,12 +6,14 @@
 
 <main>
     <div class="tela-admin">
-        <h1 class="mt-4">Gerenciamento de Endereços</h1>
+        <h1 class="mt-4">Gerenciamento de Login</h1>
         <div class="input-group col-md-5 mb-3 mt-5 p-0">
             <input type="search" oninput="Filtrar('.loginTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
         </div>
 
         <img class="spinner m-3" src="~/img/Spinner.gif" />
+
+        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
 
         <!-----Tabela de Login----->
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -22,17 +24,20 @@
                         <th scope="col">Email</th>
                         <th scope="col">Senha</th>
                         <th scope="col">Tipo de Usuario</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var logins in ViewBag.Login)
                     {
-                        <tr class="loginTr">
+                        <tr id="adminTr@(logins.IdLogin)" class="loginTr">
                             <th scope="row">@logins.IdLogin</th>
                             <td class="info-nome">@logins.Email</td>
                             <td>@logins.Senha</td>
                             <td>@logins.TpUsuario</td>
-                            
+                            <td class="d-flex justify-content-center">
+                                <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(logins.IdLogin)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -40,45 +45,56 @@
         </div>
         <hr>
 
-        <!-----Form Usuario----->
-        <form method="post">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="Email">Email</label>
-                    <input name="Email" type="text" class="form-control"
-                           placeholder="Exemplo: exemplo@gmail.com" required>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Login</h3>
+                    </div>
+                    <!-----Form Usuario----->
+                    <form method="post" class="p-3">
+                        <input name="IdLogin" type="text" style="visibility: hidden; height: 0">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Email">Email</label>
+                                <input name="Email" type="text" class="form-control"
+                                       placeholder="Exemplo: exemplo@gmail.com" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="senha">senha</label>
+                                <input name="Senha" type="text" class="form-control" placeholder="Minimo 5 e Maximo 15 digitos" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="TpUsuario">TpUsuario</label>
+
+                                <select name="TpUsuario" class="form-control" required>
+                                    <option>Usuario</option>
+                                    <option>Admin</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer mt-2">
+                            <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
+                            <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
+                            <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
+                            <button formaction="/AdminConta/Salva" type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="senha">senha</label>
-                    <input name="senha" type="text" class="form-control" placeholder="Minimo 5 e Maximo 15 digitos" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="TpUsuario">TpUsuario</label>
-                    
-                    <select name="TpUsuario" class="form-control">
-                        <option>Usuario</option>
-                        <option>Admin</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="mt-2">
-                <button formaction="/AdminConta/Adicionar" type="submit" class="btn btn-success">Cadastrar</button>
-                <button type="submit" class="btn btn-warning">Editar</button>
-                <button onclick="Limpar(event)" type="submit" class="btn btn-info">Limpar</button>
-            </div>
-        </form>
+        </div>
     </div>
 </main>
 
 <!--Script-->
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
 <script src="~/Scripts/Limpar.js"></script>
 

@@ -9,10 +9,12 @@
     <div class="tela-admin">
         <h1 class="mt-4">Gerenciamento de Endereços</h1>
         <div class="input-group col-md-5 mb-3 mt-5 p-0">
-            <input type="search" oninput="Filtrar('.enderecoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
+            <input type="search" oninput="Filtrar('.adminTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
         </div>
 
         <img class="spinner m-3" src="~/img/Spinner.gif" />
+
+        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
 
         <!-----Tabela de Produtos----->
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -24,15 +26,15 @@
                         <th scope="col">Estado</th>
                         <th scope="col">Cidade</th>
                         <th scope="col">Bairro</th>
-                        <th scope="col">Numero</th>
                         <th scope="col">Rua</th>
+                        <th scope="col">Numero</th>
                         <th scope="col">Complemento</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var endereco in ViewBag.Enderecos)
                     {
-                        <tr class="enderecoTr">
+                        <tr id="adminTr@(endereco.IdEndereco)" class="adminTr">
                             <th scope="row">@endereco.IdEndereco</th>
                             <td class="info-nome">@endereco.CEP</td>
                             <td>@endereco.Estado</td>
@@ -41,6 +43,9 @@
                             <td>@endereco.Rua</td>
                             <td>@endereco.Numero</td>
                             <td>@endereco.Complemento</td>
+                            <td class="d-flex justify-content-center">
+                                <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(endereco.IdEndereco)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -48,58 +53,73 @@
         </div>
         <hr>
 
-        <!-----Form Usuario----->
-        <form method="post">
-            <div class="form-row">
-                <div class="form-group pl-5 pr-5 col-md-6">
-                    <label for="CEP">CEP</label>
-                    <input name="CEP" type="text" class="form-control"
-                           placeholder="Exemplo: XXXX-XXXX" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="Estado">Estado</label>
-                    <input name="Estado" type="text" class="form-control" placeholder="Exemplo: SC" required>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Endereco</h3>
+                    </div>
+                    <!-----Form Usuario----->
+                    <form method="post" class="p-3">
+                        <input name="IdEndereco" style="visibility: hidden; height: 0px" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="CEP">CEP</label>
+                                <input name="CEP" type="text" class="form-control"
+                                       placeholder="Exemplo: XXXX-XXXX" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Estado">Estado</label>
+                                <input name="Estado" type="text" class="form-control" placeholder="Exemplo: SC" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Cidade">Cidade</label>
+                                <input name="Cidade" type="text" class="form-control" placeholder="Exemplo: Blumenau" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Bairro">Bairro</label>
+                                <input name="Bairro" type="text" class="form-control" placeholder="Exemplo: Garcia" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Rua">Rua</label>
+                                <input name="Rua" type="text" class="form-control" placeholder="Exemplo: Machado" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Numero">Numero</label>
+                                <input name="Numero" type="text" class="form-control" placeholder="Exemplo: 100" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="Complemento">Complemento</label>
+                                <textarea name="Complemento" type="text" class="form-control" required></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer mt-2">
+                            <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
+                            <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
+                            <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
+                            <button formaction="/AdminEndereco/Salva" type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="Cidade">Cidade</label>
-                    <input name="Cidade" type="text" class="form-control" placeholder="Exemplo: Blumenau">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="Bairro">Bairro</label>
-                    <input name="Bairro" type="text" class="form-control" placeholder="Exemplo: Garcia">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="Rua">Rua</label>
-                    <input name="Rua" type="text" class="form-control" placeholder="Exemplo: Machado">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="Numero">Numero</label>
-                    <input name="Numero" type="text" class="form-control" placeholder="Exemplo: 100">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="Complemento">Complemento</label>
-                    <textarea name="Complemento" type="text" class="form-control"></textarea>
-                </div>
-            </div>
-                <div class="mt-2">
-                    <button formaction="/AdminEndereco/Adicionar" type="submit" class="btn btn-success">Cadastrar</button>
-                    <button type="submit" class="btn btn-warning">Editar</button>
-                </div>
-        </form>
+        </div>
     </div>
 </main>
 
 <!--Script-->
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
+<script src="~/Scripts/Limpar.js"></script>
 
 
 

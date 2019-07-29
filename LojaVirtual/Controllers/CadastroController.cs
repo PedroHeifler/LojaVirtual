@@ -17,9 +17,9 @@ namespace LojaVirtual.Controllers
             EnderecoDAO enderecoDAO = new EnderecoDAO();
             LoginDAO loginDAO = new LoginDAO();
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            enderecoDAO.Adiciona(endereco);
-            loginDAO.Adiciona(login);
-            usuarioDAO.Adiciona(usuario);
+            enderecoDAO.Atualiza(endereco);
+            loginDAO.Atualiza(login);
+            usuarioDAO.Atualiza(usuario);
             return RedirectToAction("Index", "Home");
         }
     }

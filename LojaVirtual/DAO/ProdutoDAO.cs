@@ -9,28 +9,11 @@ namespace LojaVirtual.DAO
 {
     public class ProdutoDAO
     {
-        public void Adiciona(Produto produto)
-        {
-            using (var context = new LojaVirtualContext())
-            {
-                context.Produtos.Add(produto);
-                context.SaveChanges();
-            }
-        }
-
         public IList<Produto> Lista()
         {
             using (var contexto = new LojaVirtualContext())
             {
                 return contexto.Produtos.ToList();
-            }
-        }
-
-        public Produto BuscaPorId(int id)
-        {
-            using (var contexto = new LojaVirtualContext())
-            {
-                return contexto.Produtos.Find(id);
             }
         }
 
@@ -40,6 +23,14 @@ namespace LojaVirtual.DAO
             {
                 contexto.Update(produto);
                 contexto.SaveChanges();
+            }
+        }
+
+        public Produto BuscaPorId(int id)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                return contexto.Produtos.Find(id);
             }
         }
 

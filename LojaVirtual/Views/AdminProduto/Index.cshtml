@@ -7,11 +7,15 @@
 <main>
     <div class="tela-admin">
         <h1 class="mt-4">Gerenciamento de Produtos</h1>
+
+        <!-----Filtro----->
         <div class="input-group col-md-5 mb-3 mt-5 p-0">
             <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
         </div>
 
-        <img class="spinner m-3" src="~/img/Spinner.gif" />
+        <!--<img class="spinner m-3" src="~/img/Spinner.gif" />-->
+
+        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
 
         <!-----Tabela de Produtos----->
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -28,12 +32,15 @@
                 <tbody>
                     @foreach (var produto in ViewBag.Produtos)
                     {
-                        <tr id="produto@(produto.IdProduto)" class="produtoTr" onclick="Editar(this)">
+                        <tr id="adminTr@(produto.IdProduto)" class="produtoTr">
                             <th scope="row">@produto.IdProduto</th>
-                            <td class="info-sku">@produto.SKU</td>
+                            <td>@produto.SKU</td>
                             <td class="info-nome">@produto.Nome</td>
-                            <td class="info-imagem">@produto.Imagem</td>
-                            <td class="d-flex justify-content-center" id="botao-excluir"><button onclick="ExcluirP(@produto.IdProduto);" class="btn btn-danger d-flex justify-content-center">X</button></td>
+                            <td>@produto.Imagem</td>
+                            <td class="d-flex justify-content-center">
+                                <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -41,44 +48,55 @@
         </div>
         <hr>
 
-        <p class="msg-erro text-danger">Não foi possivel excluir, tente novamente!</p>
-        <p class="msg-done text-success">Salvo com sucesso!</p>
-        <!-----Form Usuario----->
-        <form method="post">
-            <input name="IdProduto" style="visibility: hidden" />
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="Nome">Nome do Produto</label>
-                    <input name="Nome" type="text" class="form-control"
-                           placeholder="Exemplo: Calca Rosa" required>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Produto</h3>
+                    </div>
+                    <!-----Form Usuario----->
+
+                    <form method="post" class="p-3">
+                        <input name="IdProduto" style="visibility: hidden; height: 0px" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="SKU">SKU</label>
+                                <input name="SKU" type="text" class="form-control" placeholder="Exemplo: 001" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Nome">Nome do Produto</label>
+                                <input name="Nome" type="text" class="form-control"
+                                       placeholder="Exemplo: Calca Rosa" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Imagem">Imagem</label>
+                                <input name="Imagem" type="text" class="form-control" placeholder="Exemplo: src='~/img/Calca-1.jpg'">
+                            </div>
+                        </div>
+                        <div class="modal-footer mt-2">
+                            <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
+                            <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
+                            <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
+                            <button formaction="/AdminProduto/Salva" type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="SKU">SKU</label>
-                    <input name="SKU" type="text" class="form-control" placeholder="Exemplo: 001" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="Imagem">Imagem</label>
-                    <input name="Imagem" type="text" class="form-control" placeholder="Exemplo: src='~/img/Calca-1.jpg'">
-                </div>
-            </div>
-            <div class="mt-2">
-                <button formaction="/AdminProduto/Adicionar" type="submit" class="btn btn-success">Cadastrar</button>
-                <button formaction="/AdminProduto/Editar" type="submit" class="btn btn-warning">Editar</button>
-                <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
-            </div>
-        </form>
+        </div>
+
     </div>
 </main>
 
 <!--Script-->
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/Filtro.js"></script>
-<script src="~/Scripts/ExcluirProduto.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="~/Scripts/Excluir.js"></script>
 <script src="~/Scripts/Editar.js"></script>
+<script src="~/Scripts/Filtro.js"></script>
 <script src="~/Scripts/Limpar.js"></script>
 
 

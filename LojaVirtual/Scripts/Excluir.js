@@ -1,7 +1,6 @@
-﻿function ExcluirP(id) {
+﻿function Excluir(id, url) {
 
-    var url = "http://localhost:61651/AdminProduto/Excluir";
-    $.post(url, { id: id }, atualiza)
+    $.post(url, { id: id }, atualiza(id))
         .fail(function () {
             $(".msg-erro").toggle();
             setTimeout(function () {
@@ -9,9 +8,8 @@
             }, 2000);
         })
 
-}
-
-function atualiza(resposta) {
-    var tr = $("#produto" + resposta.IdProduto)
+function atualiza(id) {
+    var tr = $('#adminTr' +  id)
     tr.fadeOut(400, function () { tr.remove(); });
+}
 }

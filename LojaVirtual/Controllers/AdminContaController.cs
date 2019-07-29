@@ -16,12 +16,15 @@ namespace LojaVirtual.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public ActionResult Adicionar(Login login)
+        public ActionResult Salva(Login login)
         {
             LoginDAO dao = new LoginDAO();
-            dao.Adiciona(login);
+
+            dao.Atualiza(login);
             return RedirectToAction("Index");
+
         }
     }
 }

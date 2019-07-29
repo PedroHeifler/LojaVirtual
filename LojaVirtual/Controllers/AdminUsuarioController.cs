@@ -20,12 +20,13 @@ namespace LojaVirtual.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adicionar(Usuario usuario)
+        public ActionResult Salva(Usuario usuario)
         {
             UsuarioDAO dao = new UsuarioDAO();
-            dao.Adiciona(usuario);
+
             dao.Atualiza(usuario);
             return RedirectToAction("Index");
+
         }
 
         [HttpPost]

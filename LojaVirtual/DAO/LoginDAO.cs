@@ -7,12 +7,13 @@ namespace LojaVirtual.DAO
 {
     public class LoginDAO
     {
-        public void Adiciona(Login login)
+        public void Salva(Login login)
         {
-            using (var context = new LojaVirtualContext())
+            using (var contexto = new LojaVirtualContext())
             {
-                context.Logins.Add(login);
-                context.SaveChanges();
+                contexto.Logins.Add(login);
+                contexto.SaveChanges();
+
             }
         }
 
@@ -36,7 +37,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                contexto.Entry(login).State = EntityState.Modified;
+                contexto.Update(login);
                 contexto.SaveChanges();
             }
         }

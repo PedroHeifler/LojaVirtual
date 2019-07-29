@@ -1,4 +1,4 @@
 ﻿function Limpar(e) {
     e.preventDefault();
-    $("form input").val("")
+    $("form input").not(".id").val("")
 }

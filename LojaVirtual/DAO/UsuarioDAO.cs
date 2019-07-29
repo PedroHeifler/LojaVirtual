@@ -7,14 +7,6 @@ namespace LojaVirtual.DAO
 {
     public class UsuarioDAO
     {
-        public void Adiciona(Usuario usuario)
-        {
-            using (var context = new LojaVirtualContext())
-            {
-                context.Usuarios.Add(usuario);
-                context.SaveChanges();
-            }
-        }
 
         public IList<Usuario> Lista()
         {
@@ -36,7 +28,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                contexto.Entry(usuario).State = EntityState.Modified;
+                contexto.Update(usuario);
                 contexto.SaveChanges();
             }
         }

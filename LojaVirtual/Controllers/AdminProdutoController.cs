@@ -20,28 +20,22 @@ namespace LojaVirtual.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adicionar(Produto produto)
+        public ActionResult Salva(Produto produto)
         {
             ProdutoDAO dao = new ProdutoDAO();
-            dao.Adiciona(produto);
-            return RedirectToAction("Index");
+           
+                dao.Atualiza(produto);
+                return RedirectToAction("Index");
+            
         }
 
-        
+        [HttpPost]
         public ActionResult Excluir(int id)
         {
             ProdutoDAO dao = new ProdutoDAO();
             Produto produto = dao.BuscaPorId(id);
             dao.Excluir(produto);
             return Json(produto);
-        }
-
-        [HttpPost]
-        public ActionResult Editar(Produto produto)
-        {
-            ProdutoDAO dao = new ProdutoDAO();
-            dao.Atualiza(produto);
-            return RedirectToAction("Index");
         }
     }
 }

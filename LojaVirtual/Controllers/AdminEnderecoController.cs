@@ -17,12 +17,13 @@ namespace LojaVirtual.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adicionar(Endereco enderecos)
+        public ActionResult Salva(Endereco endereco)
         {
             EnderecoDAO dao = new EnderecoDAO();
-            dao.Adiciona(enderecos);
-            return RedirectToAction("Index");
-        }
 
+            dao.Atualiza(endereco);
+            return RedirectToAction("Index");
+
+        }
     }
 }

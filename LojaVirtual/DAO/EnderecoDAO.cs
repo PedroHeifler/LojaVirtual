@@ -9,15 +9,6 @@ namespace LojaVirtual.DAO
 {
     public class EnderecoDAO
     {
-        public void Adiciona(Endereco endereco)
-        {
-            using (var context = new LojaVirtualContext())
-            {
-                context.Enderecos.Add(endereco);
-                context.SaveChanges();
-            }
-        }
-
         public IList<Endereco> Lista()
         {
             using (var contexto = new LojaVirtualContext())
@@ -38,7 +29,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                contexto.Entry(endereco).State = EntityState.Modified;
+                contexto.Update(endereco);
                 contexto.SaveChanges();
             }
         }
