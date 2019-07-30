@@ -11,23 +11,7 @@
     }
 }
 
-@media only screen and (max-width: 1000px) {
-    .nuvem-1 {
-        display: none;
-    }
 
-    .nuvem-2 {
-        display: none;
-    }
-
-    .nuvem-3 {
-        display: none;
-    }
-
-    .nuvem-4 {
-        display: none;
-    }
-}
 
 
 /*---MOBILE---*/
@@ -310,15 +294,15 @@ footer > div > div {
 
     footer .nuvem-1 {
         width: 150px;
-        bottom: 0;
         left: 7%;
         bottom: 50%
     }
 
     footer .nuvem-2 {
         width: 100px;
-        left: 90%;
+        right: 20px;
         bottom: 70%;
+        overflow: hidden;
     }
 
     footer .nuvem-3 {
@@ -331,7 +315,7 @@ footer > div > div {
 
     footer .nuvem-4 {
         width: 170px;
-        left: 65%;
+        right: 20%;
         bottom: 100px;
     }
 

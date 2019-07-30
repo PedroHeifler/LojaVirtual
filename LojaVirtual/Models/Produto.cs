@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LojaVirtual.Models
 {
@@ -15,5 +11,8 @@ namespace LojaVirtual.Models
         [Required]
         public string Nome { get; set; }
         public string Imagem { get; set; }
+        
+        public virtual Departamento Departamento { get; set; }
+
     }
 }

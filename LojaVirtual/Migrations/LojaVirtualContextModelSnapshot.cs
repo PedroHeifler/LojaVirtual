@@ -19,6 +19,20 @@ namespace LojaVirtual.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("LojaVirtual.Models.Departamento", b =>
+                {
+                    b.Property<int>("IdDepartamento")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Genero")
+                        .IsRequired();
+
+                    b.HasKey("IdDepartamento");
+
+                    b.ToTable("Departamentos");
+                });
+
             modelBuilder.Entity("LojaVirtual.Models.Endereco", b =>
                 {
                     b.Property<int>("IdEndereco")
@@ -79,6 +93,8 @@ namespace LojaVirtual.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("DepartamentoIdDepartamento");
+
                     b.Property<string>("Imagem");
 
                     b.Property<string>("Nome")
@@ -87,6 +103,8 @@ namespace LojaVirtual.Migrations
                     b.Property<int>("SKU");
 
                     b.HasKey("IdProduto");
+
+                    b.HasIndex("DepartamentoIdDepartamento");
 
                     b.ToTable("Produtos");
                 });
@@ -122,6 +140,13 @@ namespace LojaVirtual.Migrations
                     b.HasOne("LojaVirtual.Models.Usuario")
                         .WithMany("Endereco")
                         .HasForeignKey("UsuarioIdUsuario");
+                });
+
+            modelBuilder.Entity("LojaVirtual.Models.Produto", b =>
+                {
+                    b.HasOne("LojaVirtual.Models.Departamento", "Departamento")
+                        .WithMany("Produtos")
+                        .HasForeignKey("DepartamentoIdDepartamento");
                 });
 
             modelBuilder.Entity("LojaVirtual.Models.Usuario", b =>

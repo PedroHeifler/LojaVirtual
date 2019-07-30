@@ -26,6 +26,7 @@
                         <th scope="col">SKU</th>
                         <th scope="col">Nome do Produto</th>
                         <th scope="col">Imagem</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Excluir</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                             <td>@produto.SKU</td>
                             <td class="info-nome">@produto.Nome</td>
                             <td>@produto.Imagem</td>
+                            <td>@produto.Departamento</td>
                             <td class="d-flex justify-content-center">
                                 <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
                                 <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
@@ -73,6 +75,15 @@
                             <div class="form-group col-md-6">
                                 <label for="Imagem">Imagem</label>
                                 <input name="Imagem" type="text" class="form-control" placeholder="Exemplo: src='~/img/Calca-1.jpg'">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Genero">Genero</label>
+                                <select name="Departamento" class="form-control">
+                                    @foreach (var departamento in ViewBag.Departamento)
+                                    {
+                                        <option>@departamento.Genero</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer mt-2">

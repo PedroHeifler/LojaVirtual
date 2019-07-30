@@ -200,13 +200,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminContaController.cs" />
-    <Compile Include="Controllers\AdminEnderecoController.cs" />
-    <Compile Include="Controllers\AdminProdutoController.cs" />
-    <Compile Include="Controllers\AdminUsuarioController.cs" />
-    <Compile Include="Controllers\CadastroController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Admin\AdminContaController.cs" />
+    <Compile Include="Controllers\Admin\AdminDepartamentoController.cs" />
+    <Compile Include="Controllers\Admin\AdminEnderecoController.cs" />
+    <Compile Include="Controllers\Admin\AdminProdutoController.cs" />
+    <Compile Include="Controllers\Admin\AdminUsuarioController.cs" />
+    <Compile Include="Controllers\Usuario\CadastroController.cs" />
+    <Compile Include="Controllers\Usuario\HomeController.cs" />
+    <Compile Include="Controllers\Usuario\LoginController.cs" />
+    <Compile Include="DAO\DepartamentoDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
@@ -234,7 +236,16 @@
     <Compile Include="Migrations\20190718001443_Produto.designer.cs">
       <DependentUpon>20190718001443_Produto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190730135845_Departamento.cs" />
+    <Compile Include="Migrations\20190730135845_Departamento.designer.cs">
+      <DependentUpon>20190730135845_Departamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190730142436_DepartamentoSemTp.cs" />
+    <Compile Include="Migrations\20190730142436_DepartamentoSemTp.designer.cs">
+      <DependentUpon>20190730142436_DepartamentoSemTp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaVirtualContextModelSnapshot.cs" />
+    <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Endereco.cs" />
@@ -296,6 +307,7 @@
     <Content Include="Views\Shared\LayoutAdmin.cshtml" />
     <Content Include="Views\AdminEndereco\Index.cshtml" />
     <Content Include="Views\AdminConta\Index.cshtml" />
+    <Content Include="Views\AdminDepartamento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
