@@ -26,10 +26,9 @@ namespace LojaVirtual.Controllers
         public ActionResult Salva(Produto produto)
         {
             ProdutoDAO dao = new ProdutoDAO();
-           
-                dao.Atualiza(produto);
-                return RedirectToAction("Index");
-            
+            dao.Atualiza(produto);
+            return RedirectToAction("Index");
+
         }
 
         [HttpPost]

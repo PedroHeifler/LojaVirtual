@@ -13,7 +13,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                return contexto.Produtos.ToList();
+                return contexto.Produtos.Include("Departamento").ToList();
             }
         }
 
@@ -21,6 +21,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
+                produto.Departamento = contexto.Departamentos.Find(produto.Departamento.IdDepartamento);
                 contexto.Update(produto);
                 contexto.SaveChanges();
             }
