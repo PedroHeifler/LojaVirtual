@@ -254,6 +254,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
