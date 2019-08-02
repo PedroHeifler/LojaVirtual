@@ -3,7 +3,7 @@ using LojaVirtual.Models;
 using System;
 using System.Web.Mvc;
 
-namespace LojaVirtual.Controllers
+namespace LojaVirtual.Controllers.cUsuario
 {
     public class LoginController : Controller
     {

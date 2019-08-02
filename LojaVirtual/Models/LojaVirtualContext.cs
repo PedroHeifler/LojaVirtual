@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LojaVirtual.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LojaVirtual.Models
 {

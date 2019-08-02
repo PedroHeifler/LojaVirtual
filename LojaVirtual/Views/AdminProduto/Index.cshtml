@@ -1,5 +1,6 @@
 ﻿
 @{
+    ViewBag.Title = "Produtos";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
 
@@ -13,48 +14,77 @@
             <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
         </div>
 
-        <!--<img class="spinner m-3" src="~/img/Spinner.gif" />-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Produto" role="tab" aria-controls="produto" aria-selected="true">Produto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#FichaTecnica" role="tab" aria-controls="fichaTecnica" aria-selected="false">FichaTecnica</a>
+            </li>
+        </ul>
 
-        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
 
-        <!-----Tabela de Produtos----->
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-bordered table-striped table-dark">
-                <thead class="thead">
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">SKU</th>
-                        <th scope="col">Nome do Produto</th>
-                        <th scope="col">Imagem</th>
-                        <th scope="col">Valor (R$)</th>
-                        <th scope="col">Tipo do Produto</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Excluir</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var produto in ViewBag.Produtos)
-                    {
-                        <tr id="adminTr@(produto.IdProduto)" class="produtoTr">
-                            <th scope="row">@produto.IdProduto</th>
-                            <td>@produto.SKU</td>
-                            <td class="info-nome">@produto.Nome</td>
-                            <td>@produto.Imagem</td>
-                            <td>@produto.Valor</td>
-                            <td>@produto.TpProduto</td>
-                            <td>@produto.Departamento.Genero</td>
-                            <td class="d-flex justify-content-center">
-                                <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
-                                <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+
+        <div class="tab-content border p-1" id="myTabContent">
+            <div class="tab-pane fade show active" id="Produto" role="tabpanel" aria-labelledby="home-tab">
+
+                <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
+
+                <!-----Tabela de Produtos----->
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-bordered table-striped table-dark">
+                        <thead class="thead">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">SKU</th>
+                                <th scope="col">Nome do Produto</th>
+                                <th scope="col">Imagem</th>
+                                <th scope="col">Valor (R$)</th>
+                                <th scope="col">Tipo do Produto</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Excluir/Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var produto in ViewBag.Produtos)
+                            {
+                                <tr id="adminTr@(produto.IdProduto)" class="produtoTr">
+                                    <th scope="row">@produto.IdProduto</th>
+                                    <td>@produto.SKU</td>
+                                    <td class="info-nome text-truncate">@produto.Nome</td>
+                                    <td style="min-width: 120px">@produto.Imagem</td>
+                                    <td>@produto.Valor</td>
+                                    <td>@produto.TpProduto</td>
+                                    <td>@produto.Departamento.Genero</td>
+                                    <td class="d-flex justify-content-center">
+                                        <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
+                                        <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="FichaTecnica" role="tabpanel" aria-labelledby="profile-tab">
+
+                <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
+
+                <br />
+                <div class="d-flex">
+                    <div>
+                        <label><b>Ficha Técnica</b></label>
+                    </div>
+                    <div>
+                        <label>Descrição</label>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <hr>
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -106,14 +136,13 @@
                         <div class="modal-footer mt-2">
                             <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
                             <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
-                            <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button formaction="/AdminProduto/Salva" type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
     </div>
 </main>
 
@@ -125,6 +154,6 @@
 <script src="~/Scripts/Excluir.js"></script>
 <script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
-<script src="~/Scripts/Limpar.js"></script>
+
 
 

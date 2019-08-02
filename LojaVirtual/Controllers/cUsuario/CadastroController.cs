@@ -3,7 +3,7 @@ using LojaVirtual.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace LojaVirtual.Controllers
+namespace LojaVirtual.Controllers.cUsuario
 {
     public class CadastroController : Controller
     {

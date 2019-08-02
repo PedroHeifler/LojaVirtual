@@ -29,6 +29,7 @@
                         <th scope="col">Rua</th>
                         <th scope="col">Numero</th>
                         <th scope="col">Complemento</th>
+                        <th scope="col">Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,7 +103,7 @@
                         <div class="modal-footer mt-2">
                             <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
                             <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
-                            <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button formaction="/AdminEndereco/Salva" type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </form>
@@ -119,7 +120,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
-<script src="~/Scripts/Limpar.js"></script>
+
 
 
 

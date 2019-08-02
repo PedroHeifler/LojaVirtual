@@ -1,16 +1,13 @@
 ﻿using LojaVirtual.DAO;
 using LojaVirtual.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace LojaVirtual.Controllers
+namespace LojaVirtual.Controllers.cUsuario
 {
-    public class HomeController : Controller
+    public class ProdutosController : Controller
     {
-        // GET: Home
+        // GET: Produtos
         public ActionResult Index()
         {
             /*---Departamento---*/

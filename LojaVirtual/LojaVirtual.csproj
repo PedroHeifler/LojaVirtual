@@ -205,10 +205,10 @@
     <Compile Include="Controllers\Admin\AdminEnderecoController.cs" />
     <Compile Include="Controllers\Admin\AdminProdutoController.cs" />
     <Compile Include="Controllers\Admin\AdminUsuarioController.cs" />
-    <Compile Include="Controllers\Usuario\CadastroController.cs" />
-    <Compile Include="Controllers\Usuario\HomeController.cs" />
-    <Compile Include="Controllers\Usuario\LoginController.cs" />
-    <Compile Include="Controllers\Usuario\ProdutosController.cs" />
+    <Compile Include="Controllers\cUsuario\CadastroController.cs" />
+    <Compile Include="Controllers\cUsuario\HomeController.cs" />
+    <Compile Include="Controllers\cUsuario\LoginController.cs" />
+    <Compile Include="Controllers\cUsuario\ProdutosController.cs" />
     <Compile Include="DAO\DepartamentoDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />

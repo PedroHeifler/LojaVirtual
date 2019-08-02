@@ -1,12 +1,13 @@
 ﻿
 @{
+    ViewBag.Title = "Usuário";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
 
 
     <main>
         <div class="tela-admin">
-            <h1 class="mt-4">Gerenciamento de Usuarios</h1>
+            <h1 class="mt-4">Gerenciamento de Usuários</h1>
             <div class="input-group col-md-5 mb-3 mt-5 p-0">
                 <input type="search" id="filtro-tabela" oninput="Filtrar('.adminTr')" class="form-control marg-usuario" placeholder="Pesquise pelo nome">
             </div>
@@ -82,7 +83,7 @@
                             <div class="modal-footer mt-2">
                                 <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
                                 <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
-                                <button onclick="Limpar(event)" class="btn btn-info">Limpar</button>
+                                <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                 <button formaction="/AdminUsuario/Salva" type="submit" class="btn btn-success">Salvar</button>
                             </div>
                         </form>
@@ -99,7 +100,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
-<script src="~/Scripts/Limpar.js"></script>
+
 
 
 

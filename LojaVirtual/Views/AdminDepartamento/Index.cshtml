@@ -1,5 +1,6 @@
 ﻿
 @{
+    ViewBag.Title = "Departamento";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
 
@@ -32,10 +33,10 @@
                     {
                         <tr id="adminTr@(departamento.IdDepartamento)" class="adminTr">
                             <th scope="row">@departamento.IdDepartamento</th>
-                            <td class="info-nome">@departamento.Genero</td>
+                            <td class="info-nome" style="width: 70% !important">@departamento.Genero</td>
                             <td class="d-flex justify-content-center">
-                                <button onclick="Excluir(@(departamento.IdDepartamento), 'http://localhost:61651/AdminDepartamento/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
                                 <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(departamento.IdDepartamento)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
+                                <button onclick="Excluir(@(departamento.IdDepartamento), 'http://localhost:61651/AdminDepartamento/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     }
@@ -63,7 +64,7 @@
                         <div class="modal-footer mt-2">
                             <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
                             <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
-                            <button class="btn btn-danger">Cancelar</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button formaction="/AdminDepartamento/Salva" type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </form>
@@ -81,7 +82,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="~/Scripts/Excluir.js"></script>
 <script src="~/Scripts/Editar.js"></script>
-<script src="~/Scripts/Filtro.js"></script>
+
 
 
 
