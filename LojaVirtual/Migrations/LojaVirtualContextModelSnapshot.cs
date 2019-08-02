@@ -95,12 +95,18 @@ namespace LojaVirtual.Migrations
 
                     b.Property<int?>("DepartamentoIdDepartamento");
 
-                    b.Property<string>("Imagem");
+                    b.Property<string>("Imagem")
+                        .IsRequired();
 
                     b.Property<string>("Nome")
                         .IsRequired();
 
                     b.Property<int>("SKU");
+
+                    b.Property<string>("TpProduto")
+                        .IsRequired();
+
+                    b.Property<double>("Valor");
 
                     b.HasKey("IdProduto");
 

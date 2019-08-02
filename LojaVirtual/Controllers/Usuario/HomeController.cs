@@ -13,9 +13,15 @@ namespace LojaVirtual.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            /*---Departamento---*/
             DepartamentoDAO dao = new DepartamentoDAO();
             IList<Departamento> departamentos = dao.Lista();
             ViewBag.Departamentos = departamentos;
+
+            /*---Produto---*/
+            ProdutoDAO pdao = new ProdutoDAO();
+            IList<Produto> produtos = pdao.Lista();
+            ViewBag.Produtos = produtos;
             return View();
         }
     }

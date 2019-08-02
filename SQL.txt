@@ -1,0 +1,13 @@
+-----Produtos-----
+SET IDENTITY_INSERT [dbo].[Produtos] ON
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10003, 1, N'Vestido de Noiva Simples', N'vestido-1.jpg', 1003, N'Locacao', 350)
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10004, 2, N'Vestido de Noiva Classico', N'vestido-2.jpg', 1003, N'Locacao', 400)
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10005, 3, N'Vestido de Noiva Grande', N'vestido-3.jpg', 1003, N'Locacao', 500)
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10006, 4, N'Vestido de Noiva Longo', N'vestido-4.jpg', 1003, N'Locacao', 499)
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10007, 5, N'Terno Azul com Gravata Listrada', N'terno-1.jpg', 1002, N'Locacao', 300)
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10008, 5, N'Colete Cinza ', N'terno-2.jpg', 1002, N'Locacao', 350)
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10009, 7, N'Terno Bordo', N'terno-3.jpg', 1006, N'Venda', 500)
+INSERT INTO [dbo].[Produtos] ([IdProduto], [SKU], [Nome], [Imagem], [DepartamentoIdDepartamento], [TpProduto], [Valor]) VALUES (10010, 8, N'Terno Cinza com Gravata Vermelha', N'terno-4.jpg', 1006, N'Venda', 400)
+SET IDENTITY_INSERT [dbo].[Produtos] OFF
+
+-----------------------------------\\-----------------------------------

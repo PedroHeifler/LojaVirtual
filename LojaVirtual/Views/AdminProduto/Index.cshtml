@@ -26,6 +26,8 @@
                         <th scope="col">SKU</th>
                         <th scope="col">Nome do Produto</th>
                         <th scope="col">Imagem</th>
+                        <th scope="col">Valor (R$)</th>
+                        <th scope="col">Tipo do Produto</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Excluir</th>
                     </tr>
@@ -38,6 +40,8 @@
                             <td>@produto.SKU</td>
                             <td class="info-nome">@produto.Nome</td>
                             <td>@produto.Imagem</td>
+                            <td>@produto.Valor</td>
+                            <td>@produto.TpProduto</td>
                             <td>@produto.Departamento.Genero</td>
                             <td class="d-flex justify-content-center">
                                 <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
@@ -74,7 +78,20 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="Imagem">Imagem</label>
-                                <input name="produto.Imagem" type="text" class="form-control" placeholder="Exemplo: src='~/img/Calca-1.jpg'">
+                                <input name="produto.Imagem" type="text" class="form-control" placeholder="Exemplo: Calca-1.jpg">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Valor">Valor</label>
+                                <input name="produto.Valor" type="text" class="form-control" placeholder="4.00">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="TpProduto">Tipo do Produto</label>
+                                <select name="produto.TpProduto" class="form-control">
+                                    <option value="Venda">Venda</option>
+                                    <option value="Locacao">Locacao</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="Departamento">Genero</label>

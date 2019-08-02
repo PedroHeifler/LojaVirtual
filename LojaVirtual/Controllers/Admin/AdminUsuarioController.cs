@@ -1,10 +1,8 @@
 ﻿using LojaVirtual.DAO;
-using LojaVirtual.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using LojaVirtual.Models;
+
 
 namespace LojaVirtual.Controllers
 {
@@ -29,13 +27,5 @@ namespace LojaVirtual.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult Excluir(int id)
-        {
-            UsuarioDAO dao = new UsuarioDAO();
-            Usuario usuario = dao.BuscaPorId(id);
-            dao.Excluir(usuario);
-            return Json(usuario);
-        }
     }
 }
