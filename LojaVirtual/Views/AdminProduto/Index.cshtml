@@ -38,11 +38,11 @@
                     <tbody>
                         @foreach (var produto in ViewBag.Produtos)
                         {
-                            <tr id="adminTr@(produto.IdProduto)" class="produtoTr">
+                            <tr id="adminTr@(produto.IdProduto)" onclick="MostraImg(this)" class="produtoTr">
                                 <th scope="row">@produto.IdProduto</th>
                                 <td>@produto.SKU</td>
                                 <td class="info-nome text-truncate">@produto.Nome</td>
-                                <td style="min-width: 120px">@produto.Imagem</td>
+                                <td class="img" style="min-width: 120px">@produto.Imagem</td>
                                 <td>@produto.Valor</td>
                                 <td>@produto.TpProduto</td>
                                 <td>@produto.Departamento.Genero</td>
@@ -55,6 +55,8 @@
                     </tbody>
                 </table>
             </div>
+
+                <img style="width: 300px; padding: 30px" id="img-representativa"/>
 
         </div>
 
@@ -241,11 +243,12 @@
 <script src="~/Scripts/Excluir.js"></script>
 <script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
+<script src="~/Scripts/Img-Representativa.js"></script>
 
-<script>
-    $("#FichaTecnica").slideToggle()
+    <script>
+        $("#FichaTecnica").slideToggle()
     $('#myTab a').on('click', function (e) {
-        e.preventDefault()
+            e.preventDefault()
         $("#Produto").slideToggle()
         $("#FichaTecnica").slideToggle()
     })

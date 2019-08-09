@@ -45,5 +45,16 @@ namespace LojaVirtual.Controllers.cUsuario
             Produto produto = pdao.BuscaPorId(id);
             return View(produto);
         }
+
+        public ActionResult Carrinho()
+        {
+            /*---Departamento---*/
+            DepartamentoDAO dao = new DepartamentoDAO();
+            IList<Departamento> departamentos = dao.Lista();
+            ViewBag.Departamentos = departamentos;
+            return View();
+        }
+
+
     }
 }

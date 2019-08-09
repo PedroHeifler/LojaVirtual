@@ -37,9 +37,9 @@
                                 {
                                     <tr id="adminTr@(ficha.IdFichaTecnica)" class="adminTr">
                                         <th scope="row">@ficha.IdFichaTecnica</th>
-                                        <td>@Model.IdProduto</td>
+                                        <td class="d-none">@Model.IdProduto</td>
                                         <td class="info-nome">@ficha.Ficha</td>
-                                        <td style="width: 650px">@ficha.Conteudo</td>
+                                        <td style="width: 500px">@ficha.Conteudo</td>
                                         <td>@ficha.Ordem</td>
                                         <td class="d-flex justify-content-center">
                                             <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(ficha.IdFichaTecnica)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
@@ -65,8 +65,8 @@
 
                     <!-----Form Usuario----->
                     <form method="post" class="p-3">
-                        <input name="ficha.IdFichaTecnica"  />
-                        <input name="ficha.Produtos.IdProduto" value="@Model.IdProduto"/>
+                        <input name="ficha.IdFichaTecnica" style="visibility: hidden; height: 0" />
+                        <input name="ficha.Produtos.IdProduto" value="@Model.IdProduto" style="visibility: hidden; height: 0"/>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">

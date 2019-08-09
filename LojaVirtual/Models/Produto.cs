@@ -18,6 +18,8 @@ namespace LojaVirtual.Models
         [Required]
         public double Valor { get; set; }
         [Required]
+        public string Descricao { get; set; }
+        [Required]
         public string TpProduto { get; set; }
 
         public virtual Departamento Departamento { get; set; }

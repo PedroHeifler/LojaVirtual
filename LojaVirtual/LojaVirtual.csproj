@@ -220,60 +220,64 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190712214704_Inicial.cs" />
-    <Compile Include="Migrations\20190712214704_Inicial.designer.cs">
+    <Compile Include="Migrations\20190712214704_Inicial.Designer.cs">
       <DependentUpon>20190712214704_Inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190713000123_Usuario-Endereco.cs" />
-    <Compile Include="Migrations\20190713000123_Usuario-Endereco.designer.cs">
+    <Compile Include="Migrations\20190713000123_Usuario-Endereco.Designer.cs">
       <DependentUpon>20190713000123_Usuario-Endereco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190713003446_Endereco.cs" />
-    <Compile Include="Migrations\20190713003446_Endereco.designer.cs">
+    <Compile Include="Migrations\20190713003446_Endereco.Designer.cs">
       <DependentUpon>20190713003446_Endereco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190713005215_Rua.cs" />
-    <Compile Include="Migrations\20190713005215_Rua.designer.cs">
+    <Compile Include="Migrations\20190713005215_Rua.Designer.cs">
       <DependentUpon>20190713005215_Rua.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190718001443_Produto.cs" />
-    <Compile Include="Migrations\20190718001443_Produto.designer.cs">
+    <Compile Include="Migrations\20190718001443_Produto.Designer.cs">
       <DependentUpon>20190718001443_Produto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190730135845_Departamento.cs" />
-    <Compile Include="Migrations\20190730135845_Departamento.designer.cs">
+    <Compile Include="Migrations\20190730135845_Departamento.Designer.cs">
       <DependentUpon>20190730135845_Departamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190730142436_DepartamentoSemTp.cs" />
-    <Compile Include="Migrations\20190730142436_DepartamentoSemTp.designer.cs">
+    <Compile Include="Migrations\20190730142436_DepartamentoSemTp.Designer.cs">
       <DependentUpon>20190730142436_DepartamentoSemTp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190801211738_produtoValorTp.cs" />
-    <Compile Include="Migrations\20190801211738_produtoValorTp.designer.cs">
+    <Compile Include="Migrations\20190801211738_produtoValorTp.Designer.cs">
       <DependentUpon>20190801211738_produtoValorTp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190805170622_FichaTecnica.cs" />
-    <Compile Include="Migrations\20190805170622_FichaTecnica.designer.cs">
+    <Compile Include="Migrations\20190805170622_FichaTecnica.Designer.cs">
       <DependentUpon>20190805170622_FichaTecnica.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190805171240_FichaTecnica2.cs" />
-    <Compile Include="Migrations\20190805171240_FichaTecnica2.designer.cs">
+    <Compile Include="Migrations\20190805171240_FichaTecnica2.Designer.cs">
       <DependentUpon>20190805171240_FichaTecnica2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190805172111_FichaTecnica3.cs" />
-    <Compile Include="Migrations\20190805172111_FichaTecnica3.designer.cs">
+    <Compile Include="Migrations\20190805172111_FichaTecnica3.Designer.cs">
       <DependentUpon>20190805172111_FichaTecnica3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190805173917_FichaTecnica4.cs" />
-    <Compile Include="Migrations\20190805173917_FichaTecnica4.designer.cs">
+    <Compile Include="Migrations\20190805173917_FichaTecnica4.Designer.cs">
       <DependentUpon>20190805173917_FichaTecnica4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190805174742_FichaTecnica5.cs" />
-    <Compile Include="Migrations\20190805174742_FichaTecnica5.designer.cs">
+    <Compile Include="Migrations\20190805174742_FichaTecnica5.Designer.cs">
       <DependentUpon>20190805174742_FichaTecnica5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20190808191534_ficha.cs" />
-    <Compile Include="Migrations\20190808191534_ficha.designer.cs">
+    <Compile Include="Migrations\20190808191534_ficha.Designer.cs">
       <DependentUpon>20190808191534_ficha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190809114134_descricao.cs" />
+    <Compile Include="Migrations\20190809114134_descricao.designer.cs">
+      <DependentUpon>20190809114134_descricao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LojaVirtualContextModelSnapshot.cs" />
     <Compile Include="Models\Departamento.cs" />
@@ -317,12 +321,13 @@
     <Content Include="Scripts\Excluir.js" />
     <Content Include="Scripts\Filtro.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Img-Representativa.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\Limpar.js" />
-    <Content Include="Scripts\SalvarProduto.js" />
+    <Content Include="Scripts\PassaParaCarrinho.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -345,6 +350,7 @@
     <Content Include="Views\Produtos\Index.cshtml" />
     <Content Include="Views\AdminFichaTecnica\Index.cshtml" />
     <Content Include="Views\Produtos\Detalhes.cshtml" />
+    <Content Include="Views\Produtos\Carrinho.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
