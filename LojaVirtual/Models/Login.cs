@@ -12,6 +12,7 @@ namespace LojaVirtual.Models
         public String Email { get; set; }
         [Required]
         public String Senha { get; set; }
+        [Required]
         public String TpUsuario { get; set; }
 
     }

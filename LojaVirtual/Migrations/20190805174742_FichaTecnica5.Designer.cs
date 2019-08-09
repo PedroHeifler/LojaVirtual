@@ -4,14 +4,16 @@ using LojaVirtual.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LojaVirtual.Migrations
 {
     [DbContext(typeof(LojaVirtualContext))]
-    partial class LojaVirtualContextModelSnapshot : ModelSnapshot
+    [Migration("20190805174742_FichaTecnica5")]
+    partial class FichaTecnica5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,15 +78,14 @@ namespace LojaVirtual.Migrations
 
                     b.Property<string>("Conteudo");
 
-                    b.Property<string>("Ficha");
-
                     b.Property<int>("Ordem");
 
-                    b.Property<int?>("ProdutosIdProduto");
+                    b.Property<int>("ProdutoId");
 
                     b.HasKey("IdFichaTecnica");
 
-                    b.HasIndex("ProdutosIdProduto");
+                    b.HasIndex("ProdutoId")
+                        .IsUnique();
 
                     b.ToTable("FichaTecnicas");
                 });
@@ -101,8 +102,7 @@ namespace LojaVirtual.Migrations
                     b.Property<string>("Senha")
                         .IsRequired();
 
-                    b.Property<string>("TpUsuario")
-                        .IsRequired();
+                    b.Property<string>("TpUsuario");
 
                     b.HasKey("IdLogin");
 
@@ -173,8 +173,9 @@ namespace LojaVirtual.Migrations
             modelBuilder.Entity("LojaVirtual.Models.FichaTecnica", b =>
                 {
                     b.HasOne("LojaVirtual.Models.Produto", "Produtos")
-                        .WithMany("FichaTecnicas")
-                        .HasForeignKey("ProdutosIdProduto");
+                        .WithOne("FichaTecnicas")
+                        .HasForeignKey("LojaVirtual.Models.FichaTecnica", "ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("LojaVirtual.Models.Produto", b =>

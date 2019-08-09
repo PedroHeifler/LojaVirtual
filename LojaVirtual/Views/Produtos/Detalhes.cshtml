@@ -1,0 +1,39 @@
+﻿@model LojaVirtual.Models.Produto
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/LayoutPadrao.cshtml";
+}
+
+<main class="container">
+    <div class="produto-detalhes mb-5">
+        <div class="img-detalhes">
+            <img src="~/img/@Model.Imagem" />
+        </div>
+
+        <div class="detalhes">
+            <h2>@Model.Nome</h2>
+            <br />
+            <label>R$ @Model.Valor,00</label>
+            <br />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non magna elit. Donec fringilla vehicula magna, quis faucibus dolor posuere quis. Proin placerat porta porta. Maecenas ac faucibus orci, vitae varius erat. Proin iaculis vestibulum tempor. Vivamus vitae nunc nec odio finibus vehicula vel a leo. Praesent finibus enim ac nisl laoreet, eu tincidunt nunc luctus. Maecenas non justo eros. Donec eu velit aliquam, ultricies purus in, pretium enim. Ut tristique placerat mauris, et consectetur tortor finibus vel. Nullam vulputate dolor nec nisi interdum, eget efficitur turpis posuere. Nam nec lobortis lectus, ac laoreet massa. Donec sagittis consectetur dui tempor convallis. Cras laoreet neque nec felis ultricies, et pellentesque dolor aliquet.</p>
+            <br />
+            <a>
+                <button type="button" class="btn btn-success btn-lg">Adicionar ao Carrinho <i class="fas fa-shopping-cart"></i></button>
+            </a>
+        </div>
+        
+    </div>
+    <div class="mt-5">
+        <h3>Ficha Tecnica</h3>
+
+        @foreach (var ficha in ViewBag.Ficha)
+        {
+            if (ficha.Produtos.IdProduto == Model.IdProduto)
+            {
+                <label><b>@ficha.Ficha: </b></label>
+                <label>@ficha.Conteudo</label><br />
+            }
+        }
+    </div>
+</main>
+

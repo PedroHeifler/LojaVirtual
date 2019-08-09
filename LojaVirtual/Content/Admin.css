@@ -110,3 +110,13 @@
         width: calc(100% - 10%);
     }
 }
+
+/*---Ficha Tecnica---*/
+
+.ficha-tecnica {
+    font-size: 20px;
+}
+
+.nav-item .active {
+    background-color: #343a40 !important;
+}

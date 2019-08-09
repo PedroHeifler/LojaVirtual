@@ -22,4 +22,13 @@
         }
     }
 
+    function FitrarProdutos(idDepartamento) {
+        var produto = $(".filtro-produtos");
+
+        if (produto.length > 0) {
+
+        }
+
+    }
+
 }

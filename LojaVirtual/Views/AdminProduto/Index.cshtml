@@ -1,4 +1,4 @@
-﻿
+﻿@model LojaVirtual.Models.Produto
 @{
     ViewBag.Title = "Produtos";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
@@ -9,89 +9,64 @@
     <div class="tela-admin">
         <h1 class="mt-4">Gerenciamento de Produtos</h1>
 
-        <!-----Filtro----->
-        <div class="input-group col-md-5 mb-3 mt-5 p-0">
-            <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
-        </div>
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Produto" role="tab" aria-controls="produto" aria-selected="true">Produto</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#FichaTecnica" role="tab" aria-controls="fichaTecnica" aria-selected="false">FichaTecnica</a>
-            </li>
-        </ul>
+        <div class="tab-content" id="myTabContent">
 
 
+            <!-----Filtro----->
+            <div class="input-group col-md-5 m-2 p-0">
+                <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
+            </div>
 
-        <div class="tab-content border p-1" id="myTabContent">
-            <div class="tab-pane fade show active" id="Produto" role="tabpanel" aria-labelledby="home-tab">
+            <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".produto-modal">Adicionar</button>
 
-                <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
-
-                <!-----Tabela de Produtos----->
-                <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                    <table class="table table-bordered table-striped table-dark">
-                        <thead class="thead">
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">SKU</th>
-                                <th scope="col">Nome do Produto</th>
-                                <th scope="col">Imagem</th>
-                                <th scope="col">Valor (R$)</th>
-                                <th scope="col">Tipo do Produto</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Excluir/Editar</th>
+            <!-----Tabela de Produtos----->
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-bordered table-striped table-dark">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">SKU</th>
+                            <th scope="col">Nome do Produto</th>
+                            <th scope="col">Imagem</th>
+                            <th scope="col">Valor (R$)</th>
+                            <th scope="col">Tipo do Produto</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Excluir/Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var produto in ViewBag.Produtos)
+                        {
+                            <tr id="adminTr@(produto.IdProduto)" class="produtoTr">
+                                <th scope="row">@produto.IdProduto</th>
+                                <td>@produto.SKU</td>
+                                <td class="info-nome text-truncate">@produto.Nome</td>
+                                <td style="min-width: 120px">@produto.Imagem</td>
+                                <td>@produto.Valor</td>
+                                <td>@produto.TpProduto</td>
+                                <td>@produto.Departamento.Genero</td>
+                                <td class="d-flex justify-content-center">
+                                    <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
+                                    <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var produto in ViewBag.Produtos)
-                            {
-                                <tr id="adminTr@(produto.IdProduto)" class="produtoTr">
-                                    <th scope="row">@produto.IdProduto</th>
-                                    <td>@produto.SKU</td>
-                                    <td class="info-nome text-truncate">@produto.Nome</td>
-                                    <td style="min-width: 120px">@produto.Imagem</td>
-                                    <td>@produto.Valor</td>
-                                    <td>@produto.TpProduto</td>
-                                    <td>@produto.Departamento.Genero</td>
-                                    <td class="d-flex justify-content-center">
-                                        <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
-                                        <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                        }
+                    </tbody>
+                </table>
             </div>
 
-            <div class="tab-pane fade" id="FichaTecnica" role="tabpanel" aria-labelledby="profile-tab">
-
-                <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
-
-                <br />
-                <div class="d-flex">
-                    <div>
-                        <label><b>Ficha Técnica</b></label>
-                    </div>
-                    <div>
-                        <label>Descrição</label>
-                    </div>
-                </div>
-
-            </div>
         </div>
 
-        <div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <!-----Produto Modal Cadastrar----->
+        <div class="modal fade produto-modal " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title">Produto</h3>
+                        <h3 class="modal-title">Cadastrar Produto</h3>
                     </div>
-                    <!-----Form Usuario----->
 
+                    <!-----Form Usuario----->
                     <form method="post" class="p-3">
                         <input name="produto.IdProduto" style="visibility: hidden; height: 0px" />
                         <div class="form-row">
@@ -143,6 +118,118 @@
                 </div>
             </div>
         </div>
+
+        <!-----Produto Modal Editar----->
+        <div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Produto</h3>
+                    </div>
+
+                    <ul class="nav nav-pills m-3" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Produto" role="tab" aria-controls="produto" aria-selected="true">Produto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " id="profile-tab" data-toggle="tab" href="#FichaTecnica" role="tab" aria-controls="fichaTecnica" aria-selected="false">FichaTecnica</a>
+                        </li>
+                    </ul>
+
+                    <!-----Form Usuario----->
+                    <form method="post">
+                        <div class="tab-pane fade show active pt-0 pl-3 pr-3 pb-3" id="Produto" role="tabpanel" aria-labelledby="home-tab">
+                            <input name="produto.IdProduto" style="visibility: hidden; height: 0px" />
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="SKU">SKU</label>
+                                    <input name="produto.SKU" type="text" class="form-control" placeholder="Exemplo: 001" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Nome">Nome do Produto</label>
+                                    <input name="produto.Nome" type="text" class="form-control"
+                                           placeholder="Exemplo: Calca Rosa" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Imagem">Imagem</label>
+                                    <input name="produto.Imagem" type="text" class="form-control" placeholder="Exemplo: Calca-1.jpg">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Valor">Valor</label>
+                                    <input name="produto.Valor" type="text" class="form-control" placeholder="4.00">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="TpProduto">Tipo do Produto</label>
+                                    <select name="produto.TpProduto" class="form-control">
+                                        <option value="Venda">Venda</option>
+                                        <option value="Locacao">Locacao</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Departamento">Genero</label>
+                                    <select name="produto.Departamento.IdDepartamento" class="form-control">
+                                        @foreach (var departamento in ViewBag.Departamento)
+                                        {
+                                            <option value="@departamento.IdDepartamento">@departamento.Genero</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer mt-2">
+                                <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
+                                <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
+                                <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button formaction="/AdminProduto/Salva" type="submit" class="btn btn-success">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <!-----Tabela Ficha----->
+                    <div class="tab-pane fade border-top" id="FichaTecnica" role="tabpanel" aria-labelledby="profile-tab">
+                       
+                        <a>
+                            <button type="button" class="btn btn-primary m-3">Editar</button>
+                        </a>
+                        
+
+                        <br />
+                        <div class="d-flex ficha-tecnica">
+
+                            <div class="m-4">
+                                <label><b>Ficha Técnica</b></label>
+                                @foreach (var ficha in ViewBag.Ficha)
+                                {
+                                    <br /><span>@ficha.Ficha</span>
+                                }
+                            </div>
+                            <div class="m-4">
+                                <label>Descrição</label>
+                                @foreach (var ficha in ViewBag.Ficha)
+                                {
+                                    <br /><span>@ficha.Conteudo</span>
+                                }
+                            </div>
+                            <div class="m-4">
+                                <label>Ordem</label>
+                                @foreach (var ficha in ViewBag.Ficha)
+                                {
+                                    <br /><span>@ficha.Ordem</span>
+                                }
+                            </div>
+
+                        </div>
+                        <div class="modal-footer mt-2">
+                            <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
@@ -154,6 +241,15 @@
 <script src="~/Scripts/Excluir.js"></script>
 <script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
+
+<script>
+    $("#FichaTecnica").slideToggle()
+    $('#myTab a').on('click', function (e) {
+        e.preventDefault()
+        $("#Produto").slideToggle()
+        $("#FichaTecnica").slideToggle()
+    })
+</script>
 
 
 

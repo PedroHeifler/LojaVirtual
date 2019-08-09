@@ -1,4 +1,5 @@
-﻿
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 /*----------------------TELA HOME----------------------*/
 
 @media only screen and (min-width: 1200px) {
@@ -10,9 +11,6 @@
         display: none !important
     }
 }
-
-
-
 
 /*---MOBILE---*/
 @media only screen and (max-width: 550px) {
@@ -55,10 +53,11 @@
     }
 }
 
-body {
+body:not(i) {
     margin: 0;
     padding: 0;
     background-color: aliceblue !important;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .no-padding {
@@ -328,3 +327,44 @@ footer > div > div {
 .navbar-cadastro li a:after {
     content: none !important;
 }
+
+/*-------------TELA DE CATEGORIA-------------*/
+
+.menu-filtro {
+    max-width: 300px
+}
+
+/*-------------TELA DE DETALHES-------------*/
+
+.produto-detalhes {
+    display: flex;
+    width: 100%;
+    margin: auto
+}
+
+.img-detalhes img {
+    width: 450px;
+    margin-top: 70px;
+    margin-bottom: 100px;
+    box-shadow: 0px 0px 100px #0000004a;
+}
+
+.detalhes {
+    float: right;
+    margin-top: 70px;
+    margin-left: 150px;
+    margin-bottom: 100px;
+    width: inherit;
+}
+
+    .detalhes h2 {
+        font-size: 40px;
+        color: black;
+        text-shadow: unset;
+    }
+
+    .detalhes label {
+        font-size: 25px;
+    }
+
+

@@ -29,7 +29,7 @@ namespace LojaVirtual.DAO
 
         public Produto BuscaPorId(int id)
         {
-            using (var contexto = new LojaVirtualContext())
+            using (var contexto = new LojaVirtualContext()) 
             {
                 return contexto.Produtos.Find(id);
             }

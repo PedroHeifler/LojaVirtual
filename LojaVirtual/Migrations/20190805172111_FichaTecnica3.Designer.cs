@@ -4,14 +4,16 @@ using LojaVirtual.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LojaVirtual.Migrations
 {
     [DbContext(typeof(LojaVirtualContext))]
-    partial class LojaVirtualContextModelSnapshot : ModelSnapshot
+    [Migration("20190805172111_FichaTecnica3")]
+    partial class FichaTecnica3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,17 +78,13 @@ namespace LojaVirtual.Migrations
 
                     b.Property<string>("Conteudo");
 
-                    b.Property<string>("Ficha");
-
                     b.Property<int>("Ordem");
 
-                    b.Property<int?>("ProdutosIdProduto");
+                    b.Property<int>("ProdutoId");
 
                     b.HasKey("IdFichaTecnica");
 
-                    b.HasIndex("ProdutosIdProduto");
-
-                    b.ToTable("FichaTecnicas");
+                    b.ToTable("FichaTecnica");
                 });
 
             modelBuilder.Entity("LojaVirtual.Models.Login", b =>
@@ -101,8 +99,7 @@ namespace LojaVirtual.Migrations
                     b.Property<string>("Senha")
                         .IsRequired();
 
-                    b.Property<string>("TpUsuario")
-                        .IsRequired();
+                    b.Property<string>("TpUsuario");
 
                     b.HasKey("IdLogin");
 
@@ -116,6 +113,8 @@ namespace LojaVirtual.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("DepartamentoIdDepartamento");
+
+                    b.Property<int?>("FichaTecnicasIdFichaTecnica");
 
                     b.Property<string>("Imagem")
                         .IsRequired();
@@ -133,6 +132,8 @@ namespace LojaVirtual.Migrations
                     b.HasKey("IdProduto");
 
                     b.HasIndex("DepartamentoIdDepartamento");
+
+                    b.HasIndex("FichaTecnicasIdFichaTecnica");
 
                     b.ToTable("Produtos");
                 });
@@ -170,18 +171,15 @@ namespace LojaVirtual.Migrations
                         .HasForeignKey("UsuarioIdUsuario");
                 });
 
-            modelBuilder.Entity("LojaVirtual.Models.FichaTecnica", b =>
-                {
-                    b.HasOne("LojaVirtual.Models.Produto", "Produtos")
-                        .WithMany("FichaTecnicas")
-                        .HasForeignKey("ProdutosIdProduto");
-                });
-
             modelBuilder.Entity("LojaVirtual.Models.Produto", b =>
                 {
                     b.HasOne("LojaVirtual.Models.Departamento", "Departamento")
                         .WithMany("Produtos")
                         .HasForeignKey("DepartamentoIdDepartamento");
+
+                    b.HasOne("LojaVirtual.Models.FichaTecnica", "FichaTecnicas")
+                        .WithMany("Produtos")
+                        .HasForeignKey("FichaTecnicasIdFichaTecnica");
                 });
 
             modelBuilder.Entity("LojaVirtual.Models.Usuario", b =>

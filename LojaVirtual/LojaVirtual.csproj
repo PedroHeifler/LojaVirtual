@@ -203,6 +203,7 @@
     <Compile Include="Controllers\Admin\AdminContaController.cs" />
     <Compile Include="Controllers\Admin\AdminDepartamentoController.cs" />
     <Compile Include="Controllers\Admin\AdminEnderecoController.cs" />
+    <Compile Include="Controllers\Admin\AdminFichaTecnicaController.cs" />
     <Compile Include="Controllers\Admin\AdminProdutoController.cs" />
     <Compile Include="Controllers\Admin\AdminUsuarioController.cs" />
     <Compile Include="Controllers\cUsuario\CadastroController.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Controllers\cUsuario\ProdutosController.cs" />
     <Compile Include="DAO\DepartamentoDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
+    <Compile Include="DAO\FichaTecnicaDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
@@ -249,8 +251,33 @@
     <Compile Include="Migrations\20190801211738_produtoValorTp.designer.cs">
       <DependentUpon>20190801211738_produtoValorTp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190805170622_FichaTecnica.cs" />
+    <Compile Include="Migrations\20190805170622_FichaTecnica.designer.cs">
+      <DependentUpon>20190805170622_FichaTecnica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190805171240_FichaTecnica2.cs" />
+    <Compile Include="Migrations\20190805171240_FichaTecnica2.designer.cs">
+      <DependentUpon>20190805171240_FichaTecnica2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190805172111_FichaTecnica3.cs" />
+    <Compile Include="Migrations\20190805172111_FichaTecnica3.designer.cs">
+      <DependentUpon>20190805172111_FichaTecnica3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190805173917_FichaTecnica4.cs" />
+    <Compile Include="Migrations\20190805173917_FichaTecnica4.designer.cs">
+      <DependentUpon>20190805173917_FichaTecnica4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190805174742_FichaTecnica5.cs" />
+    <Compile Include="Migrations\20190805174742_FichaTecnica5.designer.cs">
+      <DependentUpon>20190805174742_FichaTecnica5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190808191534_ficha.cs" />
+    <Compile Include="Migrations\20190808191534_ficha.designer.cs">
+      <DependentUpon>20190808191534_ficha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaVirtualContextModelSnapshot.cs" />
     <Compile Include="Models\Departamento.cs" />
+    <Compile Include="Models\FichaTecnica.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Endereco.cs" />
@@ -316,6 +343,8 @@
     <Content Include="Views\AdminDepartamento\Index.cshtml" />
     <Content Include="Views\Shared\LayoutPadrao.cshtml" />
     <Content Include="Views\Produtos\Index.cshtml" />
+    <Content Include="Views\AdminFichaTecnica\Index.cshtml" />
+    <Content Include="Views\Produtos\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
