@@ -1,14 +1,19 @@
 ﻿function PassarCarrinho(produto) {
+ 
+    if (produto) {
 
-    var produtos = sessionStorage.getItem("produto")
-    
-    if (produtos == null) {
-        sessionStorage.setItem("produto"+ [i], produto);
+        if (sessionStorage.clickcount) {
+            var contador = sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+        } else {
+            contador = sessionStorage.clickcount = 0;
+        }
+
+        sessionStorage.setItem("produto" + [contador], produto);
     }
 
-    if (produtos != null) {
-        for (var i = 0; i < produtos.length + 1; i++) {
-            sessionStorage.setItem("produto"+[i], produto);
-        }
+    for (let i = 0; i < sessionStorage.length; i++) {
+        let key = sessionStorage.key(i);
+        let value = sessionStorage.getItem(key);
+        console.log(key, value);
     }
 }
