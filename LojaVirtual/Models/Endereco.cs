@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LojaVirtual.Models
 {
@@ -20,6 +21,7 @@ namespace LojaVirtual.Models
         public string Rua { get; set; }
         [Required]
         public string Complemento { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
     }
 }

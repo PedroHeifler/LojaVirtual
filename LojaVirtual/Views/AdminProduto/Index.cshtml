@@ -60,66 +60,6 @@
 
         </div>
 
-        <!-----Produto Modal Cadastrar----->
-        <div class="modal fade produto-modal " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Cadastrar Produto</h3>
-                    </div>
-
-                    <!-----Form Usuario----->
-                    <form method="post" class="p-3">
-                        <input name="produto.IdProduto" style="visibility: hidden; height: 0px" />
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="SKU">SKU</label>
-                                <input name="produto.SKU" type="text" class="form-control" placeholder="Exemplo: 001" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Nome">Nome do Produto</label>
-                                <input name="produto.Nome" type="text" class="form-control"
-                                       placeholder="Exemplo: Calca Rosa" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="Imagem">Imagem</label>
-                                <input name="produto.Imagem" type="text" class="form-control" placeholder="Exemplo: Calca-1.jpg">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Valor">Valor</label>
-                                <input name="produto.Valor" type="text" class="form-control" placeholder="4.00">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="TpProduto">Tipo do Produto</label>
-                                <select name="produto.TpProduto" class="form-control">
-                                    <option value="Venda">Venda</option>
-                                    <option value="Locacao">Locacao</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Departamento">Genero</label>
-                                <select name="produto.Departamento.IdDepartamento" class="form-control">
-                                    @foreach (var departamento in ViewBag.Departamento)
-                                    {
-                                        <option value="@departamento.IdDepartamento">@departamento.Genero</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer mt-2">
-                            <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
-                            <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
-                            <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button formaction="/AdminProduto/Salva" type="submit" class="btn btn-success">Salvar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-----Produto Modal Editar----->
         <div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -232,6 +172,69 @@
                 </div>
             </div>
         </div>
+
+
+        <!-----Produto Modal Cadastrar----->
+        <div class="modal fade produto-modal " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Cadastrar Produto</h3>
+                    </div>
+
+                    <!-----Form Usuario----->
+                    <form method="post" class="p-3">
+                        <input name="produto.IdProduto" style="visibility: hidden; height: 0px" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="SKU">SKU</label>
+                                <input name="produto.SKU" type="text" class="form-control" placeholder="Exemplo: 001" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Nome">Nome do Produto</label>
+                                <input name="produto.Nome" type="text" class="form-control"
+                                       placeholder="Exemplo: Calca Rosa" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Imagem">Imagem</label>
+                                <input name="produto.Imagem" type="text" class="form-control" placeholder="Exemplo: Calca-1.jpg">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Valor">Valor</label>
+                                <input name="produto.Valor" type="text" class="form-control" placeholder="4.00">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="TpProduto">Tipo do Produto</label>
+                                <select name="produto.TpProduto" class="form-control">
+                                    <option value="Venda">Venda</option>
+                                    <option value="Locacao">Locacao</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Departamento">Genero</label>
+                                <select name="produto.Departamento.IdDepartamento" class="form-control">
+                                    @foreach (var departamento in ViewBag.Departamento)
+                                    {
+                                        <option value="@departamento.IdDepartamento">@departamento.Genero</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer mt-2">
+                            <p class="msg-erro text-danger mt-3">Não foi possivel excluir, tente novamente!</p>
+                            <p class="msg-done text-success mt-3">Salvo com sucesso!</p>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button formaction="/AdminProduto/Salva" type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 </main>
 

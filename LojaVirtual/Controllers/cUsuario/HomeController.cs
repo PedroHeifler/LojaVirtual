@@ -22,7 +22,10 @@ namespace LojaVirtual.Controllers.cUsuario
             ProdutoDAO pdao = new ProdutoDAO();
             IList<Produto> produtos = pdao.Lista();
             ViewBag.Produtos = produtos;
+
+            ViewBag.SessionLogin = Session["usuarioLogado"];
             return View();
+
         }
     }
 }

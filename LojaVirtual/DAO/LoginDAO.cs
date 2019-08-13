@@ -13,7 +13,6 @@ namespace LojaVirtual.DAO
             {
                 contexto.Logins.Add(login);
                 contexto.SaveChanges();
-
             }
         }
 
@@ -21,7 +20,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                return contexto.Logins.ToList();
+                return contexto.Logins.Include("Usuario").ToList();
             }
         }
 

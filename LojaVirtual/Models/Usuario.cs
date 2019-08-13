@@ -17,7 +17,7 @@ namespace LojaVirtual.Models
         [Required]
         public string Telefone { get; set; }
 
-        public virtual Login Login { get; set; }
+        public virtual ICollection<Login> Login { get; set; }
         public virtual ICollection<Endereco> Endereco { get; set; }
     }
 }

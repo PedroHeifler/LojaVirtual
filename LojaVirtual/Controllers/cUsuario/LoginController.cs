@@ -16,11 +16,11 @@ namespace LojaVirtual.Controllers.cUsuario
         {
             LoginDAO dao = new LoginDAO();
             Login login = dao.Busca(email, senha);
+            
             if (login != null)
             {
-                Session["usuarioLogado"] = login;
+                Session["usuarioLogado"] = login.TpUsuario;
                 return RedirectToAction("Index", "Home");
-                
             }
             else
             { 

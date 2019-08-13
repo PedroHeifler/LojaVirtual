@@ -104,7 +104,11 @@ namespace LojaVirtual.Migrations
                     b.Property<string>("TpUsuario")
                         .IsRequired();
 
+                    b.Property<int?>("UsuarioIdUsuario");
+
                     b.HasKey("IdLogin");
+
+                    b.HasIndex("UsuarioIdUsuario");
 
                     b.ToTable("Logins");
                 });
@@ -151,8 +155,6 @@ namespace LojaVirtual.Migrations
 
                     b.Property<DateTime>("DataNascimento");
 
-                    b.Property<int?>("LoginIdLogin");
-
                     b.Property<string>("NomeCompleto")
                         .IsRequired();
 
@@ -161,14 +163,12 @@ namespace LojaVirtual.Migrations
 
                     b.HasKey("IdUsuario");
 
-                    b.HasIndex("LoginIdLogin");
-
                     b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("LojaVirtual.Models.Endereco", b =>
                 {
-                    b.HasOne("LojaVirtual.Models.Usuario")
+                    b.HasOne("LojaVirtual.Models.Usuario", "Usuario")
                         .WithMany("Endereco")
                         .HasForeignKey("UsuarioIdUsuario");
                 });
@@ -180,18 +180,18 @@ namespace LojaVirtual.Migrations
                         .HasForeignKey("ProdutosIdProduto");
                 });
 
+            modelBuilder.Entity("LojaVirtual.Models.Login", b =>
+                {
+                    b.HasOne("LojaVirtual.Models.Usuario", "Usuario")
+                        .WithMany("Login")
+                        .HasForeignKey("UsuarioIdUsuario");
+                });
+
             modelBuilder.Entity("LojaVirtual.Models.Produto", b =>
                 {
                     b.HasOne("LojaVirtual.Models.Departamento", "Departamento")
                         .WithMany("Produtos")
                         .HasForeignKey("DepartamentoIdDepartamento");
-                });
-
-            modelBuilder.Entity("LojaVirtual.Models.Usuario", b =>
-                {
-                    b.HasOne("LojaVirtual.Models.Login", "Login")
-                        .WithMany()
-                        .HasForeignKey("LoginIdLogin");
                 });
 #pragma warning restore 612, 618
         }
