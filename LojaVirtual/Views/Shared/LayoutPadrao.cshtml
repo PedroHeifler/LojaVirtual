@@ -78,7 +78,7 @@
 
     @RenderBody()
 
-    <footer class="position-relative">
+    <footer class="position-relative" style="float: none">
         <div class="container">
             <div class="row text-center text-dark">
                 <div class="col-md-3">
@@ -123,67 +123,12 @@
         <img class="position-absolute nuvem-4" src="/img/Nuvem-4.png">
     </footer>
 
-
     <!--Script-->
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="~/Scripts/PassaParaCarrinho.js"></script>
-
-    <script>
-
-        for (let i = 0; i < sessionStorage.length; i++) {
-            var produto = (sessionStorage.getItem("produto" + [i]).split(","))
-
-            var carrinho = $(".carrinho");
-            var tr = document.createElement("tr");
-            carrinho.append(tr)
-
-            /*---Imagem---*/
-            var img = document.createElement("td");
-            var imagem = document.createElement("img");
-            imagem.setAttribute("src", "/img/" + produto[0])
-            imagem.style.width = "100px";
-            img.append(imagem)
-            tr.append(img);
-
-
-            /*---Nome---*/
-            var nome = document.createElement("td");
-            nome.textContent = produto[1]
-            nome.classList.add("align-middle")
-            tr.append(nome);
-
-            /*---Valor---*/
-            var valor = document.createElement("td");
-            valor.textContent = produto[2]
-            valor.classList.add("align-middle")
-            tr.append(valor)
-
-            /*---Botao---*/
-            var acao = document.createElement("td")
-            acao.classList.add("align-middle")
-            var botaoExcluir = document.createElement("button");
-            var botao = document.createElement("td");
-            botaoExcluir.classList.add("btn");
-            botaoExcluir.classList.add("btn-danger");
-            botaoExcluir.setAttribute("onclick", 'ExcluiDoCarrinho(produto)')
-            acao.append(botaoExcluir)
-            tr.append(acao)
-
-            /*---icone---*/
-            var icone = document.createElement('i')
-            icone.classList.add("fas")
-            icone.classList.add("fa-trash-alt")
-            botaoExcluir.append(icone)
-        }
-
-        function ExcluiDoCarrinho(key) {
-            console.log(key)
-
-        }
-    </script>
 
 </body>
 
