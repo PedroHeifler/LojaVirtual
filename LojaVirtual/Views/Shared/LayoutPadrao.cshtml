@@ -28,10 +28,45 @@
                     <li><a href="#" class="nav-link">Aluguel</a></li>
                 </ul>
 
-                <ul class="navbar-nav p-2 bd-highlight">
-                    <li><a href="/Login" class="nav-link">Logar</a></li>
-                    <li><a href="/Cadastro" class="nav-link">Cadastrar</a></li>
-                </ul>
+                @if (@ViewBag.SessionLogin != null)
+                {
+                    if (@ViewBag.SessionLogin == "Admin")
+                    {
+                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin!</label>
+                        <div class="dropdown dropleft">
+                            <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/adminProduto">Administrar</a>
+                                <a class="dropdown-item" href="/Produtos/Carrinho">Meus Pedidos</a>
+                                <a class="dropdown-item" href="#">Configuracao</a>
+                                <hr />
+                                <a class="dropdown-item" onclick="Session.Remove(SessionLogin)">Sair</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin!</label>
+
+                        <div class="dropdown dropleft">
+                            <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/Produtos/Carrinho">Meus Pedidos</a>
+                                <a class="dropdown-item" href="#">Configuracao</a>
+                                <hr />
+                                <a class="dropdown-item" href="#">Sair</a>
+                            </div>
+                        </div>
+                    }
+
+                }
+                else
+                {
+                    <ul class="navbar-nav p-2 bd-highlight">
+                        <li><a href="/Login" class="nav-link">Login</a></li>
+                        <li><a href="/Cadastro" class="nav-link">Cadastrar</a></li>
+                    </ul>
+                }
             </nav>
         </div>
 
@@ -72,7 +107,7 @@
                         </button>
                     </form>
                     <div class="cart-box bd-highlight m-2 mr-4">
-                        <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
+                        <a href="/Produtos/Carrinho" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
                     </div>
                 </nav>
             </nav>
@@ -132,6 +167,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="~/Scripts/PassaParaCarrinho.js"></script>
+    <script src="~/Scripts/Editar.js"></script>
 
 </body>
 

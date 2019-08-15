@@ -13,6 +13,10 @@ namespace LojaVirtual.Controllers
             EnderecoDAO dao = new EnderecoDAO();
             IList<Endereco> enderecos = dao.Lista();
             ViewBag.Enderecos = enderecos;
+
+            UsuarioDAO udao = new UsuarioDAO();
+            IList<Usuario> usuarios = udao.Lista();
+            ViewBag.Usuarios = usuarios;
             return View();
         }
 

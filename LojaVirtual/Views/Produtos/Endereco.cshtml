@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Endereco";
+    Layout = "~/Views/Shared/LayoutPadrao.cshtml";
+}
+
+<main class="container">
+    <h1 class="p-3">Endereco</h1>
+
+    @foreach (var endereco in ViewBag.Enderecos)
+    {
+        <div>
+            <label>Cep: </label><label>@endereco.CEP</label>
+            <label>Rua: </label><label>@endereco.CEP</label>
+            <label>Numero: </label><label>@endereco.CEP</label>
+            <label>Cep: </label><label>@endereco.CEP</label>
+        </div>
+    }
+        
+
+</main>

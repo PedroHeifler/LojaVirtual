@@ -36,6 +36,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
+                login.Usuario = contexto.Usuarios.Find(login.Usuario.IdUsuario);
                 contexto.Update(login);
                 contexto.SaveChanges();
             }

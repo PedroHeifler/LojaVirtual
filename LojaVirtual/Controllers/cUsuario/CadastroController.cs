@@ -1,6 +1,7 @@
 ﻿using LojaVirtual.DAO;
 using LojaVirtual.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Web.Mvc;
 
 namespace LojaVirtual.Controllers.cUsuario
@@ -21,6 +22,12 @@ namespace LojaVirtual.Controllers.cUsuario
             EnderecoDAO enderecoDAO = new EnderecoDAO();
             LoginDAO loginDAO = new LoginDAO();
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+            login.TpUsuario = "Usuario";
+
+            usuario.Login.Add(login);
+            usuario.Endereco.Add(endereco);
+
             enderecoDAO.Atualiza(endereco);
             loginDAO.Atualiza(login);
             usuarioDAO.Atualiza(usuario);

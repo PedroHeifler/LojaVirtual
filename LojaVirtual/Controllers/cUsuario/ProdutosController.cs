@@ -55,6 +55,17 @@ namespace LojaVirtual.Controllers.cUsuario
             return View();
         }
 
+        public ActionResult Endereco()
+        {
+            /*---Departamento---*/
+            DepartamentoDAO dao = new DepartamentoDAO();
+            IList<Departamento> departamentos = dao.Lista();
+            ViewBag.Departamentos = departamentos;
 
+            EnderecoDAO edao = new EnderecoDAO();
+            IList<Endereco> enderecos = edao.Lista();
+            ViewBag.Enderecos = enderecos;
+            return View();
+        }
     }
 }

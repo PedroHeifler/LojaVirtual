@@ -1981,6 +1981,7 @@
     <Content Include="Views\AdminFichaTecnica\Index.cshtml" />
     <Content Include="Views\Produtos\Detalhes.cshtml" />
     <Content Include="Views\Produtos\Carrinho.cshtml" />
+    <Content Include="Views\Produtos\Endereco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

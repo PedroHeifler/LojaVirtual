@@ -13,6 +13,10 @@ namespace LojaVirtual.Controllers
             LoginDAO dao = new LoginDAO();
             IList<Login> logins = dao.Lista();
             ViewBag.Login = logins;
+
+            UsuarioDAO udao = new UsuarioDAO();
+            IList<Usuario> usuarios = udao.Lista();
+            ViewBag.Usuarios = usuarios;
             return View();
         }
 

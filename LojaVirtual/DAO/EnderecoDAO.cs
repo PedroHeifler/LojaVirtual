@@ -13,7 +13,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                return contexto.Enderecos.ToList();
+                return contexto.Enderecos.Include("Usuario").ToList();
             }
         }
 
@@ -29,6 +29,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
+                endereco.Usuario = contexto.Usuarios.Find(endereco.Usuario.IdUsuario);
                 contexto.Update(endereco);
                 contexto.SaveChanges();
             }
