@@ -19,7 +19,10 @@ namespace LojaVirtual.Controllers.cUsuario
             ProdutoDAO pdao = new ProdutoDAO();
             IList<Produto> produtos = pdao.Lista();
             ViewBag.Produtos = produtos;
+
+            ViewBag.SessionLogin = Session["usuarioLogado"];
             return View(produtos);
+
         }
 
         public ActionResult Filtrar(int idDepartemento)
@@ -43,6 +46,8 @@ namespace LojaVirtual.Controllers.cUsuario
 
             ProdutoDAO pdao = new ProdutoDAO();
             Produto produto = pdao.BuscaPorId(id);
+
+            ViewBag.SessionLogin = Session["usuarioLogado"];
             return View(produto);
         }
 
@@ -52,6 +57,8 @@ namespace LojaVirtual.Controllers.cUsuario
             DepartamentoDAO dao = new DepartamentoDAO();
             IList<Departamento> departamentos = dao.Lista();
             ViewBag.Departamentos = departamentos;
+
+            ViewBag.SessionLogin = Session["usuarioLogado"];
             return View();
         }
 
@@ -62,9 +69,29 @@ namespace LojaVirtual.Controllers.cUsuario
             IList<Departamento> departamentos = dao.Lista();
             ViewBag.Departamentos = departamentos;
 
+            LoginDAO ldao = new LoginDAO();
+            IList<Login> logins = ldao.Lista();
+            ViewBag.Logins = logins;
+
             EnderecoDAO edao = new EnderecoDAO();
             IList<Endereco> enderecos = edao.Lista();
-            ViewBag.Enderecos = enderecos;
+
+            IList<Endereco> enderecosUsuarios = new List<Endereco>();
+
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+
+            for (int i = 0; i < enderecos.Count; i++)
+            {
+                if (ViewBag.SessionLogin == null)
+                {
+                    return View();
+                }
+                else if (enderecos[i].Usuario.IdUsuario == ViewBag.SessionLogin.Usuario.IdUsuario)
+                {
+                    enderecosUsuarios.Add(enderecos[i]);
+                }
+            }
+            ViewBag.Enderecos = enderecosUsuarios;
             return View();
         }
     }

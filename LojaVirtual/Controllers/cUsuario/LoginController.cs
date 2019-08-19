@@ -19,7 +19,7 @@ namespace LojaVirtual.Controllers.cUsuario
             
             if (login != null)
             {
-                Session["usuarioLogado"] = login.TpUsuario;
+                Session["usuarioLogado"] = login;
                 return RedirectToAction("Index", "Home");
             }
             else

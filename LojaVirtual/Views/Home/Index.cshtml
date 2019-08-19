@@ -32,11 +32,10 @@
                     <li><a href="#" class="nav-link">Aluguel</a></li>
                 </ul>
 
-                @if (@ViewBag.SessionLogin != null)
+                @if (ViewBag.SessionLogin != null)
                 {
-                    if (@ViewBag.SessionLogin == "Admin")
+                    if (ViewBag.SessionLogin.TpUsuario == "Admin")
                     {
-                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin!</label>
                         <div class="dropdown dropleft">
                             <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -47,10 +46,11 @@
                                 <a class="dropdown-item" onclick="Session.Remove(SessionLogin)">Sair</a>
                             </div>
                         </div>
+                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin.Usuario.NomeCompleto!</label>
                     }
                     else
                     {
-                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin!</label>
+                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin.Usuario.NomeCompleto!</label>
 
                         <div class="dropdown dropleft">
                             <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>

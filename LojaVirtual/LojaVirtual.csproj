@@ -1894,6 +1894,7 @@
     <Content Include="img\vestido-3.jpg" />
     <Content Include="img\vestido-4.jpg" />
     <Content Include="Scripts\Editar.js" />
+    <Content Include="Scripts\EnderecoSelecionado.js" />
     <Content Include="Scripts\Excluir.js" />
     <Content Include="Scripts\Filtro.js" />
     <Content Include="fontawesome\less\brands.less" />

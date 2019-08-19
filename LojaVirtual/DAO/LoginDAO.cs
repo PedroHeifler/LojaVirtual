@@ -46,7 +46,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                return contexto.Logins.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+                return contexto.Logins.Include("Usuario").FirstOrDefault(u => u.Email == email && u.Senha == senha);
             }
         }
     }

@@ -260,10 +260,11 @@ footer {
     color: white;
 }
 
-footer > div > div {
-    z-index: 2;
-    position: relative
-} 
+    footer > div > div {
+        z-index: 2;
+        position: relative
+    }
+
     footer .redes-sociais li {
         padding: 5px 11px;
         font-size: 25px;
@@ -320,7 +321,7 @@ footer > div > div {
 
 /*-------------TELA DE CADASTRO-------------*/
 
-.navbar-cadastro li:hover > a{
+.navbar-cadastro li:hover > a {
     color: #33aeff !important
 }
 
@@ -368,3 +369,28 @@ footer > div > div {
     }
 
 
+/*-------------TELA DE ENDERECO-------------*/
+
+.margin-checkbox {
+    margin-top: 78px !important;
+    margin-bottom: 78px !important;
+}
+
+.animacao-endereco {
+    transition: 400ms;
+    font-weight: 600
+}
+
+    .animacao-endereco:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px;
+    }
+
+    .animacao-endereco:active {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+.ativado {
+    border: 2px solid green !important;
+}
