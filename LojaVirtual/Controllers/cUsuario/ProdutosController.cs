@@ -1,5 +1,6 @@
 ﻿using LojaVirtual.DAO;
 using LojaVirtual.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -59,7 +60,15 @@ namespace LojaVirtual.Controllers.cUsuario
             ViewBag.Departamentos = departamentos;
 
             ViewBag.SessionLogin = Session["usuarioLogado"];
-            return View();
+
+            if (ViewBag.SessionLogin != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         public ActionResult Endereco()
@@ -90,6 +99,7 @@ namespace LojaVirtual.Controllers.cUsuario
                 {
                     enderecosUsuarios.Add(enderecos[i]);
                 }
+
             }
             ViewBag.Enderecos = enderecosUsuarios;
             return View();

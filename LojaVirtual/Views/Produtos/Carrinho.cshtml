@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/LayoutPadrao.cshtml";
 }
 
-<main class="container mt-5 mb-5">
+<main class="container mt-5 mb-5 carrinho">
     <h2 style="color: black; font-size: 40px; text-shadow: none">Carrinho</h2>
 
     <table class="table border">
@@ -21,6 +21,7 @@
 
     <div class="">
         <a href="/Produtos/Endereco"><button class="btn btn-success d-block float-right">Continuar</button></a>
+        <a href="/Home"><button class="btn btn-info d-block float-right mr-4">Compras Mais! =)</button></a>
         <label class="total d-block text-success" style="font-size: 30px; font-weight: 600"></label>
     </div>
 </main>
@@ -31,81 +32,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="~/Scripts/PassaParaCarrinho.js"></script>
-
-<script>
-    let total = 0.0;
-    for (let i = 1; i < sessionStorage.length; i++) {
-        var keys = sessionStorage.key(i);
-        var produto = sessionStorage.getItem(keys);
-        var produtoSplit = produto.split(",")
-
-        var carrinho = $(".carrinho");
-        var tr = document.createElement("tr");
-        carrinho.append(tr)
-
-        /*---Imagem---*/
-        var img = document.createElement("td");
-        var imagem = document.createElement("img");
-        imagem.setAttribute("src", "/img/" + produtoSplit[0])
-        imagem.style.width = "100px";
-        img.append(imagem)
-        tr.append(img);
-
-
-        /*---Nome---*/
-        var nome = document.createElement("td");
-        nome.textContent = produtoSplit[1]
-        nome.classList.add("align-middle")
-        nome.classList.add("nome-carrinho")
-        tr.append(nome);
-
-        /*---Valor---*/
-        var valor = document.createElement("td");
-        valor.textContent = produtoSplit[2]
-        valor.classList.add("align-middle")
-        tr.append(valor)
-
-        /*---Botao---*/
-        var acao = document.createElement("td")
-        acao.classList.add("align-middle")
-        var botaoExcluir = document.createElement("button");
-        var botao = document.createElement("td");
-        botaoExcluir.classList.add("btn");
-        botaoExcluir.classList.add("btn-danger");
-        botaoExcluir.setAttribute("onclick", 'ExcluiDoCarrinho(this.parentElement.parentElement)')
-        acao.append(botaoExcluir)
-        tr.append(acao)
-
-        /*---icone---*/
-        var icone = document.createElement('i')
-        icone.classList.add("fas")
-        icone.classList.add("fa-trash-alt")
-        botaoExcluir.append(icone)
-
-        var split = produto.split(",")
-
-        total = total + parseFloat(split[2])
-
-        $(".total").text("Total: R$" + total + ",00")
-    }
-
-    function ExcluiDoCarrinho(key) {
-        var nome = $(key).children(".nome-carrinho").text()
-
-        for (let i = 1; i < sessionStorage.length; i++) {
-            var keys = sessionStorage.key(i);
-            var produto = sessionStorage.getItem(keys)
-            var produtoSplit = produto.split(",")
-
-
-            if (nome == produtoSplit[1]) {
-                var id = keys
-                $(key).fadeOut("slow", function () {
-                    sessionStorage.removeItem(id)
-                });
-            }
-        }
-    }
-</script>
+<script src="~/Scripts/TabelaCarrinho.js"></script>
 
 

@@ -338,9 +338,7 @@ footer {
 /*-------------TELA DE DETALHES-------------*/
 
 .produto-detalhes {
-    display: flex;
-    width: 100%;
-    margin: auto
+   
 }
 
 .img-detalhes img {
@@ -353,7 +351,6 @@ footer {
 .detalhes {
     float: right;
     margin-top: 70px;
-    margin-left: 150px;
     margin-bottom: 100px;
     width: inherit;
 }
@@ -393,4 +390,16 @@ footer {
 
 .ativado {
     border: 2px solid green !important;
+}
+
+
+/*-------------TELA DO CARRINHO-------------*/
+
+.carrinho {
+    min-height: 400px;
+}
+
+.erro {
+    display: none;
+    font-weight: 600
 }

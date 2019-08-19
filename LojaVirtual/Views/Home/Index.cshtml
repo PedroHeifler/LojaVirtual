@@ -80,7 +80,7 @@
             <nav class="navbar navbar-expand-xl align-items-stretch">
 
                 <!----Carousel---->
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -115,6 +115,7 @@
                             <i class="fas fa-bars"></i>
                         </button>
                         <div class="dropdown-menu ml-3 esconde-dropdown" aria-labelledby="dropdownMenuButton">
+
                             @foreach (var departamento in ViewBag.Departamentos)
                             {
                                 <a href="#" class="nav-link border-bottom border-top">@departamento.Genero</a>
@@ -125,6 +126,7 @@
 
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ml-5">
+
                             @foreach (var departamento in ViewBag.Departamentos)
                             {
                                 <li><a href="#" class="nav-link">@departamento.Genero</a></li>

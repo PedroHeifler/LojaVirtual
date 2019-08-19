@@ -1959,6 +1959,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\Limpar.js" />
     <Content Include="Scripts\PassaParaCarrinho.js" />
+    <Content Include="Scripts\TabelaCarrinho.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
