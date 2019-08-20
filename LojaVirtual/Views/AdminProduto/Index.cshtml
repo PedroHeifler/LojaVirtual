@@ -18,7 +18,7 @@
                 <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
             </div>
 
-            <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".produto-modal">Adicionar</button>
+            <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".produto-modal" onclick="limpaForm()">Adicionar</button>
 
             <!-----Tabela de Produtos----->
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -32,6 +32,7 @@
                             <th scope="col">Valor (R$)</th>
                             <th scope="col">Tipo do Produto</th>
                             <th scope="col">Categoria</th>
+                            <th scope="col">Descricao</th>
                             <th scope="col">Excluir/Editar</th>
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                                 <td>@produto.Valor</td>
                                 <td>@produto.TpProduto</td>
                                 <td>@produto.Departamento.Genero</td>
+                                <td class="text-truncate" style="max-width: 200px;">@produto.Descricao</td>
                                 <td class="d-flex justify-content-center">
                                     <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
                                     <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
@@ -56,7 +58,7 @@
                 </table>
             </div>
 
-                <img style="width: 300px; padding: 30px" id="img-representativa"/>
+            <img style="width: 300px; padding: 30px" id="img-representativa" />
 
         </div>
 
@@ -85,22 +87,21 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="SKU">SKU</label>
-                                    <input name="produto.SKU" type="text" class="form-control" placeholder="Exemplo: 001" required>
+                                    <input name="produto.SKU" type="text" class="form-control"required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Nome">Nome do Produto</label>
-                                    <input name="produto.Nome" type="text" class="form-control"
-                                           placeholder="Exemplo: Calca Rosa" required>
+                                    <input name="produto.Nome" type="text" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="Imagem">Imagem</label>
-                                    <input name="produto.Imagem" type="text" class="form-control" placeholder="Exemplo: Calca-1.jpg">
+                                    <input name="produto.Imagem" type="text" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Valor">Valor</label>
-                                    <input name="produto.Valor" type="text" class="form-control" placeholder="4.00">
+                                    <input name="produto.Valor" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -113,12 +114,18 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Departamento">Genero</label>
-                                    <select name="produto.Departamento.IdDepartamento" class="form-control">
+                                    <select name="produto.Departamento.IdDepartamento" type="text" class="form-control" required>
                                         @foreach (var departamento in ViewBag.Departamento)
                                         {
                                             <option value="@departamento.IdDepartamento">@departamento.Genero</option>
                                         }
                                     </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="Descricao">Descricao</label>
+                                    <textarea name="produto.Descricao" type="text" class="form-control" style="min-height: 200px"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer mt-2">
@@ -133,11 +140,11 @@
 
                     <!-----Tabela Ficha----->
                     <div class="tab-pane fade border-top" id="FichaTecnica" role="tabpanel" aria-labelledby="profile-tab">
-                       
+
                         <a>
                             <button type="button" class="btn btn-primary m-3">Editar</button>
                         </a>
-                        
+
 
                         <br />
                         <div class="d-flex ficha-tecnica">
@@ -188,22 +195,21 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="SKU">SKU</label>
-                                <input name="produto.SKU" type="text" class="form-control" placeholder="Exemplo: 001" required>
+                                <input name="produto.SKU" type="text" class="form-control" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="Nome">Nome do Produto</label>
-                                <input name="produto.Nome" type="text" class="form-control"
-                                       placeholder="Exemplo: Calca Rosa" required>
+                                <input name="produto.Nome" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="Imagem">Imagem</label>
-                                <input name="produto.Imagem" type="text" class="form-control" placeholder="Exemplo: Calca-1.jpg">
+                                <input name="produto.Imagem" type="text" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="Valor">Valor</label>
-                                <input name="produto.Valor" type="text" class="form-control" placeholder="4.00">
+                                <input name="produto.Valor" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="form-row">
@@ -222,6 +228,12 @@
                                         <option value="@departamento.IdDepartamento">@departamento.Genero</option>
                                     }
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="Descricao">Descricao</label>
+                                <textarea name="produto.Descricao" type="text" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer mt-2">
@@ -248,13 +260,18 @@
 <script src="~/Scripts/Filtro.js"></script>
 <script src="~/Scripts/Img-Representativa.js"></script>
 
-    <script>
-        $("#FichaTecnica").slideToggle()
+<script>
+    $("#FichaTecnica").slideToggle()
     $('#myTab a').on('click', function (e) {
-            e.preventDefault()
+        e.preventDefault()
         $("#Produto").slideToggle()
         $("#FichaTecnica").slideToggle()
     })
+
+    function limpaForm() {
+        var form = $("form input, select, textarea").val("");
+    }
+
 </script>
 
 

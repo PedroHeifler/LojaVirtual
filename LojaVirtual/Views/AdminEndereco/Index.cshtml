@@ -14,7 +14,7 @@
 
         <img class="spinner m-3" src="~/img/Spinner.gif" />
 
-        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
+        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="limpaForm()">Adicionar</button>
 
         <!-----Tabela de Produtos----->
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -130,6 +130,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="~/Scripts/Editar.js"></script>
 <script src="~/Scripts/Filtro.js"></script>
+
+<script>
+    function limpaForm() {
+        var form = $("form input, select, textarea").val("");
+    }
+</script>
 
 
 
