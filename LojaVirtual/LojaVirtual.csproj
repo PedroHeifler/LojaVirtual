@@ -1875,15 +1875,18 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\Banner-1.jpg" />
+    <Content Include="img\boleto.png" />
     <Content Include="img\Carousel-1.jpg" />
     <Content Include="img\Carousel-2.jpg" />
     <Content Include="img\Carousel-3.jpg" />
     <Content Include="img\destaque-1.jpg" />
     <Content Include="img\destaque-2.jpg" />
+    <Content Include="img\Mastercard.png" />
     <Content Include="img\Nuvem-1.png" />
     <Content Include="img\Nuvem-2.png" />
     <Content Include="img\Nuvem-3.png" />
     <Content Include="img\Nuvem-4.png" />
+    <Content Include="img\paypal.png" />
     <Content Include="img\Spinner.gif" />
     <Content Include="img\terno-1.jpg" />
     <Content Include="img\terno-2.jpg" />
@@ -1893,6 +1896,7 @@
     <Content Include="img\vestido-2.jpg" />
     <Content Include="img\vestido-3.jpg" />
     <Content Include="img\vestido-4.jpg" />
+    <Content Include="img\visa.png" />
     <Content Include="Scripts\Editar.js" />
     <Content Include="Scripts\EnderecoSelecionado.js" />
     <Content Include="Scripts\Excluir.js" />
@@ -1984,6 +1988,7 @@
     <Content Include="Views\Produtos\Detalhes.cshtml" />
     <Content Include="Views\Produtos\Carrinho.cshtml" />
     <Content Include="Views\Produtos\Endereco.cshtml" />
+    <Content Include="Views\Produtos\Pagamento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
