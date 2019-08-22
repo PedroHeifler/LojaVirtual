@@ -169,6 +169,12 @@
     <script src="~/Scripts/PassaParaCarrinho.js"></script>
     <script src="~/Scripts/Editar.js"></script>
 
+    <script>
+        $("label a").click(function CVV(event) {
+            event.preventDefault();
+            $(".img-cvv img").fadeToggle();
+        });
+    </script>
 </body>
 
 </html>

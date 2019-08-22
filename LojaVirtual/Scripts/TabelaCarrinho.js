@@ -51,7 +51,9 @@ for (let i = 1; i < sessionStorage.length; i++) {
 
     total = total + parseFloat(split[2])
 
-    $(".total").text("Total: R$" + total + ",00")
+    $(".total").text("Total: R$" + total + ",00");
+
+    sessionStorage.setItem('Total', total);
 }
 
 function ExcluiDoCarrinho(key) {

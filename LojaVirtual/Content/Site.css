@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-
-/*----------------------TELA HOME----------------------*/
+﻿/*----------------------TELA HOME----------------------*/
 
 @media only screen and (min-width: 1200px) {
     .botao-bar {
@@ -337,9 +335,6 @@ footer {
 
 /*-------------TELA DE DETALHES-------------*/
 
-.produto-detalhes {
-   
-}
 
 .img-detalhes img {
     width: 450px;
@@ -403,3 +398,10 @@ footer {
     display: none;
     font-weight: 600
 }
+
+/*-------------TELA DO PAGAMENTO-------------*/
+
+
+
+
+
