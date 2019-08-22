@@ -4,60 +4,115 @@
     Layout = "~/Views/Shared/LayoutPadrao.cshtml";
 }
 
-<main class="container">
-    <h2>Pagamento</h2>
-
+<main class="container" style="min-height: 400px">
+    <h1 class="mt-4 mb-2">Pagamento</h1>
+    <p>Voce esta na reta final, escolha sua forma de pgamento pra concluir su compra</p>
     <!-----Icone de Pagamento----->
-    <div class="row mt-3 mb-3">
-        <div class="rounded col-md-2 m-4 animacao-pagamento" onclick="ativar(this)">
+    <div class="row mt-3 mb-3 nav nav-tabs" id="nav-tab" role="tablist">
+
+        <a class="rounded col-md-2 m-2 animacao-pagamento" onclick="ativar(this)" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
             <img src="../img/Mastercard.png" class="w-100 mt-1 mb-1" />
-        </div>
-        <div class="rounded col-md-2 m-4 animacao-pagamento" onclick="ativar(this)">
+        </a>
+        <a class="rounded col-md-2 m-2 animacao-pagamento" onclick="ativar(this)" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
             <img src="../img/visa.png" class="w-100 mt-1 mb-1" />
-        </div>
-        <div class="rounded col-md-2 m-4 animacao-pagamento" onclick="ativar(this)">
+        </a>
+        <a class="rounded col-md-2 m-2 animacao-pagamento" onclick="ativar(this)" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
             <img src="../img/paypal.png" class="w-100 mt-1 mb-1" />
-        </div>
-        <div class="rounded col-md-2 m-4 animacao-pagamento" onclick="ativar(this)">
+        </a>
+        <a class="rounded col-md-2 m-2 animacao-pagamento" onclick="ativar(this)" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
             <img src="../img/boleto.png" class="w-100 mt-1 mb-1" />
+        </a>
+    </div>
+
+
+
+
+    <div class="tab-content" id="nav-tabContent">
+        <!-----Cartao----->
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <h3>Cartao</h3>
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group col-md-10">
+                            <label class="label-control">Número do cartão</label>
+                            <input class="form-control" type="text" placeholder="Digite seu numero do cartão" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="label-control">Validade do Mês e Ano</label>
+                            <input class="form-control" type="month" required />
+                        </div>
+                        <div class="d-flex">
+                            <div class="form-group col-md-6">
+                                <label class="label-control">Codigo (CVV) <a href="#">(?)</a></label>
+                                <input class="form-control" type="text" required />
+                            </div>
+                            <div class="col-md-4 img-cvv">
+                                <img src="../img/cvv.jpg" style="width: 250px; display:none" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3>Parcelas</h3>
+                        <p>Escolha a parcela que deseja pagar</p>
+                        <label><input type="radio" name="pagamento" value="1" onclick="Total(this)" /> 1X de = <span class="total1"></span></label><br />
+                        <label><input type="radio" name="pagamento" value="2" onclick="Total(this)" /> 2X de = <span class="total2"></span></label><br />
+                        <label><input type="radio" name="pagamento" value="3" onclick="Total(this)" /> 3X de = <span class="total3"></span></label><br />
+                        <label><input type="radio" name="pagamento" value="4" onclick="Total(this)" /> 4X de = <span class="total4"></span></label><br />
+                        <label><input type="radio" name="pagamento" value="5" onclick="Total(this)" /> 5X de = <span class="total5"></span></label><br />
+                        <label><input type="radio" name="pagamento" value="6" onclick="Total(this)" /> 6X de = <span class="total6"></span></label><br />
+                        <label class="text-success text-right font-weight-bold" style="font-size: 40px">Total: <span class="ValorTotal"></span></label>
+                    </div>
+                    <hr />
+
+                    <button class="btn btn-success mt-5 mb-5" type="button" style="margin-left: 80%;" data-toggle="modal" data-target="#ExemploModalCentralizado">Finalizar Compra</button>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="border p-2">
+                        <label style="font-size: 25px">Sub-Total: R$ <span class="boleto"></span></label><br />
+                        <label style="font-size: 25px">Desconto (10%): <span class="desconto"></span></label><br />
+                        <label class="text-success text-right font-weight-bold" style="font-size: 40px">Total: R$ <span class="totalBoleto"></span></label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h3>Informacoes</h3>
+                    <p>Seu boleto sera enviado para seu E-mail.</p>
+                    <p>Para acessar seu E-mail clique <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1566503341&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3d06f2ed9e-9331-62ef-b324-64d0f4062d80&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015">aqui</a></p>
+
+                    <button class="btn btn-success mt-5 mb-5 finalizar" type="button" style="margin-left: 80%;" data-toggle="modal" data-target="#ExemploModalCentralizado">Finalizar Compra</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-----Cartao----->
-    <form>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group col-md-10">
-                    <label class="label-control">Número do cartão</label>
-                    <input class="form-control" type="text" placeholder="Digite seu numero do cartão" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="label-control">Validade do Mês e Ano</label>
-                    <input class="form-control" type="month" />
-                </div>
-                <div class="d-flex">
-                    <div class="form-group col-md-6">
-                        <label class="label-control">Codigo (CVV) <a href="#">(?)</a></label>
-                        <input class="form-control" type="month" />
-                    </div>
-                    <div class="col-md-4 img-cvv">
-                        <img src="../img/cvv.jpg" style="width: 300px; display:none" />
-                    </div>
-                </div>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
 
-            <div class="col-md-6">
-                <h3>Parcelas</h3>
-                <p>Escolha a parcela que deseja pagar</p>
-                <label><input type="radio" name="pagamento" value="1" /> 1X de = <span class="total"></span></label><br />
-                    <label><input type="radio" name="pagamento" value="2" /> 2X de = </label><br />
-                    <label><input type="radio" name="pagamento" value="3" /> 3X de = </label><br />
+
+                <div class="modal-body text-center">
+                    <h4 class="text-success">Obrigado!</h4>
+                    <p>Compra finalizada com sucesso!</p>
+                    Obrigado por comprar com a gente e volte sempre =)
+                </div>
+                <div class="modal-footer">
+                    <a href="/">
+                        <button type="button" class="btn btn-primary">Voltar para a pagina inicial</button>
+                    </a>
+                </div>
             </div>
         </div>
-    </form>
-
+    </div>
 </main>
 
-<script src="../Scripts/PagamentoSelecionado.js">
-    $(".total").text(sessionStorage.getItem("Total"));
-</script>
+<script src="../Scripts/PagamentoSelecionado.js"></script>
