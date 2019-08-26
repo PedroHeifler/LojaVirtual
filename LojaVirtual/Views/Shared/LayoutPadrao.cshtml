@@ -167,19 +167,20 @@
     <script src="~/Scripts/PassaParaCarrinho.js"></script>
     <script src="~/Scripts/Editar.js"></script>
     <script src="~/Scripts/EnderecoSelecionado.js"></script>
+    <script src="~/Scripts/TabelaCarrinho.js"></script>
 
     <script>
         $("label a").click(function CVV(event) {
             event.preventDefault();
             $(".img-cvv img").fadeToggle();
         });
-        var total = sessionStorage.getItem("Total");
+        var total1 = sessionStorage.getItem("Total");
 
         for (var i = 2; i < 7; i++) {
             var campoTotal = $(".total" + i);
 
-            campoTotal.text((total / i * 1. + i).toFixed(2));
-            $(".total" + 1).text(total)
+            campoTotal.text((total1 / i * 1. + i).toFixed(2));
+            $(".total" + 1).text(total1)
         }
 
         function Total(seletor) {
@@ -188,17 +189,30 @@
             $(".ValorTotal").text("R$ " + parseFloat(valorTotal) * parcelas)
         }
 
-        $(".boleto").text(total);
+        $(".boleto").text(total1);
 
-        var desconto = (total * 0.1)
+        var desconto = (total1 * 0.1)
         $(".desconto").text("R$ " + desconto)
 
-        $(".totalBoleto").text(total - desconto)
+        $(".totalBoleto").text(total1 - desconto)
 
+        function BaixaEstoque() {
+            for (let i = 0; i < sessionStorage.length; i++) {
+                var keys = sessionStorage.key(i);
+                var produto = sessionStorage.getItem(keys);
+                var produtoSplit = produto.split(",");
+                var id = produtoSplit[3];
 
-        function Sair() {
+                $.post("http://localhost:61651/AdminProduto/Excluir", { id: id })
+                    .fail(function () {
+                        $(".msg-erro").toggle();
+                        setTimeout(function () {
+                            $(".msg-erro").toggle();
+                        }, 2000);
+                    })
 
-
+                ExcluiDoCarrinho(keys)
+            }
         }
     </script>
 </body>

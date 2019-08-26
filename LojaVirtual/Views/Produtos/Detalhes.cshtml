@@ -17,7 +17,7 @@
             <br />
             <p>@Model.Descricao</p>
             <br />
-            <a onclick="PassarCarrinho('@Model.Imagem, @Model.Nome, @Model.Valor')" href="/Produtos/Carrinho">
+            <a onclick="PassarCarrinho('@Model.Imagem, @Model.Nome, @Model.Valor, @Model.IdProduto')" href="/Produtos/Carrinho">
                 <button type="button" class="btn btn-success btn-lg">Adicionar ao Carrinho <i class="fas fa-shopping-cart"></i></button>
             </a>
         </div>

@@ -4,7 +4,7 @@ for (let i = 0; i < sessionStorage.length; i++) {
     var keys = sessionStorage.key(i);
     var produto = sessionStorage.getItem(keys);
     var produtoSplit = produto.split(",")
-    if (keys != "Total" && keys != "clickcount") {
+    if (keys != "Total" && keys != "clickcount" && keys != "IdProduto") {
 
         var carrinho = $(".carrinho");
         var tr = document.createElement("tr");
