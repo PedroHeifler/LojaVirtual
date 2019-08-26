@@ -1902,6 +1902,7 @@
     <Content Include="Scripts\Editar.js" />
     <Content Include="Scripts\EnderecoSelecionado.js" />
     <Content Include="Scripts\Excluir.js" />
+    <Content Include="Scripts\FiltrarProdutos.js" />
     <Content Include="Scripts\Filtro.js" />
     <Content Include="fontawesome\less\brands.less" />
     <Content Include="fontawesome\less\fontawesome.less" />

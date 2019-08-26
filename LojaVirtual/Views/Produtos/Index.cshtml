@@ -4,14 +4,14 @@
 }
 
 <main class="d-flex">
-    <ul class="nav flex-column p-4 menu-filtro">
+    <ul class="nav flex-column pt-5 pr-5 pl-3 menu-filtro border-right shadow bg-dark text-white">
         <li class="nav-item">
             <h3>Categoria</h3>
         </li>
         @foreach (var departamento in ViewBag.Departamentos)
         {
             <li class="nav-item" formaction='Produtos/Filtrar/${@departamento.IdDepartamento}'>
-                <input type="checkbox" id="@departamento.Genero" name="departamento.Genero"  />
+                <input type="checkbox" id="@departamento.Genero" value="@departamento.Genero" name="departamento.Genero" onclick="FiltrarProdutos(this)" />
                 <label for="@departamento.Genero">@departamento.Genero</label>
             </li>
         }
