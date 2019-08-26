@@ -201,17 +201,20 @@
                 var keys = sessionStorage.key(i);
                 var produto = sessionStorage.getItem(keys);
                 var produtoSplit = produto.split(",");
-                var id = produtoSplit[3];
 
-                $.post("http://localhost:61651/AdminProduto/Excluir", { id: id })
-                    .fail(function () {
-                        $(".msg-erro").toggle();
-                        setTimeout(function () {
+                if (keys != "Total" && keys != "clickcount" && keys != "IdProduto") {
+                    var id = produtoSplit[4];
+
+                    sessionStorage.clear()
+
+                    $.post("http://localhost:61651/AdminProduto/Excluir", { id: id })
+                        .fail(function () {
                             $(".msg-erro").toggle();
-                        }, 2000);
-                    })
-
-                ExcluiDoCarrinho(keys)
+                            setTimeout(function () {
+                                $(".msg-erro").toggle();
+                            }, 2000);
+                        })
+                }
             }
         }
     </script>

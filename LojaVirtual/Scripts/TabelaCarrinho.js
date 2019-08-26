@@ -53,7 +53,7 @@ for (let i = 0; i < sessionStorage.length; i++) {
 
         total = total + parseFloat(split[2])
 
-        $(".total").text("Total: R$" + total + ",00");
+        $(".total").text("Total: R$" + total);
 
         sessionStorage.setItem('Total', total);
     }
@@ -61,18 +61,16 @@ for (let i = 0; i < sessionStorage.length; i++) {
 
 function ExcluiDoCarrinho(key) {
     var nome = $(key).children(".nome-carrinho").text()
+        for (let i = 0; i < sessionStorage.length; i++) {
+            var keys = sessionStorage.key(i);
+            var produto = sessionStorage.getItem(keys)
+            var produtoSplit = produto.split(",")
 
-    for (let i = 1; i < sessionStorage.length; i++) {
-        var keys = sessionStorage.key(i);
-        var produto = sessionStorage.getItem(keys)
-        var produtoSplit = produto.split(",")
-
-
-        if (nome == produtoSplit[1]) {
-            var id = keys
-            $(key).fadeOut("slow", function () {
-                sessionStorage.removeItem(id)
-            });
+            if (nome == produtoSplit[1]) {
+                var id = keys
+                $(key).fadeOut("slow", function () {
+                    sessionStorage.removeItem(id)
+                });
         }
     }
 }
