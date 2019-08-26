@@ -37,9 +37,8 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/adminProduto">Administrar</a>
                                 <a class="dropdown-item" href="/Produtos/Carrinho">Meus Pedidos</a>
-                                <a class="dropdown-item" href="#">Configuracao</a>
                                 <hr />
-                                <a class="dropdown-item" onclick="Session.Remove(SessionLogin)">Sair</a>
+                                <a class="dropdown-item" href="/Login/Sair">Sair</a>
                             </div>
                         </div>
                         <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin.Usuario.NomeCompleto!</label>
@@ -52,9 +51,8 @@
                             <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/Produtos/Carrinho">Meus Pedidos</a>
-                                <a class="dropdown-item" href="#">Configuracao</a>
                                 <hr />
-                                <a class="dropdown-item" href="#">Sair</a>
+                                <a class="dropdown-item" href="/Login/Sair" onclick="">Sair</a>
                             </div>
                         </div>
                     }
@@ -168,6 +166,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="~/Scripts/PassaParaCarrinho.js"></script>
     <script src="~/Scripts/Editar.js"></script>
+    <script src="~/Scripts/EnderecoSelecionado.js"></script>
 
     <script>
         $("label a").click(function CVV(event) {
@@ -196,6 +195,11 @@
 
         $(".totalBoleto").text(total - desconto)
 
+
+        function Sair() {
+
+
+        }
     </script>
 </body>
 

@@ -12,6 +12,7 @@ namespace LojaVirtual.Controllers.cUsuario
         {
             return View();
         }
+
         public ActionResult Autentica(String email, String senha)
         {
             LoginDAO dao = new LoginDAO();
@@ -28,5 +29,10 @@ namespace LojaVirtual.Controllers.cUsuario
             }
         }
 
+        public ActionResult Sair()
+        {
+            Session["usuarioLogado"] = null;
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -18,7 +18,7 @@
                 <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
             </div>
 
-            <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target=".produto-modal" onclick="limpaForm()">Adicionar</button>
+            <button type="button" class="btn btn-primary mt-3 mb-3 ml-0" data-toggle="modal" data-target=".produto-modal" onclick="limpaForm()">Adicionar</button>
 
             <!-----Tabela de Produtos----->
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -58,7 +58,8 @@
                 </table>
             </div>
 
-            <img style="width: 300px; padding: 30px" id="img-representativa" />
+            <h3 class="nome-representativo pl-4 pt-4"></h3>
+            <img style="width: 300px" class="pl-4 pt-1" id="img-representativa" />
 
         </div>
 
@@ -71,12 +72,14 @@
                         <h3 class="modal-title">Produto</h3>
                     </div>
 
-                    <ul class="nav nav-pills m-3" id="myTab" role="tablist">
+                    <ul>
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Produto" role="tab" aria-controls="produto" aria-selected="true">Produto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " id="profile-tab" data-toggle="tab" href="#FichaTecnica" role="tab" aria-controls="fichaTecnica" aria-selected="false">FichaTecnica</a>
+                        <li class="nav-item" id="FichaTecnica">
+                            <a>
+                                <button type="button" class="btn btn-primary m-3">Editar</button>
+                            </a>
                         </li>
                     </ul>
 
@@ -138,44 +141,7 @@
                     </form>
 
 
-                    <!-----Tabela Ficha----->
-                    <div class="tab-pane fade border-top" id="FichaTecnica" role="tabpanel" aria-labelledby="profile-tab">
-
-                        <a>
-                            <button type="button" class="btn btn-primary m-3">Editar</button>
-                        </a>
-
-
-                        <br />
-                        <div class="d-flex ficha-tecnica">
-
-                            <div class="m-4">
-                                <label><b>Ficha Técnica</b></label>
-                                @foreach (var ficha in ViewBag.Ficha)
-                                {
-                                    <br /><span>@ficha.Ficha</span>
-                                }
-                            </div>
-                            <div class="m-4">
-                                <label>Descrição</label>
-                                @foreach (var ficha in ViewBag.Ficha)
-                                {
-                                    <br /><span>@ficha.Conteudo</span>
-                                }
-                            </div>
-                            <div class="m-4">
-                                <label>Ordem</label>
-                                @foreach (var ficha in ViewBag.Ficha)
-                                {
-                                    <br /><span>@ficha.Ordem</span>
-                                }
-                            </div>
-
-                        </div>
-                        <div class="modal-footer mt-2">
-                            <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

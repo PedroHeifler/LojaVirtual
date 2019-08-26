@@ -4,51 +4,51 @@
     Layout = "~/Views/Shared/LayoutPadrao.cshtml";
 }
 
-    <main class="container">
-        <div class="pl-4 pt-4">
-            <h1>Endereco</h1>
-            <p>Escolha o endereço que deseja receber o produto</p>
-        </div>
+<main class="container">
+    <div class="pl-4 pt-4">
+        <h1>Endereço</h1>
+        <p>Escolha o endereço que deseja receber o produto</p>
+    </div>
 
-        @foreach (var endereco in ViewBag.Enderecos)
-        {
+    @foreach (var endereco in ViewBag.Enderecos)
+    {
 
-            <div class="border rounded col-md-12 mb-4 animacao-endereco" onclick="EnderecoSelecionado(this)">
+        <div class="border rounded col-md-12 mb-4 animacao-endereco" onclick="EnderecoSelecionado(this)">
 
-                <div class="row m-2">
-                    <div class="col-md-3">
-                        <label>Cep: </label><label class="dados">&nbsp;@endereco.CEP</label>  <br />
-                    </div>
-                    <div class="col-md-3">
-                        <label>Estado: </label><label class="dados">&nbsp;@endereco.Estado</label> <br />
-                    </div>
-                    <div class="col-md-3">
-                        <label>Cidade: </label><label class="dados">&nbsp;@endereco.Cidade</label> <br />
-                    </div>
+            <div class="row m-2">
+                <div class="col-md-3">
+                    <label>Cep: </label><label class="dados">&nbsp;@endereco.CEP</label>  <br />
                 </div>
-                <div class="row m-2">
-                    <div class="col-md-3">
-                        <label>Bairro: </label><label class="dados">&nbsp;@endereco.Bairro</label> <br />
-                    </div>
-                    <div class="col-md-3">
-                        <label>Numero: </label><label class="dados">&nbsp;@endereco.Numero</label> <br />
-                    </div>
-                    <div class="col-md-3">
-                        <label>Rua: </label><label class="dados">&nbsp;@endereco.Rua</label> <br />
-                    </div>
+                <div class="col-md-3">
+                    <label>Estado: </label><label class="dados">&nbsp;@endereco.Estado</label> <br />
                 </div>
-                <div class="row m-2">
-                    <div class="col-md-3">
-                        <label>Complemento: </label><label>&nbsp;@endereco.Complemento</label> <br />
-                    </div>
+                <div class="col-md-3">
+                    <label>Cidade: </label><label class="dados">&nbsp;@endereco.Cidade</label> <br />
                 </div>
             </div>
-        }
-
-        <div class="d-flex flex-row-reverse bd-highlight ml-4 mb-4">
-            <a href="#"><button type="button" class="btn btn-success ml-2 bd-highlight">Continuar</button></a>
-            <a href="/Produtos/Carrinho"><button type="button" class="btn btn-danger bd-highlight">Voltar</button></a>
+            <div class="row m-2">
+                <div class="col-md-3">
+                    <label>Bairro: </label><label class="dados">&nbsp;@endereco.Bairro</label> <br />
+                </div>
+                <div class="col-md-3">
+                    <label>Numero: </label><label class="dados">&nbsp;@endereco.Numero</label> <br />
+                </div>
+                <div class="col-md-3">
+                    <label>Rua: </label><label class="dados">&nbsp;@endereco.Rua</label> <br />
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col-md-3">
+                    <label>Complemento: </label><label>&nbsp;@endereco.Complemento</label> <br />
+                </div>
+            </div>
         </div>
-    </main>
+    }
 
-<script src="~/Scripts/EnderecoSelecionado.js"></script>
+    <div class="d-flex flex-row-reverse bd-highlight ml-4 mb-4">
+        <a href="/Produtos/Pagamento"><button type="button" class="btn btn-success ml-2 bd-highlight continuar">Continuar</button></a>
+        <a href="/Produtos/Carrinho"><button type="button" class="btn btn-danger bd-highlight">Voltar</button></a>
+    </div>
+</main>
+
+

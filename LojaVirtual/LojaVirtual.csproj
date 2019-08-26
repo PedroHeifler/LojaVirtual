@@ -295,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include=".gitignore.gitignore" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
