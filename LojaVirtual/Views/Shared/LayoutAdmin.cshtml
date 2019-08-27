@@ -60,6 +60,21 @@
             $(".tela-admin").toggleClass("animacao-tela")
         });
 
+    $(document).ready(configurarControles);
+
+    function configurarControles() {
+        $("#listagemDeProdutos").load("@Url.Action("Listar")");
+    }
+
+    var pagina = 1
+    
+    function paginar(valor) {
+        var novaPagina = pagina + valor;
+        $("#listagemDeProdutos").load("@Url.Action("Listar")", { paginacao: novaPagina });
+
+        pagina = novaPagina;
+    }
     </script>
+
 </body>
 </html>

@@ -17,6 +17,16 @@ namespace LojaVirtual.DAO
             }
         }
 
+        public IList<Endereco> ListaPaginacao(int paginacao, int reginstros)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                var enderecos = contexto.Enderecos.Include("Usuario").ToList();
+                var enderecoPaginados = enderecos.OrderBy(p => p.IdEndereco).Skip((paginacao - 1) * reginstros).Take(reginstros);
+                return enderecoPaginados.ToList();
+            }
+        }
+
         public Endereco BuscaPorId(int id)
         {
             using (var contexto = new LojaVirtualContext())

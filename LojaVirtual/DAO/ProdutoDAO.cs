@@ -17,6 +17,16 @@ namespace LojaVirtual.DAO
             }
         }
 
+        public IList<Produto> ListaPaginacao(int paginacao, int reginstros)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                var produtos = contexto.Produtos.Include("Departamento").ToList();
+                var produtosPaginados = produtos.OrderBy(p => p.SKU).Skip((paginacao - 1) * reginstros).Take(reginstros);
+                return produtosPaginados.ToList();
+            }
+        }
+
         public void Atualiza(Produto produto)
         {
             using (var contexto = new LojaVirtualContext())
@@ -35,11 +45,11 @@ namespace LojaVirtual.DAO
             }
         }
 
-        public Produto Busca(int idProduto)
+        public Produto BuscaDepartamento(int id)
         {
             using (var contexto = new LojaVirtualContext())
             {
-                return contexto.Produtos.FirstOrDefault(u => u.IdProduto == idProduto);
+                return contexto.Produtos.FirstOrDefault(u => u.Departamento.IdDepartamento == id);
             }
         }
 

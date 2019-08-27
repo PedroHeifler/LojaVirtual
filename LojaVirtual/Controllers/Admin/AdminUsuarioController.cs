@@ -17,6 +17,15 @@ namespace LojaVirtual.Controllers
             return View();
         }
 
+        public PartialViewResult Listar(int paginacao = 1, int registros = 5)
+        {
+            UsuarioDAO dao = new UsuarioDAO();
+            IList<Usuario> usuarios = dao.ListaPaginacao(paginacao, registros);
+            ViewBag.Usuarios = usuarios;
+            
+            return PartialView("_Listar");
+        }
+        
         [HttpPost]
         public ActionResult Salva(Usuario usuario)
         {

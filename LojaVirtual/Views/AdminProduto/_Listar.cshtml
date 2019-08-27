@@ -1,0 +1,37 @@
+﻿<!-----Tabela de Produtos----->
+
+<table class="table table-bordered table-striped table-dark">
+    <thead class="thead">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">SKU</th>
+            <th scope="col">Nome do Produto</th>
+            <th scope="col">Imagem</th>
+            <th scope="col">Valor (R$)</th>
+            <th scope="col">Tipo do Produto</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descricao</th>
+            <th scope="col">Excluir/Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in ViewBag.Produtos)
+        {
+            <tr id="adminTr@(produto.IdProduto)" onclick="MostraImg(this)" class="produtoTr">
+                <th scope="row">@produto.IdProduto</th>
+                <td>@produto.SKU</td>
+                <td class="info-nome text-truncate">@produto.Nome</td>
+                <td class="img" style="min-width: 120px">@produto.Imagem</td>
+                <td>@produto.Valor</td>
+                <td>@produto.TpProduto</td>
+                <td>@produto.Departamento.Genero</td>
+                <td class="text-truncate" style="max-width: 200px;">@produto.Descricao</td>
+                <td class="d-flex justify-content-center">
+                    <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
+                    <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

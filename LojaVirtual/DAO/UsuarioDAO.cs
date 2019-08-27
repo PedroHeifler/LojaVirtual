@@ -1,4 +1,5 @@
 ﻿using LojaVirtual.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,16 @@ namespace LojaVirtual.DAO
             using (var contexto = new LojaVirtualContext())
             {
                 return contexto.Usuarios.ToList();
+            }
+        }
+
+        public IList<Usuario> ListaPaginacao(int paginacao, int reginstros)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                var usuario = contexto.Usuarios.ToList();
+                var usuarioPaginados = usuario.OrderBy(p => p.IdUsuario).Skip((paginacao - 1) * reginstros).Take(reginstros);
+                return usuarioPaginados.ToList();
             }
         }
 
@@ -31,6 +42,7 @@ namespace LojaVirtual.DAO
                 contexto.SaveChanges();
             }
         }
+
 
         public Usuario Busca(int idUsuario)
         {

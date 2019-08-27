@@ -286,6 +286,7 @@
     <Compile Include="Migrations\LojaVirtualContextModelSnapshot.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\FichaTecnica.cs" />
+    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Endereco.cs" />
@@ -1993,6 +1994,10 @@
     <Content Include="Views\Produtos\Carrinho.cshtml" />
     <Content Include="Views\Produtos\Endereco.cshtml" />
     <Content Include="Views\Produtos\Pagamento.cshtml" />
+    <Content Include="Views\AdminProduto\_Listar.cshtml" />
+    <Content Include="Views\AdminConta\_Listar.cshtml" />
+    <Content Include="Views\AdminEndereco\_Listar.cshtml" />
+    <Content Include="Views\AdminUsuario\_Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

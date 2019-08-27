@@ -1,0 +1,27 @@
+﻿<table class="table table-bordered table-striped table-dark">
+    <thead class="thead">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Email</th>
+            <th scope="col">Senha</th>
+            <th scope="col">Tipo de Usuario</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var logins in ViewBag.Login)
+        {
+            <tr id="adminTr@(logins.IdLogin)" class="loginTr">
+                <th scope="row">@logins.IdLogin</th>
+                <td class="info-nome">@logins.Email</td>
+                <td>@logins.Senha</td>
+                <td>@logins.TpUsuario</td>
+                <td>@logins.Usuario.IdUsuario</td>
+                <td class="d-flex justify-content-center">
+                    <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(logins.IdLogin)')" data-toggle="modal" data-target=".bd-example-modal-lg" value="Editar()"><i class="fas fa-pen"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

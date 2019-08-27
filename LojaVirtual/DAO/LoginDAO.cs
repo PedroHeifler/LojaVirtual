@@ -24,6 +24,16 @@ namespace LojaVirtual.DAO
             }
         }
 
+        public IList<Login> ListaPaginacao(int paginacao, int registros)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                var logins = contexto.Logins.Include("Usuario").ToList();
+                var loginsPaginados = logins.OrderBy(p => p.IdLogin).Skip((paginacao - 1) * registros).Take(registros);
+                return loginsPaginados.ToList();
+            }
+        }
+
         public Login BuscaPorId(int id)
         {
             using (var contexto = new LojaVirtualContext())

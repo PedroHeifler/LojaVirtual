@@ -12,7 +12,6 @@
 
         <div class="tab-content" id="myTabContent">
 
-
             <!-----Filtro----->
             <div class="input-group col-md-5 m-2 p-0">
                 <input type="search" oninput="Filtrar('.produtoTr')" id="filtro-tabela" class="form-control" placeholder="Pesquise pelo nome">
@@ -20,43 +19,25 @@
 
             <button type="button" class="btn btn-primary mt-3 mb-3 ml-0" data-toggle="modal" data-target=".produto-modal" onclick="limpaForm()">Adicionar</button>
 
-            <!-----Tabela de Produtos----->
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <table class="table table-bordered table-striped table-dark">
-                    <thead class="thead">
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">SKU</th>
-                            <th scope="col">Nome do Produto</th>
-                            <th scope="col">Imagem</th>
-                            <th scope="col">Valor (R$)</th>
-                            <th scope="col">Tipo do Produto</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Descricao</th>
-                            <th scope="col">Excluir/Editar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var produto in ViewBag.Produtos)
-                        {
-                            <tr id="adminTr@(produto.IdProduto)" onclick="MostraImg(this)" class="produtoTr">
-                                <th scope="row">@produto.IdProduto</th>
-                                <td>@produto.SKU</td>
-                                <td class="info-nome text-truncate">@produto.Nome</td>
-                                <td class="img" style="min-width: 120px">@produto.Imagem</td>
-                                <td>@produto.Valor</td>
-                                <td>@produto.TpProduto</td>
-                                <td>@produto.Departamento.Genero</td>
-                                <td class="text-truncate" style="max-width: 200px;">@produto.Descricao</td>
-                                <td class="d-flex justify-content-center">
-                                    <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>
-                                    <button onclick="Excluir(@(produto.IdProduto), 'http://localhost:61651/AdminProduto/Excluir')" class="btn btn-danger mr-3"><i class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar" id="listagemDeProdutos">
+
             </div>
+
+            <nav class="mt-2" aria-label="Navegação de página exemplo">
+                <ul class="pagination">
+                    <li class="page-item" onclick="paginar(-1)">
+                        <a class="page-link" aria-label="Anterior">
+                            <span>Anterior</span>
+                        </a>
+                    </li>
+                    
+                    <li class="page-item" onclick="paginar(1)">
+                        <a class="page-link" aria-label="Próximo">
+                            <span>Próximo</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
             <h3 class="nome-representativo pl-4 pt-4"></h3>
             <img style="width: 300px" class="pl-4 pt-1" id="img-representativa" />
@@ -87,7 +68,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="SKU">SKU</label>
-                                    <input name="produto.SKU" type="text" class="form-control"required>
+                                    <input name="produto.SKU" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Nome">Nome do Produto</label>
@@ -224,8 +205,4 @@
     function limpaForm() {
         var form = $("form input, select, textarea").val("");
     }
-
 </script>
-
-
-

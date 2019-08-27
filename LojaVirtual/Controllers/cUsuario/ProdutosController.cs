@@ -26,13 +26,6 @@ namespace LojaVirtual.Controllers.cUsuario
 
         }
 
-        public ActionResult Filtrar(int idDepartemento)
-        {
-            DepartamentoDAO dDAO = new DepartamentoDAO();
-            Departamento departamento = dDAO.BuscaPorId(idDepartemento);
-            return Json(departamento);
-        }
-
         public ActionResult Detalhes(int id)
         {
             /*---Departamento---*/
@@ -104,7 +97,6 @@ namespace LojaVirtual.Controllers.cUsuario
             ViewBag.Enderecos = enderecosUsuarios;
             return View();
         }
-
 
         public ActionResult Pagamento()
         {
