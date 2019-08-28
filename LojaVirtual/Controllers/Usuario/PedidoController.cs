@@ -15,7 +15,7 @@ namespace LojaVirtual.Controllers.cUsuario
             return View();
         }
 
-        public ActionResult Grava(int id, double total)
+        public ActionResult Grava(int id, string valorTotal)
         {
             
             ProdutoDAO pdao = new ProdutoDAO();
@@ -26,7 +26,7 @@ namespace LojaVirtual.Controllers.cUsuario
             DateTime data = DateTime.Today;
 
 
-            pedido.valor = total;
+            pedido.valor = double.Parse(valorTotal);
             pedido.dataDaCampra = data;
             var login = (Login)Session["usuarioLogado"];
 

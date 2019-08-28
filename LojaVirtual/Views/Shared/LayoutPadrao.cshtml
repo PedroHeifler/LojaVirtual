@@ -189,8 +189,7 @@
         function Total(seletor) {
             var parcelas = $(seletor).val();
             var valorTotal = $(seletor).parent().children("span").text();
-            totalCartao = parseFloat(valorTotal) * parcelas
-        $(".ValorTotal").text(totalCartao);
+            $(".ValorTotal").text(parseFloat(valorTotal) * parcelas);
         }
 
         $(".boleto").text(total1);
