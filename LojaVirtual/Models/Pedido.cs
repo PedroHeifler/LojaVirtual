@@ -6,6 +6,11 @@ namespace LojaVirtual.Models
 {
     public class Pedido
     {
+        public Pedido()
+        {
+            Produtos = new List<Produto>(); 
+        }
+
         [Key]
         public int idPedido { get; set; }
         [Required]

@@ -18,6 +18,7 @@ namespace LojaVirtual.Models
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<FichaTecnica> FichaTecnicas { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

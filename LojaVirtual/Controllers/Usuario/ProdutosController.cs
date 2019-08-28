@@ -105,6 +105,8 @@ namespace LojaVirtual.Controllers.cUsuario
             IList<Departamento> departamentos = dao.Lista();
             ViewBag.Departamentos = departamentos;
 
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+
             return View();
         }
     }

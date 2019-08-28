@@ -169,6 +169,8 @@
     <script src="~/Scripts/EnderecoSelecionado.js"></script>
     <script src="~/Scripts/TabelaCarrinho.js"></script>
     <script src="~/Scripts/FiltrarProdutos.js"></script>
+    <script src="~/Scripts/BaixaEstoque.js"></script>
+    <script src="~/Scripts/GravaPedido.js"></script>
 
     <script>
         $("label a").click(function CVV(event) {
@@ -183,11 +185,12 @@
             campoTotal.text((total1 / i * 1. + i).toFixed(2));
             $(".total" + 1).text(total1)
         }
-
+        var totalCartao;
         function Total(seletor) {
             var parcelas = $(seletor).val();
             var valorTotal = $(seletor).parent().children("span").text();
-            $(".ValorTotal").text("R$ " + parseFloat(valorTotal) * parcelas)
+            totalCartao = parseFloat(valorTotal) * parcelas
+        $(".ValorTotal").text(totalCartao);
         }
 
         $(".boleto").text(total1);
@@ -197,27 +200,6 @@
 
         $(".totalBoleto").text(total1 - desconto)
 
-        function BaixaEstoque() {
-            for (let i = 0; i < sessionStorage.length; i++) {
-                var keys = sessionStorage.key(i);
-                var produto = sessionStorage.getItem(keys);
-                var produtoSplit = produto.split(",");
-
-                if (keys != "Total" && keys != "clickcount" && keys != "IdProduto") {
-                    var id = produtoSplit[4];
-
-                    sessionStorage.clear()
-
-                    $.post("http://localhost:61651/AdminProduto/Excluir", { id: id })
-                        .fail(function () {
-                            $(".msg-erro").toggle();
-                            setTimeout(function () {
-                                $(".msg-erro").toggle();
-                            }, 2000);
-                        })
-                }
-            }
-            }
     </script>
 </body>
 

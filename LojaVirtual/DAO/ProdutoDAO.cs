@@ -41,7 +41,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext()) 
             {
-                return contexto.Produtos.Find(id);
+                return contexto.Produtos.FirstOrDefault(u => u.IdProduto == id);
             }
         }
 

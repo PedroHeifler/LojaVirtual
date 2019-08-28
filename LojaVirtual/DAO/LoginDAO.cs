@@ -59,5 +59,13 @@ namespace LojaVirtual.DAO
                 return contexto.Logins.Include("Usuario").FirstOrDefault(u => u.Email == email && u.Senha == senha);
             }
         }
+
+        public Usuario Busca(Login login)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                return contexto.Usuarios.Find(login.Usuario.IdUsuario);
+            }
+        }
     }
 }

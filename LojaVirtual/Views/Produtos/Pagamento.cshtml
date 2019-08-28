@@ -62,11 +62,11 @@
                         <label><input type="radio" name="pagamento" value="4" onclick="Total(this)" /> 4X de = <span class="total4"></span></label><br />
                         <label><input type="radio" name="pagamento" value="5" onclick="Total(this)" /> 5X de = <span class="total5"></span></label><br />
                         <label><input type="radio" name="pagamento" value="6" onclick="Total(this)" /> 6X de = <span class="total6"></span></label><br />
-                        <label class="text-success text-right font-weight-bold" style="font-size: 40px">Total: <span class="ValorTotal"></span></label>
+                        <label class="text-success text-right font-weight-bold" style="font-size: 40px">Total: R$ <span class="ValorTotal"></span></label>
                     </div>
                     <hr />
 
-                    <button onclick="BaixaEstoque()" class="btn btn-success mt-5 mb-5" type="button" style="margin-left: 80%;" data-toggle="modal" data-target="#ExemploModalCentralizado">Finalizar Compra</button>
+                    <button onclick="BaixaEstoque(), GravaPedido($('.ValorTotal'))" class="btn btn-success mt-5 mb-5" type="button" style="margin-left: 80%;" data-toggle="modal" data-target="#ExemploModalCentralizado">Finalizar Compra</button>
 
                 </div>
             </form>
@@ -87,7 +87,7 @@
                     <p>Seu boleto sera enviado para seu E-mail.</p>
                     <p>Para acessar seu E-mail clique <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1566503341&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3d06f2ed9e-9331-62ef-b324-64d0f4062d80&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015">aqui</a></p>
 
-                    <button onclick="BaixaEstoque()" class="btn btn-success mt-5 mb-5 finalizar" type="button" style="margin-left: 80%;" data-toggle="modal" data-target="#ExemploModalCentralizado">Finalizar Compra</button>
+                    <button onclick="BaixaEstoque(), GravaPedido($('.totalBoleto'))" class="btn btn-success mt-5 mb-5 finalizar" type="button" style="margin-left: 80%;" data-toggle="modal" data-target="#ExemploModalCentralizado">Finalizar Compra</button>
                 </div>
             </div>
         </div>
