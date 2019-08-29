@@ -5,104 +5,143 @@
 }
 
 
-<main class="tela-admin">
-    <h2>Dashboard</h2>
-    <canvas id="myChart"></canvas>
+    <main class="tela-admin">
+        <h1 class="mt-4">Dashboard</h1>
+        <div class="row">
+            <div class="col-md-6 p-5">
+                <div class="wrapper border p-4">
+                    <h4>Quantidade de Produtos por Categoria</h4>
+                    <canvas id="Categoria" style="display: block; width: 800px; height: 500px;"></canvas>
+                </div>
+            </div>
 
-</main>
+            <div class="col-md-6 p-5">
+                <div class="wrapper border p-4">
+                    <h4>Quantidade de Produtos por Categoria</h4>
+                    <canvas id="myChart" style="display: block; width: 800px; height: 500px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </main>
 
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<canvas id="myChart" width="400" height="400"></canvas>
-<script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [listaDepartamento()],
-            datasets: [{
-                label: 'Produtos',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
 
-    function listaDepartamento() {
-        $.post('http://localhost:61651/Dashboard/listarDepartamento')
-            .done(function (departemento) {
-                var labels = [];
-                for (var i = 0; i < departemento.length; i++) {
-                    labels.push(departemento[i].Genero)
-                }
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: [labels],
-                        datasets: [{
-                            label: 'Produtos',
-                            data: [12, 19, 3, 5, 2, 3],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
+<script>
+
+
+    /*---Grafico de Categoria---*/
+    $.post('http://localhost:61651/Dashboard/listarDepartamento')
+        .done(function (departemento) {
+
+            $.post('http://localhost:61651/Dashboard/listarProdutosPorCategoria')
+                .done(function (produtos) {
+                    var produtoData = [];
+                    var departamentoData = []
+
+                    for (var i = 0; i < departemento.length; i++) {
+                        departamentoData.push(departemento[i].Genero);
+
+
+                        switch (departamentoData.length) {
+                            case 1:
+                                for (var p = 0; p < produtos.length; p++) {
+                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
                                 }
-                            }]
+                                if (produtoData[0] == null) {
+                                    produtoData.push("");
+                                }
+                                break;
+                            case 2:
+                                for (var p = 0; p < produtos.length; p++) {
+                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
+                                }
+                                if (produtoData[1] == null) {
+                                    produtoData.push("");
+                                }
+                                break;
+                            case 3:
+                                for (var p = 0; p < produtos.length; p++) {
+                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
+                                }
+                                if (produtoData[2] == null) {
+                                    produtoData.push("");
+                                }
+                                break;
+                            case 4:
+                                for (var p = 0; p < produtos.length; p++) {
+                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
+                                }
+                                if (produtoData[3] == null) {
+                                    produtoData.push("");
+                                }
+                                break;
+                            case 5:
+                                for (var p = 0; p < produtos.length; p++) {
+                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
+                                }
+                                if (produtoData[4] == null) {
+                                    produtoData.push("");
+                                }
+                                break;
                         }
                     }
-                });
-            })
 
-    }
+
+
+                    console.log(produtos.qtd)
+                    var ctx = document.getElementById('Categoria').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: departamentoData,
+
+                            datasets: [{
+                                label: 'Produtos',
+                                data: produtoData,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                });
+        })
+
+    $.post('http://localhost:61651/Dashboard/BuscaPrecoPorCategoria')
+        .done(function (precoProCategoria) {
+            console.log(precoProCategoria)
+        })
+
+
+
 </script>
 
 

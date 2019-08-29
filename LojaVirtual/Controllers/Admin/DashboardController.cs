@@ -20,7 +20,22 @@ namespace LojaVirtual.Controllers.Admin
         {
             DepartamentoDAO ddao = new DepartamentoDAO();
             IList<Departamento> departamento = ddao.Lista();
+
             return Json(departamento);
+        }
+
+        public ActionResult listarProdutosPorCategoria()
+        {
+            ProdutoDAO pdao = new ProdutoDAO();
+            var produtos = pdao.BuscaProdutoPorCategoria();
+            return Json(produtos);
+        }
+
+        public ActionResult BuscaPrecoPorCategoria()
+        {
+            ProdutoDAO pdao = new ProdutoDAO();
+            var precoProCategoria = pdao.BuscaPrecoPorCategoria();
+            return Json(precoProCategoria);
         }
     }
 }

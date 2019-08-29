@@ -61,5 +61,34 @@ namespace LojaVirtual.DAO
                 contexto.SaveChanges();
             }
         }
+
+        public object BuscaProdutoPorCategoria()
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                var grouped = from b in contexto.Produtos
+                              group b.Departamento by b.Departamento.Genero into g
+                              select new
+                              {
+                                  Genero = g.Key,
+                                  qtd = g.Count()
+                              };
+                return grouped.ToList();
+            }
+        }
+
+        public object BuscaPrecoPorCategoria()
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                var grouped = from b in contexto.Produtos
+                              group b.Departamento by b.Departamento.IdDepartamento into g
+                              select new
+                              {
+                                  Genero = g.Key
+                              };
+                return grouped.ToList();
+            }
+        }
     }
 }
