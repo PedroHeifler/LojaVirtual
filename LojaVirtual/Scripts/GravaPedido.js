@@ -1,4 +1,4 @@
-﻿function GravaPedido(valor) {
+﻿function GravaPedido() {
     for (let i = 0; i < sessionStorage.length;
         i++) {
         var keys = sessionStorage.key(i);
@@ -7,9 +7,8 @@
 
         if (keys != "Total" && keys != "clickcount" && keys != "IdProduto") {
             var id = produtoSplit[3];
-            var valor_Total = $(valor).text()
 
-            $.post("http://localhost:61651/Pedido/Grava", { id: id, valorTotal: valor_Total })
+            $.post("http://localhost:61651/Pedido/Grava", { id: id })
                 .fail(function () {
                     $(".msg-erro").toggle();
                     setTimeout(function () {

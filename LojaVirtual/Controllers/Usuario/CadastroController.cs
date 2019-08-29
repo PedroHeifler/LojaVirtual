@@ -28,9 +28,9 @@ namespace LojaVirtual.Controllers.cUsuario
             usuario.Login.Add(login);
             usuario.Endereco.Add(endereco);
 
+            usuarioDAO.Atualiza(usuario);
             enderecoDAO.Atualiza(endereco);
             loginDAO.Atualiza(login);
-            usuarioDAO.Atualiza(usuario);
             return RedirectToAction("Index", "Home");
         }
     }

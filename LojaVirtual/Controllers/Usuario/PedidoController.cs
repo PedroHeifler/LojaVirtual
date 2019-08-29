@@ -15,7 +15,7 @@ namespace LojaVirtual.Controllers.cUsuario
             return View();
         }
 
-        public ActionResult Grava(int id, string valorTotal)
+        public ActionResult Grava(int id)
         {
             
             ProdutoDAO pdao = new ProdutoDAO();
@@ -25,17 +25,16 @@ namespace LojaVirtual.Controllers.cUsuario
 
             DateTime data = DateTime.Today;
 
-
-            pedido.valor = double.Parse(valorTotal);
+            
             pedido.dataDaCampra = data;
             var login = (Login)Session["usuarioLogado"];
-
             pedido.Usuario = ldao.Busca(login);
+
             var produtoNovo = pdao.BuscaPorId(id);
             pedido.Produtos.Add(produtoNovo);
+            pedido.valor = produtoNovo.Valor;
 
             pedao.Atualiza(pedido);
-
 
             return RedirectToAction("Index", "Home");
 

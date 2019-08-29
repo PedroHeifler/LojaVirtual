@@ -206,6 +206,7 @@
     <Compile Include="Controllers\Admin\AdminFichaTecnicaController.cs" />
     <Compile Include="Controllers\Admin\AdminProdutoController.cs" />
     <Compile Include="Controllers\Admin\AdminUsuarioController.cs" />
+    <Compile Include="Controllers\Admin\DashboardController.cs" />
     <Compile Include="Controllers\Usuario\CadastroController.cs" />
     <Compile Include="Controllers\Usuario\HomeController.cs" />
     <Compile Include="Controllers\Usuario\LoginController.cs" />
@@ -2006,10 +2007,10 @@
     <Content Include="Views\AdminConta\_Listar.cshtml" />
     <Content Include="Views\AdminEndereco\_Listar.cshtml" />
     <Content Include="Views\AdminUsuario\_Listar.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Pedido\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

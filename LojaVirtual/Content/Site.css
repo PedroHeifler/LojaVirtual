@@ -73,7 +73,7 @@ body:not(i) {
 }
 
 /*---NAV BAR 1---*/
-#navbar-1 nav {
+#navbar-1 > nav {
     position: relative;
     height: 40px;
     font-weight: 700;
