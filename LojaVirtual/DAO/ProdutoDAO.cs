@@ -67,11 +67,12 @@ namespace LojaVirtual.DAO
             using (var contexto = new LojaVirtualContext())
             {
                 var grouped = from b in contexto.Produtos
-                              group b.Departamento by b.Departamento.Genero into g
+                              group b.Departamento by b.Departamento into g
                               select new
                               {
-                                  Genero = g.Key,
-                                  qtd = g.Count()
+                                  Genero = g.Key.Genero,
+                                  qtd = g.Count(),
+                                  produto = g.Key.Produtos
                               };
                 return grouped.ToList();
             }
@@ -81,11 +82,13 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                var grouped = from b in contexto.Produtos
-                              group b.Departamento by b.Departamento.IdDepartamento into g
+                var grouped = from b in contexto.Pedidos
+                              group b by b.dataDaCampra into g
                               select new
                               {
-                                  Genero = g.Key
+                                  Data = g.Key,
+                                  Valor = g.Key
+
                               };
                 return grouped.ToList();
             }
