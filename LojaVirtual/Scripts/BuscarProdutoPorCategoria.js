@@ -17,4 +17,12 @@
         })
 }
 
+function MostrarTodos() {
+    var idproduto = $('.id-produto');
+
+    for (var i = 0; i < idproduto.length; i++) {
+        $(idproduto[i]).parent().fadeIn()
+    }
+}
+
 

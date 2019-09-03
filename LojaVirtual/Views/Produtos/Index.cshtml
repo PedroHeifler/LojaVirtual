@@ -5,20 +5,28 @@
 }
 
 <main class="d-flex" style="min-height: 709.66px;">
-    <ul class="nav flex-column pt-5 pr-5 pl-3 position-fixed" style="height: -webkit-fill-available;">
-        <li class="nav-item">
+    <ul class="nav flex-column pt-5 pr-5 pl-3 bg-dark text-white iten-produtos">
+        <li>
+            <h3>Pesquisa</h3>
+            <form class="form-inline my-2 my-lg-0 bd-highlight" style="width: max-content">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar pelo Nome" id="filtro-tabela" oninput="Filtrar('.produto-filtrar')">
+            </form>
+        </li>
+        <li class="mt-5">
+            <h6 onclick="MostrarTodos()">Mostrar todos</h6>
+        </li>
+        <li class="nav-item mt-2">
             <h3>Categoria</h3>
         </li>
         @foreach (var departamento in ViewBag.Departamentos)
         {
             <li class="nav-item" onclick="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">
-                <input type="checkbox" id="@departamento.Genero" value="@departamento.IdDepartamento" name="departamento.Genero" />
                 <label for="@departamento.Genero">@departamento.Genero</label>
             </li>
         }
     </ul>
 
-    <div class="m-5 row text-center position-relative" style="margin-left: 250px !important;">
+    <div class="m-5 row text-center">
         @foreach (var produto in ViewBag.Produtos)
         {
             if (produto.Pedido == null)

@@ -84,7 +84,7 @@
                         <div class="dropdown-menu ml-3 esconde-dropdown" aria-labelledby="dropdownMenuButton">
                             @foreach (var departamento in ViewBag.Departamentos)
                             {
-                                <a href="#" class="nav-link border-bottom border-top">@departamento.Genero</a>
+                                <a href="#" class="nav-link border-bottom border-top" onclick="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">@departamento.Genero</a>
                             }
 
                         </div>
@@ -95,16 +95,11 @@
                         <ul class="navbar-nav ml-5 navbar-cadastro">
                             @foreach (var departamento in ViewBag.Departamentos)
                             {
-                                <li><a href="#" class="nav-link">@departamento.Genero</a></li>
+                                <li><a href="#" class="nav-link" onclick="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">@departamento.Genero</a></li>
                             }
                         </ul>
                     </div>
-                    <form class="form-inline my-2 my-lg-0 bd-highlight">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" id="filtro-tabela" oninput="Filtrar('.produto-filtrar')">
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
+                    
                     <div class="cart-box bd-highlight m-2 mr-4">
                         <a href="/Produtos/Carrinho" class="btn cart-btn"><i class="fas fa-shopping-cart text-white"></i></a>
                     </div>
@@ -196,8 +191,8 @@
 
         $(".boleto").text(total1);
 
-        var desconto = (total1 * 0.1)
-        $(".desconto").text("R$ " + desconto)
+    var desconto = (total1 * 0.1)
+        $(".desconto").text("R$ " + desconto.toFixed(2))
 
         $(".totalBoleto").text(total1 - desconto)
 

@@ -3,7 +3,7 @@
 for (let i = 0; i < sessionStorage.length; i++) {
     var keys = sessionStorage.key(i);
     var produto = sessionStorage.getItem(keys);
-    var produtoSplit = produto.split(",")
+    var produtoSplit = produto.split(", ")
     if (keys != "Total" && keys != "clickcount" && keys != "IdProduto") {
 
         var carrinho = $(".carrinho");
@@ -49,9 +49,11 @@ for (let i = 0; i < sessionStorage.length; i++) {
         icone.classList.add("fa-trash-alt")
         botaoExcluir.append(icone)
 
-        var split = produto.split(",")
+        var split = produto.split(", ")
 
-        total = total + parseFloat(split[2])
+        var splitNumero = split[2].replace(",", ".")
+
+        total = total + parseFloat(splitNumero)
 
         $(".total").text("Total: R$" + total);
 
@@ -64,7 +66,7 @@ function ExcluiDoCarrinho(key) {
         for (let i = 0; i < sessionStorage.length; i++) {
             var keys = sessionStorage.key(i);
             var produto = sessionStorage.getItem(keys)
-            var produtoSplit = produto.split(",")
+            var produtoSplit = produto.split(", ")
 
             if (nome == produtoSplit[1]) {
                 var id = keys

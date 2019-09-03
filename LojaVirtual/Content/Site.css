@@ -76,6 +76,13 @@ body:not(i) {
     display: none !important;
 }
 
+.iten-produtos li:hover h6 {
+    color: #5eadff;
+}
+
+.iten-produtos li:hover label {
+    color: #5eadff;
+}
 /*---NAV BAR 1---*/
 #navbar-1 > nav {
     position: relative;
