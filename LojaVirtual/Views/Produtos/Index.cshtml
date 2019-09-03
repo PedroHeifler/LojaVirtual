@@ -11,7 +11,7 @@
         </li>
         @foreach (var departamento in ViewBag.Departamentos)
         {
-            <li class="nav-item" onchange="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">
+            <li class="nav-item" onclick="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">
                 <input type="checkbox" id="@departamento.Genero" value="@departamento.IdDepartamento" name="departamento.Genero" />
                 <label for="@departamento.Genero">@departamento.Genero</label>
             </li>

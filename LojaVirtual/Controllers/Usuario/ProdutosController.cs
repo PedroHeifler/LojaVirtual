@@ -31,7 +31,16 @@ namespace LojaVirtual.Controllers.cUsuario
         {
             ProdutoDAO pdao = new ProdutoDAO();
             IList<Produto> produtos = pdao.BuscaProdutoPorDepartamento(id);
-            return Json(produtos);
+           
+            IList<Produto> produtoslista = new List<Produto>();
+            foreach (var prod in produtos)
+            {
+                produtoslista.Add(new Produto() {
+                    IdProduto = prod.IdProduto
+                });
+            }
+
+            return Json(produtoslista);
         }
 
 

@@ -182,7 +182,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="m-5 row text-center justify-content-around">
+                    <div class="m-1 row text-center justify-content-around">
                         @{int min = 0; int max = 4;}
 
                         @for (int i = min; i < max; i++)
@@ -191,7 +191,7 @@
                             if (produto.Pedido == null)
                             {
 
-                                <div class="card m-5 p-0 col-md-2" style="min-width: 18rem;">
+                                <div class="card p-0 col-2">
 
                                     <div style="position: relative; overflow: auto;">
                                         <img src="~/img/@produto.Imagem" class="card-img-top" alt="@produto.Nome">

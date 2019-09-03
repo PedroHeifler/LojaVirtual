@@ -31,11 +31,11 @@ namespace LojaVirtual.Controllers.Admin
             return Json(produtos);
         }
 
-        /*public ActionResult listarValorMesAno()
+        public ActionResult listarValorMesAno()
         {
             ProdutoDAO pdao = new ProdutoDAO();
             var valores = pdao.BuscarValorPorMesAno();
             return Json(valores);
-        }*/
+        }
     }
 }

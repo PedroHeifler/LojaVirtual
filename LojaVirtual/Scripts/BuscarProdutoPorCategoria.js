@@ -1,28 +1,20 @@
 ﻿function BuscarProdutoPorCategoria(id) {
-    $.post('http://localhost:61651/Produtos/BuscarProdutoPorIdCategoria', { id: id }, atualiza);
+    $.post('http://localhost:61651/produtos/BuscarProdutoPorIdCategoria', { id: id })
+        .done(function (produtos) {
 
-    function atualiza(data) {
-        console.log(data)
-    }
+            var idproduto = $('.id-produto');
+
+            for (var i = 0; i < idproduto.length; i++) {
+                $(idproduto[i]).parent().fadeOut()
+                for (var u = 0; u < produtos.length; u++) {
+
+                    if (produtos[u].IdProduto == idproduto[i].innerText) {
+                        $(idproduto[i]).parent().fadeIn();
+                    }
+                }
+
+            }
+        })
 }
 
-/*.done(function (produtos) {
-    var idproduto = $('.id-produto');
 
-    for (var i = 0; i < idproduto.length; i++) {
-
-        if (produtos != null) {
-
-            if (produtos.IdProduto == idproduto[i].innerText) {
-                $(idproduto[i]).parent();
-            }
-            if (produtos.IdProduto != idproduto[i].innerText) {
-                ;
-                $(idproduto[i]).parent().fadeToggle()
-            }
-        }
-    }
-})
-    .fail(function (produtos) {
-        console.log("fail")
-    })*/
