@@ -13,7 +13,7 @@ namespace LojaVirtual.DAO
         {
             using (var contexto = new LojaVirtualContext())
             {
-                return contexto.Produtos.Include("Departamento").ToList();
+                return contexto.Produtos.Include("Departamento").Include("Pedido").ToList();
             }
         }
 
@@ -32,6 +32,8 @@ namespace LojaVirtual.DAO
             using (var contexto = new LojaVirtualContext())
             {
                 produto.Departamento = contexto.Departamentos.Find(produto.Departamento.IdDepartamento);
+                Departamento departamento = new Departamento();
+                departamento.Produtos.Add(produto);
                 contexto.Update(produto);
                 contexto.SaveChanges();
             }
@@ -39,7 +41,7 @@ namespace LojaVirtual.DAO
 
         public Produto BuscaPorId(int id)
         {
-            using (var contexto = new LojaVirtualContext()) 
+            using (var contexto = new LojaVirtualContext())
             {
                 return contexto.Produtos.Find(id);
             }
@@ -50,6 +52,15 @@ namespace LojaVirtual.DAO
             using (var contexto = new LojaVirtualContext())
             {
                 return contexto.Produtos.FirstOrDefault(u => u.Departamento.IdDepartamento == id);
+            }
+        }
+
+        public IList<Produto> BuscaProdutoPorDepartamento(int id)
+        {
+            using (var contexto = new LojaVirtualContext())
+            {
+                contexto.Departamentos.Include("Produtos").ToList();
+                return contexto.Departamentos.Find(id).Produtos.ToList();
             }
         }
 
@@ -78,20 +89,13 @@ namespace LojaVirtual.DAO
             }
         }
 
-        public object BuscaPrecoPorCategoria()
+        /*public object BuscarValorPorMesAno()
         {
-            using (var contexto = new LojaVirtualContext())
+            using(var contexto = new LojaVirtualContext())
             {
-                var grouped = from b in contexto.Pedidos
-                              group b by b.dataDaCampra into g
-                              select new
-                              {
-                                  Data = g.Key,
-                                  Valor = g.Key
+                return contexto.Pedidos.Include("Produtos").FromSql("SELECT SUM(PED.idPedido) as idPedido, SUM(PED.UsuarioIdUsuario) as UsuarioIdUsuario, SUM(PED.valor) as valor, MONTH(PED.dataDaCampra) AS dataDaCampra, COALESCE( ( SELECT SUM(PED2.VALOR) FROM PEDIDOS PED2 INNER JOIN Produtos PROD ON (PROD.PedidoidPedido = PED2.idPedido) INNER JOIN Departamentos DEPTO ON (DEPTO.IdDepartamento = PROD.DepartamentoIdDepartamento) WHERE YEAR(PED2.dataDaCampra) = YEAR(PED.dataDaCampra) AND MONTH(PED2.dataDaCampra) = MONTH(PED.dataDaCampra) AND DEPTO.Genero = 'Masculino'), 0) as Masculino, COALESCE(( SELECT SUM(PED2.VALOR) FROM PEDIDOS PED2 INNER JOIN Produtos PROD ON (PROD.PedidoidPedido = PED2.idPedido) INNER JOIN Departamentos DEPTO ON (DEPTO.IdDepartamento = PROD.DepartamentoIdDepartamento) WHERE YEAR(PED2.dataDaCampra) = YEAR(PED.dataDaCampra) AND MONTH(PED2.dataDaCampra) = MONTH(PED.dataDaCampra) AND DEPTO.Genero = 'Feminino'), 0) as Feminino, COALESCE(( SELECT SUM(PED2.VALOR) FROM PEDIDOS PED2 INNER JOIN Produtos PROD ON (PROD.PedidoidPedido = PED2.idPedido) INNER JOIN Departamentos DEPTO ON (DEPTO.IdDepartamento = PROD.DepartamentoIdDepartamento) WHERE YEAR(PED2.dataDaCampra) = YEAR(PED.dataDaCampra) AND MONTH(PED2.dataDaCampra) = MONTH(PED.dataDaCampra) AND DEPTO.Genero = 'Infantil'), 0) as Infantil FROM PEDIDOS PED GROUP BY MONTH(PED.dataDaCampra)").ToArray();
 
-                              };
-                return grouped.ToList();
             }
-        }
+        }*/
     }
 }

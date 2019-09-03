@@ -35,7 +35,7 @@
                         <div class="dropdown dropleft">
                             <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/adminProduto">Administrar</a>
+                                <a class="dropdown-item" href="/dashboard">Administrar</a>
                                 <a class="dropdown-item" href="/Produtos/Carrinho">Meus Pedidos</a>
                                 <hr />
                                 <a class="dropdown-item" href="/Login/Sair">Sair</a>
@@ -100,7 +100,7 @@
                         </ul>
                     </div>
                     <form class="form-inline my-2 my-lg-0 bd-highlight">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" id="filtro-tabela" oninput="Filtrar('.produto-filtrar')">
                         <button class="btn btn-primary my-2 my-sm-0" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
@@ -170,8 +170,9 @@
     <script src="~/Scripts/EnderecoSelecionado.js"></script>
     <script src="~/Scripts/TabelaCarrinho.js"></script>
     <script src="~/Scripts/FiltrarProdutos.js"></script>
-    <script src="~/Scripts/BaixaEstoque.js"></script>
     <script src="~/Scripts/GravaPedido.js"></script>
+    <script src="~/Scripts/BuscarProdutoPorCategoria.js"></script>
+    <script src="~/Scripts/Filtro.js"></script>
 
     <script>
         $("label a").click(function CVV(event) {

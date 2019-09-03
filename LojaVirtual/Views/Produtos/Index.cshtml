@@ -4,27 +4,27 @@
     Layout = "~/Views/Shared/LayoutPadrao.cshtml";
 }
 
-<main class="d-flex">
-    <ul class="nav flex-column pt-5 pr-5 pl-3 menu-filtro border-right shadow bg-dark text-white">
+<main class="d-flex" style="min-height: 709.66px;">
+    <ul class="nav flex-column pt-5 pr-5 pl-3 position-fixed" style="height: -webkit-fill-available;">
         <li class="nav-item">
             <h3>Categoria</h3>
         </li>
         @foreach (var departamento in ViewBag.Departamentos)
         {
-            <a href="/Produtos/Filtrar/@departamento.IdDepartamento">
-                <li class="nav-item">
-                    <input type="checkbox" id="@departamento.Genero" value="@departamento.Genero" name="departamento.Genero" />
-                    <label for="@departamento.Genero">@departamento.Genero</label>
-                </li>
-            </a>
+            <li class="nav-item" onchange="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">
+                <input type="checkbox" id="@departamento.Genero" value="@departamento.IdDepartamento" name="departamento.Genero" />
+                <label for="@departamento.Genero">@departamento.Genero</label>
+            </li>
         }
     </ul>
 
-    <div class="m-5 row text-center position-relative">
+    <div class="m-5 row text-center position-relative" style="margin-left: 250px !important;">
         @foreach (var produto in ViewBag.Produtos)
         {
-            <div class="card m-4 p-0 col-md-2 filtro-produtos" style="min-width: 14rem;">
-
+            if (produto.Pedido == null)
+            {
+            <div class="card m-4 p-0 col-md-2 produto-filtrar" style="min-width: 14rem;">
+                <label class="id-produto" style="display: none">@produto.IdProduto</label>
                 <div style="position: relative; overflow: auto;">
                     <img src="~/img/@produto.Imagem" class="card-img-top" alt="@produto.Nome">
                 </div>
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">@produto.Nome</h5>
+                    <h5 class="card-title info-nome">@produto.Nome</h5>
                     <p class="card-text">R$@produto.Valor</p>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -43,9 +43,10 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <br>
-                    <a href="#" class="btn btn-primary mt-3">Mais Informacoes</a>
+                    <a href="/produtos/detalhes/@produto.IdProduto" class="btn btn-primary mt-3">Mais Informacoes</a>
                 </div>
             </div>
+            }
         }
     </div>
 

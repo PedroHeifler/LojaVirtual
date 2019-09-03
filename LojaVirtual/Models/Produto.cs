@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LojaVirtual.Models
 {
     public class Produto
     {
-        
+
         [Key]
         public int IdProduto { get; set; }
         [Required]
@@ -22,6 +21,7 @@ namespace LojaVirtual.Models
         [Required]
         public string TpProduto { get; set; }
 
+        public virtual Pedido Pedido { get; set; }
         public virtual Departamento Departamento { get; set; }
         public virtual ICollection<FichaTecnica> FichaTecnicas { get; set; }
 

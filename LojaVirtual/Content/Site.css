@@ -72,6 +72,10 @@ body:not(i) {
     display: none !important
 }
 
+.invisivel {
+    display: none !important;
+}
+
 /*---NAV BAR 1---*/
 #navbar-1 > nav {
     position: relative;
@@ -80,6 +84,15 @@ body:not(i) {
 }
 
 /*---NAV BAR 2---*/
+
+.texto-slide {
+    text-shadow: 5px 5px 10px #000;
+    margin-bottom: 100px;
+}
+
+    .texto-slide h1 {
+        color: #007dff
+    }
 
 #navbar-2 .form-control::-webkit-input-placeholder {
     color: white;
@@ -193,8 +206,23 @@ main .img-destaque img {
     margin: 20px 0;
 }
 
-/*---MAIN TITULO---*/
+.text-img-destaque-1 {
+    position: absolute;
+    left: 444px;
+    top: 140px;
+    text-shadow: 5px 5px 10px #bdbdbd;
+    color: white;
+}
 
+.text-img-destaque-2 {
+    position: absolute;
+    left: 80px;
+    top: 140px;
+    right: 485px;
+    color: white;
+}
+
+/*---MAIN TITULO---*/
 main .titulo {
     border: 1px solid #0666ca;
     border-radius: 50px;

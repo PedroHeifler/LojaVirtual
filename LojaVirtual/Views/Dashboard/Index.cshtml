@@ -5,25 +5,25 @@
 }
 
 
-    <main class="tela-admin">
-        <h1 class="mt-4">Dashboard</h1>
-        <div class="row">
-            <div class="col-md-6 p-3">
-                <div class="wrapper border p-2 bg-light shadow">
-                    <h4>Quantidade de Produtos por Categoria</h4>
-                    <canvas id="Categoria" style="display: block; width: 800px; height: 500px;"></canvas>
-                </div>
-            </div>
-
-            <div class="col-md-6 p-3">
-                <div class="wrapper border p-2 bg-light shadow">
-                    <h4>Quantidade de Produtos por Categoria</h4>
-                    <canvas id="myChart" style="display: block; width: 800px; height: 500px;"></canvas>
-                </div>
+<main class="tela-admin">
+    <h1 class="mt-4">Dashboard</h1>
+    <div class="row">
+        <div class="col-sm-7 ml-5 p-3">
+            <div class="wrapper border p-2 bg-light shadow">
+                <h4>Quantidade de Produtos por Categoria</h4>
+                <canvas id="Categoria" style="display: block; width: 800px; height: 500px;"></canvas>
             </div>
         </div>
 
-    </main>
+        <!--<div class="col-md-7 ml-5 p-3">
+        <div class="wrapper border p-2 bg-light shadow">
+            <h4>Quantidade de Produtos por Categoria</h4>
+            <canvas id="myChart" style="display: block; width: 800px; height: 500px;"></canvas>
+        </div>-->
+    </div>
+    </div>
+
+</main>
 
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
@@ -131,13 +131,12 @@
                 });
         })
 
-    $.post('http://localhost:61651/Dashboard/BuscaPrecoPorCategoria')
-        .done(function (precoProCategoria) {
-            console.log(precoProCategoria)
-        })
 
-
-
+    /*$.post('http://localhost:61651/Dashboard/listarValorMesAno')
+        .done(function (valores) {
+            console.log(valores)
+        });*/
+        
 </script>
 
 

@@ -1907,7 +1907,7 @@
     <Content Include="img\vestido-3.jpg" />
     <Content Include="img\vestido-4.jpg" />
     <Content Include="img\visa.png" />
-    <Content Include="Scripts\BaixaEstoque.js" />
+    <Content Include="Scripts\BuscarProdutoPorCategoria.js" />
     <Content Include="Scripts\Editar.js" />
     <Content Include="Scripts\EnderecoSelecionado.js" />
     <Content Include="Scripts\Excluir.js" />

@@ -20,11 +20,11 @@
             <tr id="adminTr@(produto.IdProduto)" onclick="MostraImg(this)" class="produtoTr">
                 <th scope="row">@produto.IdProduto</th>
                 <td>@produto.SKU</td>
-                <td class="info-nome text-truncate">@produto.Nome</td>
-                <td class="img" style="min-width: 120px">@produto.Imagem</td>
-                <td>@produto.Valor</td>
+                <td class="info-nome text-truncate" style="max-width: 200px;">@produto.Nome</td>
+                <td class="img text-truncate">@produto.Imagem</td>
+                <td class="valor">@produto.Valor</td>
                 <td>@produto.TpProduto</td>
-                <td>@produto.Departamento.Genero</td>
+                <td class="categoria">@produto.Departamento.Genero</td>
                 <td class="text-truncate" style="max-width: 200px;">@produto.Descricao</td>
                 <td class="d-flex justify-content-center">
                     <button class="btn btn-info ml-3" onclick="Editar('#adminTr@(produto.IdProduto)')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-pen"></i></button>

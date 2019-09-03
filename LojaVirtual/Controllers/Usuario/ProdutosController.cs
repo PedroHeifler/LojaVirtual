@@ -26,6 +26,15 @@ namespace LojaVirtual.Controllers.cUsuario
 
         }
 
+        [HttpPost]
+        public ActionResult BuscarProdutoPorIdCategoria(int id)
+        {
+            ProdutoDAO pdao = new ProdutoDAO();
+            IList<Produto> produtos = pdao.BuscaProdutoPorDepartamento(id);
+            return Json(produtos);
+        }
+
+
         public ActionResult Detalhes(int id)
         {
             /*---Departamento---*/
