@@ -83,6 +83,11 @@ body:not(i) {
 .iten-produtos li:hover label {
     color: #5eadff;
 }
+
+.carousel-control-next, .carousel-control-prev {
+    width: 6% !important;
+}
+
 /*---NAV BAR 1---*/
 #navbar-1 > nav {
     position: relative;
@@ -215,18 +220,20 @@ main .img-destaque img {
 
 .text-img-destaque-1 {
     position: absolute;
-    left: 444px;
-    top: 140px;
+    left: 50%;
+    top: 40%;
     text-shadow: 5px 5px 10px #bdbdbd;
     color: white;
+    padding: 0 20px;
 }
 
 .text-img-destaque-2 {
     position: absolute;
-    left: 80px;
-    top: 140px;
-    right: 485px;
+    left: 10%;
+    top: 40%;
+    right: 420px;
     color: white;
+    padding: 0 20px;
 }
 
 /*---MAIN TITULO---*/

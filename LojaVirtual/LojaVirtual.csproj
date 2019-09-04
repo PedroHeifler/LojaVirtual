@@ -291,6 +291,7 @@
       <DependentUpon>20190828111948_pedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LojaVirtualContextModelSnapshot.cs" />
+    <Compile Include="Models\ArchiveEntry.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\FichaTecnica.cs" />
     <Compile Include="Models\Pedido.cs" />

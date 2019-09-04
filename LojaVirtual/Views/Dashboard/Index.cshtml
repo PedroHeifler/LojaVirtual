@@ -15,12 +15,12 @@
             </div>
         </div>
 
-        <!--<div class="col-md-7 ml-5 p-3">
-        <div class="wrapper border p-2 bg-light shadow">
-            <h4>Quantidade de Produtos por Categoria</h4>
-            <canvas id="myChart" style="display: block; width: 800px; height: 500px;"></canvas>
-        </div>-->
-    </div>
+        <div class="col-md-7 ml-5 p-3">
+            <div class="wrapper border p-2 bg-light shadow">
+                <h4>Valor por Mes</h4>
+                <canvas id="Valor" style="display: block; width: 800px; height: 500px;"></canvas>
+            </div>
+        </div>
     </div>
 
 </main>
@@ -132,11 +132,33 @@
         })
 
 
-    /*$.post('http://localhost:61651/Dashboard/listarValorMesAno')
+    $.post('http://localhost:61651/Dashboard/listarValorMesAno')
         .done(function (valores) {
             console.log(valores)
-        });*/
-        
+
+            var temp = new Array();
+
+            valores.forEach(function (data) {
+                temp.push(data.MonthName);
+            });
+
+            var ctx = document.getElementById('Valor').getContext('2d');
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+
+                    labels: temp,
+
+
+                    datasets: [{
+                        label: 'Valor Total',
+                        data: [12, 32, 42, 12, 0]
+                    }]
+                }
+
+            });
+        });
+
 </script>
 
 

@@ -24,5 +24,3 @@ function MostrarTodos() {
         $(idproduto[i]).parent().fadeIn()
     }
 }
-
-

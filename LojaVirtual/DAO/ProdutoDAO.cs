@@ -89,13 +89,25 @@ namespace LojaVirtual.DAO
             }
         }
 
-        /*public object BuscarValorPorMesAno()
+        public object BuscarValorPorMesAno()
         {
             using(var contexto = new LojaVirtualContext())
             {
-                return contexto.Pedidos.Include("Produtos").FromSql("SELECT SUM(PED.idPedido) as idPedido, SUM(PED.UsuarioIdUsuario) as UsuarioIdUsuario, SUM(PED.valor) as valor, MONTH(PED.dataDaCampra) AS dataDaCampra, COALESCE( ( SELECT SUM(PED2.VALOR) FROM PEDIDOS PED2 INNER JOIN Produtos PROD ON (PROD.PedidoidPedido = PED2.idPedido) INNER JOIN Departamentos DEPTO ON (DEPTO.IdDepartamento = PROD.DepartamentoIdDepartamento) WHERE YEAR(PED2.dataDaCampra) = YEAR(PED.dataDaCampra) AND MONTH(PED2.dataDaCampra) = MONTH(PED.dataDaCampra) AND DEPTO.Genero = 'Masculino'), 0) as Masculino, COALESCE(( SELECT SUM(PED2.VALOR) FROM PEDIDOS PED2 INNER JOIN Produtos PROD ON (PROD.PedidoidPedido = PED2.idPedido) INNER JOIN Departamentos DEPTO ON (DEPTO.IdDepartamento = PROD.DepartamentoIdDepartamento) WHERE YEAR(PED2.dataDaCampra) = YEAR(PED.dataDaCampra) AND MONTH(PED2.dataDaCampra) = MONTH(PED.dataDaCampra) AND DEPTO.Genero = 'Feminino'), 0) as Feminino, COALESCE(( SELECT SUM(PED2.VALOR) FROM PEDIDOS PED2 INNER JOIN Produtos PROD ON (PROD.PedidoidPedido = PED2.idPedido) INNER JOIN Departamentos DEPTO ON (DEPTO.IdDepartamento = PROD.DepartamentoIdDepartamento) WHERE YEAR(PED2.dataDaCampra) = YEAR(PED.dataDaCampra) AND MONTH(PED2.dataDaCampra) = MONTH(PED.dataDaCampra) AND DEPTO.Genero = 'Infantil'), 0) as Infantil FROM PEDIDOS PED GROUP BY MONTH(PED.dataDaCampra)").ToArray();
+                return contexto.Pedidos.GroupBy(o => new
+                {
+                    Mes = o.dataDaCampra.Month,
+                    Ano = o.dataDaCampra.Year
 
+                }).Select(g => new ArchiveEntry
+                {
+                    Month = g.Key.Mes,
+                    Year = g.Key.Ano,
+                    Total = g.Sum(s => s.valor),
+                })
+                .OrderByDescending(a => a.Year)
+                .ThenByDescending(a => a.Month)
+                .ToList();
             }
-        }*/
+        }
     }
 }
