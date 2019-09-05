@@ -1,59 +1,63 @@
 ﻿
 @{
-    ViewBag.Title = "Produtos";
+    ViewBag.Title = "Loja Virtual | Produtos";
     Layout = "~/Views/Shared/LayoutPadrao.cshtml";
 }
 
 <main class="d-flex" style="min-height: 709.66px;">
-    <ul class="nav flex-column pt-5 pr-5 pl-3 bg-dark text-white iten-produtos">
+    <ul class="nav flex-column pt-5 bg-white shadow border-right iten-produtos">
         <li>
-            <h3>Pesquisa</h3>
-            <form class="form-inline my-2 my-lg-0 bd-highlight" style="width: max-content">
+            <h3 class="pl-2">Pesquisa</h3>
+            <form class="form-inline my-2 my-lg-0 bd-highlight pr-2 pl-2" style="width: max-content">
                 <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar pelo Nome" id="filtro-tabela" oninput="Filtrar('.produto-filtrar')">
             </form>
         </li>
-        <li class="mt-5">
-            <h6 onclick="MostrarTodos()">Mostrar todos</h6>
+
+        <li>
+            <hr />
+            <h6 class="pl-3" onclick="MostrarTodos()">Mostrar todos</h6>
+            <hr />
         </li>
-        <li class="nav-item mt-2">
+        <li class="nav-item mt-2 pl-2">
             <h3>Categoria</h3>
         </li>
         @foreach (var departamento in ViewBag.Departamentos)
         {
-            <li class="nav-item" onclick="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">
+            <li class="nav-item pl-3" onclick="BuscarProdutoPorCategoria(@departamento.IdDepartamento)">
                 <label for="@departamento.Genero">@departamento.Genero</label>
             </li>
         }
     </ul>
+    <hr class="bg-white" />
 
     <div class="m-5 row text-center">
         @foreach (var produto in ViewBag.Produtos)
         {
             if (produto.Pedido == null)
             {
-            <div class="card m-4 p-0 col-md-2 produto-filtrar" style="min-width: 14rem;">
-                <label class="id-produto" style="display: none">@produto.IdProduto</label>
-                <div style="position: relative; overflow: auto;">
-                    <img src="~/img/@produto.Imagem" class="card-img-top" alt="@produto.Nome">
-                </div>
+                <div class="card m-4 p-0 col-md-2 produto-filtrar" style="min-width: 14rem;">
+                    <label class="id-produto" style="display: none">@produto.IdProduto</label>
+                    <div style="position: relative; overflow: hidden;">
+                        <img src="~/img/@produto.Imagem" class="card-img-top" alt="@produto.Nome">
+                    </div>
 
-                <!--Icone Fav-->
-                <div class="icone-fav position-absolute">
-                    <i class="far fa-heart"></i>
-                </div>
+                    <!--Icone Fav-->
+                    <div class="icone-fav position-absolute">
+                        <i class="far fa-heart"></i>
+                    </div>
 
-                <div class="card-body">
-                    <h5 class="card-title info-nome">@produto.Nome</h5>
-                    <p class="card-text">R$@produto.Valor</p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <br>
-                    <a href="/produtos/detalhes/@produto.IdProduto" class="btn btn-primary mt-3">Mais Informacoes</a>
+                    <div class="card-body">
+                        <h5 class="card-title info-nome">@produto.Nome</h5>
+                        <p class="card-text">R$@produto.Valor</p>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <br>
+                        <a href="/produtos/detalhes/@produto.IdProduto" class="btn btn-primary mt-3">Mais Informacoes</a>
+                    </div>
                 </div>
-            </div>
             }
         }
     </div>

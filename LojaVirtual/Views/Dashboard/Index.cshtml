@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
 
@@ -8,17 +8,17 @@
 <main class="tela-admin">
     <h1 class="mt-4">Dashboard</h1>
     <div class="row">
+        <div class="col-md-9 ml-5 p-3">
+            <div class="wrapper border p-2 bg-light shadow">
+                <h4>Valor por Mês</h4>
+                <canvas id="Valor" style="display: block; width: 800px; height: 500px;"></canvas>
+            </div>
+        </div>
+
         <div class="col-sm-7 ml-5 p-3">
             <div class="wrapper border p-2 bg-light shadow">
                 <h4>Quantidade de Produtos por Categoria</h4>
                 <canvas id="Categoria" style="display: block; width: 800px; height: 500px;"></canvas>
-            </div>
-        </div>
-
-        <div class="col-md-7 ml-5 p-3">
-            <div class="wrapper border p-2 bg-light shadow">
-                <h4>Valor por Mes</h4>
-                <canvas id="Valor" style="display: block; width: 800px; height: 500px;"></canvas>
             </div>
         </div>
     </div>
@@ -35,111 +35,64 @@
 
 
     /*---Grafico de Categoria---*/
-    $.post('http://localhost:61651/Dashboard/listarDepartamento')
-        .done(function (departemento) {
+    $.post('http://localhost:61651/Dashboard/listarProdutosPorCategoria')
+        .done(function (produtos) {
 
-            $.post('http://localhost:61651/Dashboard/listarProdutosPorCategoria')
-                .done(function (produtos) {
-                    var produtoData = [];
-                    var departamentoData = []
+            var tempGenero = [];
+            var tempProdutoQtd = []
 
-                    for (var i = 0; i < departemento.length; i++) {
-                        departamentoData.push(departemento[i].Genero);
+            produtos.forEach(function (data) {
+                tempGenero.push(data.Genero);
+                tempProdutoQtd.push(data.qtd);
+            });
 
 
-                        switch (departamentoData.length) {
-                            case 1:
-                                for (var p = 0; p < produtos.length; p++) {
-                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
-                                }
-                                if (produtoData[0] == null) {
-                                    produtoData.push("");
-                                }
-                                break;
-                            case 2:
-                                for (var p = 0; p < produtos.length; p++) {
-                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
-                                }
-                                if (produtoData[1] == null) {
-                                    produtoData.push("");
-                                }
-                                break;
-                            case 3:
-                                for (var p = 0; p < produtos.length; p++) {
-                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
-                                }
-                                if (produtoData[2] == null) {
-                                    produtoData.push("");
-                                }
-                                break;
-                            case 4:
-                                for (var p = 0; p < produtos.length; p++) {
-                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
-                                }
-                                if (produtoData[3] == null) {
-                                    produtoData.push("");
-                                }
-                                break;
-                            case 5:
-                                for (var p = 0; p < produtos.length; p++) {
-                                    if (departamentoData[i] == produtos[p].Genero) { produtoData.push(produtos[p].qtd) }
-                                }
-                                if (produtoData[4] == null) {
-                                    produtoData.push("");
-                                }
-                                break;
-                        }
-                    }
-                    var ctx = document.getElementById('Categoria').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: departamentoData,
+            var ctx = document.getElementById('Categoria').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: tempGenero,
 
-                            datasets: [{
-                                label: 'Produtos',
-                                data: produtoData,
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
+                    datasets: [{
+                        label: 'Genero',
+                        data: tempProdutoQtd,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
                             }
-                        }
-                    });
-                });
-        })
+                        }]
+                    }
+                }
+            });
+        });
 
 
+    /*---Grafico de Valor Por Mes---*/
     $.post('http://localhost:61651/Dashboard/listarValorMesAno')
         .done(function (valores) {
             console.log(valores)
 
-            var temp = new Array();
+            var tempNome = new Array();
+            var tempTotal = new Array();
 
             valores.forEach(function (data) {
-                temp.push(data.MonthName);
+                tempNome.push(data.MonthName);
+                tempTotal.push(data.Total);
             });
 
             var ctx = document.getElementById('Valor').getContext('2d');
@@ -147,12 +100,13 @@
                 type: 'line',
                 data: {
 
-                    labels: temp,
+                    labels: tempNome,
 
 
                     datasets: [{
                         label: 'Valor Total',
-                        data: [12, 32, 42, 12, 0]
+                        data: tempTotal,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)'
                     }]
                 }
 

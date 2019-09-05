@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="imagem/png" href="~/img/icone.png" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,6 +15,7 @@
     <!--fontawsome-->
     <link href="~/fontawesome/css/all.css" rel="stylesheet">
     <link href="~/fontawesome/js/all.js" rel="stylesheet">
+    <title>@ViewBag.Title</title>
 </head>
 
 <body>
@@ -25,7 +27,6 @@
             <nav class="navbar navbar-expand navbar-dark bg-dark d-flex bd-highlight">
                 <ul class="navbar-nav p-2 flex-grow-1 bd-highlight">
                     <li><a href="#" class="nav-link active">Vendas</a></li>
-                    <li><a href="#" class="nav-link">Aluguel</a></li>
                 </ul>
 
                 @if (ViewBag.SessionLogin != null)

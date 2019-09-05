@@ -1,11 +1,17 @@
 ﻿let total = 0.0;
 
+$(".btn-continuar-compra").attr("disabled", true)
+
+
 for (let i = 0; i < sessionStorage.length; i++) {
     var keys = sessionStorage.key(i);
     var produto = sessionStorage.getItem(keys);
     var produtoSplit = produto.split(", ")
+
+
     if (keys != "Total" && keys != "clickcount" && keys != "IdProduto") {
 
+        $(".btn-continuar-compra").attr("disabled", false)
         var carrinho = $(".carrinho");
         var tr = document.createElement("tr");
         carrinho.append(tr)
@@ -55,7 +61,7 @@ for (let i = 0; i < sessionStorage.length; i++) {
 
         total = total + parseFloat(splitNumero)
 
-        $(".total").text("Total: R$" + total);
+        $(".total").text("Total: R$" + total.toFixed(2));
 
         sessionStorage.setItem('Total', total);
     }
@@ -63,16 +69,27 @@ for (let i = 0; i < sessionStorage.length; i++) {
 
 function ExcluiDoCarrinho(key) {
     var nome = $(key).children(".nome-carrinho").text()
-        for (let i = 0; i < sessionStorage.length; i++) {
-            var keys = sessionStorage.key(i);
-            var produto = sessionStorage.getItem(keys)
-            var produtoSplit = produto.split(", ")
+    
+    $(".btn-continuar-compra").attr("disabled", true)
 
-            if (nome == produtoSplit[1]) {
-                var id = keys
-                $(key).fadeOut("slow", function () {
-                    sessionStorage.removeItem(id)
-                });
+    for (let i = 0; i < sessionStorage.length; i++) {
+        var keys = sessionStorage.key(i);
+        var produto = sessionStorage.getItem(keys)
+        var produtoSplit = produto.split(", ")
+
+        if (nome == produtoSplit[1]) {
+            
+            var id = keys
+            $(key).fadeOut("slow", function () {
+                sessionStorage.removeItem(id);
+
+                for (let i = 0; i < sessionStorage.length; i++) {
+                    var keys = sessionStorage.key(i);
+                    if (keys != "Total" && keys != "clickcount" && keys != "IdProduto") {
+                        $(".btn-continuar-compra").attr("disabled", false)
+                    }
+                }
+            });
         }
     }
 }

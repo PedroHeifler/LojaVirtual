@@ -104,8 +104,8 @@ namespace LojaVirtual.DAO
                     Year = g.Key.Ano,
                     Total = g.Sum(s => s.valor),
                 })
-                .OrderByDescending(a => a.Year)
-                .ThenByDescending(a => a.Month)
+                .OrderBy(a => a.Year)
+                .ThenBy(a => a.Month)
                 .ToList();
             }
         }
