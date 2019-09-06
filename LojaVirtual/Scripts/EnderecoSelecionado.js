@@ -1,23 +1,27 @@
-﻿$(".continuar").attr("disabled", true)
+﻿Continuar(false)
+
 function EnderecoSelecionado(selector) {
+
     var endereco = $(".animacao-endereco")
+
     for (var i = 0; i < endereco.length; i++) {
 
-        if (!endereco.hasClass("ativado")) {
-            $(".continuar").attr("disabled", false)
-            console.log("asdasd")
+        if (endereco.hasClass("ativado")) {
+            Continuar(true)
         } else {
-            $(".continuar").attr("disabled", true)
+            Continuar(false)
         }
     }
 
-    /*Animacao*/
-    var campoSeletor = $(selector);
-    campoSeletor.toggleClass("ativado");
-    endereco.not(campoSeletor).removeClass("ativado");
+    Animacao($(selector))
+    
+}
 
+function Continuar(status) {
+    $(".continuar").attr("disabled", status)
+}
 
-    var dados = campoSeletor.find(".dados").text()
-    var arrayDados = dados.split(/\s/);
-
+function Animacao(selector) {
+    selector.toggleClass("ativado");
+    endereco.not(selector).removeClass("ativado");
 }

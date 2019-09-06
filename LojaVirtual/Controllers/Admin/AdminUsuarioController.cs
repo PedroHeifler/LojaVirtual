@@ -11,10 +11,22 @@ namespace LojaVirtual.Controllers
         // GET: AdminUsuario
         public ActionResult Index()
         {
-            UsuarioDAO dao = new UsuarioDAO();
-            IList<Usuario> usuarios = dao.Lista();
-            ViewBag.Usuarios = usuarios;
-            return View();
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+            if (ViewBag.SessionLogin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (ViewBag.SessionLogin.TpUsuario == "Admin")
+            {
+                UsuarioDAO dao = new UsuarioDAO();
+                IList<Usuario> usuarios = dao.Lista();
+                ViewBag.Usuarios = usuarios;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public PartialViewResult Listar(int paginacao = 1, int registros = 5)
@@ -22,10 +34,10 @@ namespace LojaVirtual.Controllers
             UsuarioDAO dao = new UsuarioDAO();
             IList<Usuario> usuarios = dao.ListaPaginacao(paginacao, registros);
             ViewBag.Usuarios = usuarios;
-            
+
             return PartialView("_Listar");
         }
-        
+
         [HttpPost]
         public ActionResult Salva(Usuario usuario)
         {

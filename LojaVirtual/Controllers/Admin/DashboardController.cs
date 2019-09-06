@@ -13,16 +13,20 @@ namespace LojaVirtual.Controllers.Admin
         // GET: Dashboard
         public ActionResult Index()
         {
-            return View();
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+            if (ViewBag.SessionLogin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if(ViewBag.SessionLogin.TpUsuario == "Admin")
+            {
+                return View();
+            }else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
-        public ActionResult listarDepartamento()
-        {
-            DepartamentoDAO ddao = new DepartamentoDAO();
-            IList<Departamento> departamento = ddao.Lista();
-
-            return Json(departamento);
-        }
 
         public ActionResult listarProdutosPorCategoria()
         {

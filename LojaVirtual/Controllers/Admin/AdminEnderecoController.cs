@@ -10,14 +10,26 @@ namespace LojaVirtual.Controllers
         // GET: AdminEndereco
         public ActionResult Index()
         {
-            EnderecoDAO dao = new EnderecoDAO();
-            IList<Endereco> enderecos = dao.Lista();
-            ViewBag.Enderecos = enderecos;
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+            if (ViewBag.SessionLogin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (ViewBag.SessionLogin.TpUsuario == "Admin")
+            {
+                EnderecoDAO dao = new EnderecoDAO();
+                IList<Endereco> enderecos = dao.Lista();
+                ViewBag.Enderecos = enderecos;
 
-            UsuarioDAO udao = new UsuarioDAO();
-            IList<Usuario> usuarios = udao.Lista();
-            ViewBag.Usuarios = usuarios;
-            return View();
+                UsuarioDAO udao = new UsuarioDAO();
+                IList<Usuario> usuarios = udao.Lista();
+                ViewBag.Usuarios = usuarios;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public PartialViewResult Listar(int paginacao = 1, int registros = 5)

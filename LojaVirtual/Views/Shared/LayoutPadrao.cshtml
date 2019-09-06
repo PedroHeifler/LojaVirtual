@@ -36,26 +36,27 @@
                         <div class="dropdown dropleft">
                             <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <label class="dropdown-item">Bem Vindo!<br />@ViewBag.SessionLogin.Usuario.NomeCompleto</label>
+                                <hr class="mt-0" />
                                 <a class="dropdown-item" href="/dashboard">Administrar</a>
                                 <a class="dropdown-item" href="/Produtos/Carrinho">Meus Pedidos</a>
-                                <hr />
                                 <a class="dropdown-item" href="/Login/Sair">Sair</a>
                             </div>
                         </div>
-                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin.Usuario.NomeCompleto!</label>
+                        <img src="~/img/icone_usuario.png" style="width: 35px; margin-left: 10px;" />
                     }
                     else
                     {
-                        <label class="text-white m-2">Bem Vindo @ViewBag.SessionLogin.Usuario.NomeCompleto!</label>
-
                         <div class="dropdown dropleft">
                             <button class="btn btn-outline-light dropdown-toggle btn-sm ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <label class="dropdown-item">Bem Vindo!<br />@ViewBag.SessionLogin.Usuario.NomeCompleto</label>
+                                <hr class="mt-0" />
                                 <a class="dropdown-item" href="/Produtos/Carrinho">Meus Pedidos</a>
-                                <hr />
                                 <a class="dropdown-item" href="/Login/Sair">Sair</a>
                             </div>
                         </div>
+                        <img src="~/img/icone_usuario.png" style="width: 35px; margin-left: 10px;" />
                     }
 
                 }
@@ -127,15 +128,15 @@
                         <h3>Ajuda</h3>
                         <li class="nav-link">Entregas</li>
                         <li class="nav-link">Pagamentos</li>
-                        <li class="nav-link">Devolucao</li>
+                        <li class="nav-link">Devolução</li>
                         <li class="nav-link">Cancelamento</li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <ul class="nav flex-column">
-                        <h3>Politica</h3>
+                        <h3>Política</h3>
                         <li class="nav-link">Regulamento</li>
-                        <li class="nav-link">Politica de Provacidade</li>
+                        <li class="nav-link">Política de Privacidade</li>
                     </ul>
                 </div>
                 <div class="col-md-3">

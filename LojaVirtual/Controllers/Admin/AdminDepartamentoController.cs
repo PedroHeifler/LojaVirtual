@@ -13,10 +13,22 @@ namespace LojaVirtual.Controllers.Admin
         // GET: AdminDepartamento
         public ActionResult Index()
         {
-            DepartamentoDAO dao = new DepartamentoDAO();
-            IList<Departamento> departamentos = dao.Lista();
-            ViewBag.Departamento = departamentos;
-            return View();
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+            if (ViewBag.SessionLogin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (ViewBag.SessionLogin.TpUsuario == "Admin")
+            {
+                DepartamentoDAO dao = new DepartamentoDAO();
+                IList<Departamento> departamentos = dao.Lista();
+                ViewBag.Departamento = departamentos;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]

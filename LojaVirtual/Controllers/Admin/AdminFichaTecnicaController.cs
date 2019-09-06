@@ -10,15 +10,26 @@ namespace LojaVirtual.Controllers.Admin
         // GET: AdminFichaTecnica
         public ActionResult Index(int id)
         {
-            FichaTecnicaDAO dao = new FichaTecnicaDAO();
-            ProdutoDAO pdao = new ProdutoDAO();
-            Produto produto = pdao.BuscaPorId(id);
-            IList<Produto> produtos = pdao.Lista();
-            IList<FichaTecnica> fichas = dao.Lista();
-            ViewBag.Produto = produtos;
-            ViewBag.Ficha = fichas;
-            return View(produto);
-
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+            if (ViewBag.SessionLogin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (ViewBag.SessionLogin.TpUsuario == "Admin")
+            {
+                FichaTecnicaDAO dao = new FichaTecnicaDAO();
+                ProdutoDAO pdao = new ProdutoDAO();
+                Produto produto = pdao.BuscaPorId(id);
+                IList<Produto> produtos = pdao.Lista();
+                IList<FichaTecnica> fichas = dao.Lista();
+                ViewBag.Produto = produtos;
+                ViewBag.Ficha = fichas;
+                return View(produto);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]

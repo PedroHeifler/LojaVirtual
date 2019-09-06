@@ -31,18 +31,18 @@ namespace LojaVirtual.Controllers.cUsuario
         {
             ProdutoDAO pdao = new ProdutoDAO();
             IList<Produto> produtos = pdao.BuscaProdutoPorDepartamento(id);
-           
+
             IList<Produto> produtoslista = new List<Produto>();
             foreach (var prod in produtos)
             {
-                produtoslista.Add(new Produto() {
+                produtoslista.Add(new Produto()
+                {
                     IdProduto = prod.IdProduto
                 });
             }
 
             return Json(produtoslista);
         }
-
 
         public ActionResult Detalhes(int id)
         {
@@ -104,7 +104,7 @@ namespace LojaVirtual.Controllers.cUsuario
             {
                 if (ViewBag.SessionLogin == null)
                 {
-                    return View();
+                    return RedirectToAction("Index", "Home");
                 }
                 else if (enderecos[i].Usuario.IdUsuario == ViewBag.SessionLogin.Usuario.IdUsuario)
                 {
@@ -118,14 +118,23 @@ namespace LojaVirtual.Controllers.cUsuario
 
         public ActionResult Pagamento()
         {
-            /*---Departamento---*/
-            DepartamentoDAO dao = new DepartamentoDAO();
-            IList<Departamento> departamentos = dao.Lista();
-            ViewBag.Departamentos = departamentos;
-
             ViewBag.SessionLogin = Session["usuarioLogado"];
 
-            return View();
+            if (ViewBag.SessionLogin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                /*---Departamento---*/
+                DepartamentoDAO dao = new DepartamentoDAO();
+                IList<Departamento> departamentos = dao.Lista();
+                ViewBag.Departamentos = departamentos;
+
+                ViewBag.SessionLogin = Session["usuarioLogado"];
+
+                return View();
+            }
         }
     }
 }

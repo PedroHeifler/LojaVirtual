@@ -10,16 +10,28 @@ namespace LojaVirtual.Controllers
         // GET: AdminProduto
         public ActionResult Index()
         {
-            ProdutoDAO dao = new ProdutoDAO();
-            DepartamentoDAO DepDAO = new DepartamentoDAO();
-            FichaTecnicaDAO ficDAO = new FichaTecnicaDAO();
-            IList<FichaTecnica> ficha = ficDAO.Lista();
-            IList<Produto> produtos = dao.Lista();
-            IList<Departamento> departamentos = DepDAO.Lista();
-            ViewBag.Ficha = ficha;
-            ViewBag.Departamento = departamentos;
-            ViewBag.Produtos = produtos;
-            return View();
+            ViewBag.SessionLogin = Session["usuarioLogado"];
+            if (ViewBag.SessionLogin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (ViewBag.SessionLogin.TpUsuario == "Admin")
+            {
+                ProdutoDAO dao = new ProdutoDAO();
+                DepartamentoDAO DepDAO = new DepartamentoDAO();
+                FichaTecnicaDAO ficDAO = new FichaTecnicaDAO();
+                IList<FichaTecnica> ficha = ficDAO.Lista();
+                IList<Produto> produtos = dao.Lista();
+                IList<Departamento> departamentos = DepDAO.Lista();
+                ViewBag.Ficha = ficha;
+                ViewBag.Departamento = departamentos;
+                ViewBag.Produtos = produtos;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public PartialViewResult Listar(int paginacao = 1, int registros = 5)
